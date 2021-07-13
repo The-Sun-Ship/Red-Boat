@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: "毛笔楷体";
+	src: url("汉标榜样毛笔楷体(非商用)_©字体视界.ttf");
+}
+@font-face {
+	font-family: "字魂32号";
+	src: url("字魂32号-汪子义星座体.ttf");
+}
+@font-face {
+	font-family: "字魂47号";
+	src: url("字魂47号-三分行楷.ttf");
+}
+@font-face {
+	font-family: "字魂49号";
+	src: url("字魂49号-逍遥行书.ttf");
+}

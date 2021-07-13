@@ -1,0 +1,152 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* -------------------------------------
+ * timeline
+ * ------------------------------------- */
+#timeline_outline_div {
+	position: relative;
+	width: 1000px;
+	height: 1450px;
+	margin: auto;
+}
+#timeline {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	list-style: none;
+	margin: 0px 0 0px 20%;
+	padding-left: 30px;
+	border-left: 8px solid #C7C7C7;
+}
+#timeline li {
+	margin: 10px 0;
+	position: relative;
+}
+#timeline p {
+	margin: 0 0 15px;
+}
+.timeline_parts {
+	width: 700px;                            /*设置最外层矩形框大小*/
+	position: relative;
+	
+}
+.timeline_parts_date {
+	margin-top: -10px;
+	top: 50%;
+	left: -180px;
+	line-height: 20px;
+	position: absolute;
+	font-family: "字魂47号";
+	font-size: 20px;
+	cursor: default;
+}
+.timeline_parts_circle {
+	margin-top: -10px;
+	top: 50%;
+	left: -42px;
+	width: 10px;
+	height: 10px;
+	background: #9B9B9B;                      /*设置旋钮中心颜色（未选中）*/
+	border: 3px solid #C6C6C6;                    /*设置旋钮边缘颜色*/
+	border-radius: 50%;
+	display: block;
+	position: absolute;
+}
+.timeline_parts_conference_introduce {
+	text-indent: 2em;
+	cursor: default;
+	max-height: 20px;
+	width: 700px;                              /*设置会议介绍矩形框大小*/    
+	padding: 35px 10px 0;
+	border-color: transparent;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 0.5em;
+	position: relative;
+	font-family: "字魂47号";
+	font-size: 20px;
+}
+.timeline_parts_conference_introduce:before, .timeline_parts_conference_introduce:after {
+	content: "";
+	width: 0;
+	height: 0;
+	border: solid transparent;
+	position: absolute;
+	pointer-events: none;
+	right: 100%;
+}
+.timeline_parts_conference_introduce:before {
+	border-right-color: transparent;
+	border-width: 20px;
+	top: 50%;
+	margin-top: -20px;
+}
+.timeline_parts_conference_introduce:after {
+	border-right-color: transparent;
+	border-width: 17px;
+	top: 50%;
+	margin-top: -17px;
+}
+.timeline_parts_conference_introduce p {
+	max-height: 0;
+	color: transparent;
+	text-align: justify;
+	word-break: break-word;
+	hyphens: auto;
+	overflow: hidden;
+}
+#timeline label {                              /*-------------会议标签设置-----------*/
+	position: absolute;
+	z-index: 100;
+	cursor: pointer;
+	top: 10px;
+	transition: transform 0.2s linear;
+	font-family: "字魂47号";
+	font-size: 25px;
+	font-weight: bold;
+}
+.timeline_parts_radio {
+	display: none;
+}
+.timeline_parts_radio:checked + .relative label {
+	cursor: auto;
+	transform: translateX(42px);
+}
+.timeline_parts_radio:checked + .relative .timeline_parts_circle {
+	background: red;                             /*设置旋钮中心颜色（选中）*/
+}
+.timeline_parts_radio:checked ~ .timeline_parts_conference_introduce {
+	max-height: 180px;
+	border-color: #445895;
+	margin-right: 20px;
+	transform: translateX(20px);
+	transition: max-height 0.4s linear, border-color 0.5s linear, transform 0.2s linear;
+}
+.timeline_parts_radio:checked ~ .timeline_parts_conference_introduce p {
+	max-height: 200px;
+	color: #000000;
+	transition: color 0.3s linear 0.3s;
+}
+
+
+/*------------------鼠标悬停效果------------------------------*/
+.timeline_parts_radio:hover + .relative label {
+	cursor: auto;
+	transform: translateX(42px);
+}
+.timeline_parts_radio:hover + .relative .timeline_parts_circle {
+	background: red;                             /*设置旋钮中心颜色（选中）*/
+}
+.timeline_parts_radio:hover ~ .timeline_parts_conference_introduce {
+	max-height: 180px;
+	border-color: #445895;
+	margin-right: 20px;
+	transform: translateX(20px);
+	transition: max-height 0.4s linear, border-color 0.5s linear, transform 0.2s linear;
+}
+.timeline_parts_radio:hover ~ .timeline_parts_conference_introduce p {
+	max-height: 200px;
+	color: #000000;
+	transition: color 0.3s linear 0.3s;
+}

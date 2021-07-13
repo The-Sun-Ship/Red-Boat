@@ -1,0 +1,335 @@
+@charset "utf-8";
+@import "font.css";
+/* CSS Document */
+
+* {
+	outline: none;
+}
+
+body {
+	margin: auto;
+	font-weight: normal;
+	width: 1400px;
+	background-image: url(../Image/picture/top_background.png),  url(../Image/picture/bottom_background.png),  url(../Image/picture/top_right_background.png),  url(../Image/picture/bottom_right_background.png);
+	background-size: 100% auto, 100% auto, 100% auto, 100% auto;
+	background-repeat: no-repeat, repeat-y, repeat-x, repeat;
+	
+}
+
+
+#a_bird {
+	position: absolute;
+	width: 100%;
+	right: 0;
+	z-index: -1;
+}
+
+/*------------------------------------标题栏--------------------------------------------------*/
+.dangzhang_title_bar {
+	margin-bottom: 0px;
+	width: 100%;
+	padding: 50px 0px;
+	z-index: 1000;
+}
+#flexmenu {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-left: 110px;
+}
+#home_logo_div {
+	
+	width: 35%;
+	margin: 0;
+}
+#home_logo {
+	width: 100%;
+}
+
+.nav-inner {
+	
+	margin-left: 15%;
+}
+.main-menu {
+	padding: 0px;
+}
+.main-menu {
+	margin-bottom: 0px;
+}
+.sub-menu {
+	position: absolute;
+	min-width: 150px;
+	z-index: 1234;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: 0.8s all ease;
+	-moz-transition: 0.8s all ease;
+	transition: 0.8s all ease;
+}
+
+li, li a {
+	border: 0;
+	list-style: none;
+	display: inline-block;
+	position: relative;
+	letter-spacing: 0px;
+	text-decoration: none;
+	font-size: 40px;
+	font-weight: 600;
+	line-height: 24px;
+	color: black;                     /*设置标题字体颜色*/
+	text-align: center;
+}
+li a:hover {
+	color: red;                         /*设置鼠标停留在大标题上时的颜色*/
+}
+.main-menu li {
+	padding: 0px 50px;                  /*设置大标题的间距*/
+}
+.main-menu li:first-child {               /*设置左边距*/
+	padding-left: 0px;
+}
+.main-menu li:last-child {                /*设置右边距*/
+	padding-right: 0px;
+}
+.main-menu > li > a:before {               /*鼠标悬浮时的头部动画特效*/
+	content: "";
+	position: absolute;
+	left: 20%;
+	bottom: 100%;
+	margin-bottom: 15px;
+	width: 4px;
+	height: 0px;
+	background: black;
+	transform: translateX(-50%);
+	transition: height 0.25s ease-out;
+}
+.active > a:before, .main-menu > li > a:hover:before {              /*鼠标悬浮时的头部动画特效*/
+	height: 80px;
+	transition: height 0.25s ease-in;
+}
+.main-menu li:hover > ul {                              /*小标题框的位置调整*/
+	opacity: 1;
+	visibility: visible;
+	padding-top: 0px;
+	padding-left: 0px;
+	background-image: url(../Image/picture/little_tittle_background.png);
+	background-size: 100% 100%;
+}
+.main-menu ul li {                                      /*小标题的内部元素调整*/
+	width: 80%;
+	padding: 0px 0px;
+}
+.main-menu ul li a {                                  /*小标题内容格式调整*/
+	color: black;
+	width: 100%;
+	font-size: 15px;
+	text-decoration: none;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.main-menu ul li.active a, .main-menu ul li a:hover {
+	border: 2px solid black;
+}
+/*------------标题栏字体设置---------*/
+.big_title_content>a {
+	font-family: "字魂49号";
+}
+.small_title_content>a {
+	font-family: "字魂32号";
+}
+#keshihuazhanshi_button {
+	border-bottom: 1px solid black;
+}
+
+/*----------------------------------标题栏字体设置*/
+
+/*-------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+/*--------------按钮设置-----------------*/
+#choose_button_div {
+	width: 100%;
+	height: 300px;
+}
+#choose_button_container {
+	width: 80%;
+	margin: auto;
+}
+
+
+.choose_button {
+	border-radius: 10px;
+	width: 40px;
+	height: 230px;
+	float: left;
+	text-align: center;
+	margin: 0px 20px;
+	font-family: "毛笔楷体";
+	font-size: 30px;
+	cursor: pointer;
+	font-weight: bold;
+	
+}
+
+
+
+
+
+/*--------------文本高亮设置-----------------*/
+.left_part_highlight {
+	color: #FE9394;
+	font-weight: bold;
+}
+
+.right_part_highlight {
+	color: #FA3E41;
+	font-weight: bold;
+}
+
+/*---------------党章标题设置----------------*/
+#choosed_dangzhang_title_div {
+	width: 100%;
+}
+.title_div {
+	width: 50%;
+	float: left;
+}
+.title_content {
+	width: 95%;
+	text-align: center;
+	font-family: "毛笔楷体";
+	font-size: 50px;
+}
+/*------------------------以下为党章全文的格式修正----------------------*/
+#dangzhang_part {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: auto;
+	min-height: 150px;
+	margin-top: 20px;
+}
+.document_part_div {
+	width: 45%;
+	margin-right: 5%;
+	position: relative;
+	float: left;
+}
+
+
+/*-----------------党章对比页面专属设置---------------------*/
+.document_part_div {
+	display: none;
+}
+.a_useless_div {
+	min-height: 100px;
+}
+
+/*------------------正文表格设置--------------------*/
+#zonggang_table, #zhengwen_table {
+	position: relative;
+	width: 100%;
+}
+.zonggang_table_tbody {
+	width: 100%;
+}
+.all_types {
+	border: 2px solid #C6C6C6;
+}
+.concrete_content, .all_zonggang {
+	text-indent: 2em;
+	line-height: 30px;
+	font-family: "毛笔楷体";
+	font-size: 20px;
+	color: #333;
+}
+.table_title {
+	text-align: center;
+	
+	font-size: 40px;
+	line-height: 70px;
+	font-weight: bold;
+	font-family: "毛笔楷体";
+	letter-spacing: 5px;
+}
+.zhang_mingcheng {
+	text-align: center;
+	width: 100%;
+	line-height: 50px;
+	font-size: 30px;
+	font-weight: bold;
+	font-family: "毛笔楷体";
+}
+table {
+	line-height: 25px;
+	border-collapse: collapse;
+	position: relative;
+}
+.entry_num {
+	width: 12%;
+	font-family: "毛笔楷体";
+	font-weight: bold;
+	text-align: left;
+}
+.table_title, .zhang_mingcheng, .entry_num {
+	text-align: center;
+}
+/*-----------------------------------------------正文表格设置*/
+
+
+
+/*------------------------------返回顶部按钮浮窗-------------------------*/
+#return_to_top_button {
+	width: 5%;
+	display: block;
+	position: fixed;
+	bottom: 0%;
+	right: 10%;
+	z-index: 110;
+	cursor: pointer;
+}
+
+/*----------------------------网页尾部-----------------------------------------*/
+
+#web_tail_part_div {
+	width: 100%;
+	height: 150px;
+	position: relative;
+	margin-top: 100px;
+}
+#web_tail_part {
+	width: 80%;
+	height: 100%;
+	margin: auto;
+}
+#web_tail_logo {
+	float: left;
+	width: 30%;
+	margin-right: 20%;
+}
+#web_tail_logo_img {
+	width: 100%;
+	object-fit: cover;
+}
+#web_tail_content_div {
+	float: left;
+	width: 45%;
+	height: 100%;
+}
+.web_tail_content, .web_tail_content a {
+	margin: 10px 0px;
+	font-family: "毛笔楷体";
+	font-size: 20px;
+	color: black;
+}
+.web_tail_content a:hover {
+	color: #6A6A6A;
+}
+/*-------------------------------------------------------------*/

@@ -1,0 +1,1332 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>五大党章</title>
+<link rel="stylesheet" href="CSS/dangzhang_css.css">
+<link rel="stylesheet" href="CSS/aos/aos.css">
+
+<script src="JavaScript/global_variable.js"></script>
+<script src="JavaScript/jquery_min.js"></script>
+
+<script src="JavaScript/echarts_min.js"></script>
+<script type="text/javascript" src="JavaScript/echarts-wordcloud.min.js"></script>
+<script type="text/javascript" src="JavaScript/jquery_highlight.js"></script>
+<script src="JavaScript/dangzhang_first.js"></script>
+<script src="JavaScript/dangzhang_js.js"></script>
+</head>
+
+
+	
+<body>
+<img id="a_bird" src="../Image/picture/bird.gif" alt="Not Found">
+	
+	
+<div class="dangzhang_title_bar">
+  <nav id="flexmenu">
+    <div id="home_logo_div"> <a href="../main_html.html"><img src="Image/picture/title_logo.png" id="home_logo" alt="logo"></a> </div>
+	<div id="dangzhang_logo_div"> <a href="5.html"><img src="Image/picture/副标题/5.png" id="dangzhang_logo" alt="logo"></a> </div>
+    <div class="nav-inner">
+      <ul class="main-menu">
+        <li class="menu-item big_title_content"><a href="../main_html.html">主页</a> </li>
+        <li class="menu-item big_title_content"><a href="#">党章</a>
+          <ul class="sub-menu">
+			<li class="menu-item small_title_content"><a href="dangzhang_comparison.html">党章对比</a></li>
+            <li class="menu-item small_title_content"><a href="2.html">二大党章</a></li>
+            <li class="menu-item small_title_content"><a href="3.html">三大党章</a></li>
+            <li class="menu-item small_title_content"><a href="4.html">四大党章</a></li>
+            <li class="menu-item small_title_content"><a href="5.html">五大党章</a></li>
+            <li class="menu-item small_title_content"><a href="6.html">六大党章</a></li>
+            <li class="menu-item small_title_content"><a href="7.html">七大党章</a></li>
+            <li class="menu-item small_title_content"><a href="8.html">八大党章</a></li>
+            <li class="menu-item small_title_content"><a href="12.html">十二大党章</a></li>
+            <li class="menu-item small_title_content"><a href="13.html">十三大党章</a></li>
+            <li class="menu-item small_title_content"><a href="14.html">十四大党章</a></li>
+            <li class="menu-item small_title_content"><a href="15.html">十五大党章</a></li>
+            <li class="menu-item small_title_content"><a href="16.html">十六大党章</a></li>
+            <li class="menu-item small_title_content"><a href="17.html">十七大党章</a></li>
+            <li class="menu-item small_title_content"><a href="18.html">十八大党章</a></li>
+            <li class="menu-item small_title_content"><a href="19.html">十九大党章</a></li>
+          </ul>
+        </li>
+        <li class="menu-item big_title_content" id="keshihuazhanshi_button" onClick="show_display_method_chart()"><a href="#">可视化展示</a></li>
+        <li class="menu-item big_title_content" id="xiangguanneirong_button"><a href="#">相关内容</a>
+          <ul class="sub-menu relative_content_background">
+            <li class="menu-item small_title_content" onClick="show_tree_chart()"><a href="#">相关摘要</a></li>
+            <li class="menu-item small_title_content" onClick="show_question_answer_part()"><a href="#">党章问答</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+	
+<div id="conference_introduce_div" aos="fade-up">
+  <div id="conference_introduce_left_part_div"></div>
+  <div id="conference_introduce_content_div"> 
+    <div id="conference_introduce_content">1927年4月27日至5月9日，中国共产党第五次全国代表大会在武汉召开。出席会议的代表共82名，代表全国57967名党员。1927年蒋介石打动四一二政变，大革命遭到局部严重失败，全国形成三个政权，即原来的北洋军阀政府，上海、南京的蒋介石反革命政权和武汉国民政府。面对如此错综复杂的矛盾和尖锐激烈的斗争，需要中国共产党对形势有清醒的认识并采取果断行动，才能挽救革命。党的五大就是在这种非常状态下召开的。1927年6月1日，由五大选举产生的中央政治局通过的《中国共产党第三次修正章程决案》，是唯一一部不是由党的全国代表大会通过的党章。
+    </div>
+  </div>
+</div>
+
+	
+	
+<div id="part_visual_display_div" aos="fade-up">
+  <div id="part_visual_display_chart_big_div_left_div"></div>
+  <div id="change_display_method_button_div">
+	<div id="display_change_button_left_part_div"></div>
+    
+    <div class="display_change_button_div">
+	  <input type="button" id="risingsun_button" class="display_change_button" value="旭日图" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="risingsun_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">以层级结构展现党章内容，点击某一扇块，下文显示对应内容，支持数据下钻和上卷。</div>
+	  </div>
+	</div>
+	<div class="display_change_button_div">
+	  <input type="button" id="wordcloud_button" class="display_change_button" value="词云" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="wordcloud_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">主要根据词频呈现党章的关键词，点击词语可在下文中看到对应内容。</div>
+		
+	  </div>
+	</div>
+	<div class="display_change_button_div" >
+	  <input type="button" id="textarc_button" class="display_change_button" value="文本弧" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="textarc_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">展现所选词在党章中对应位置，点击词语，下文显示包含该词的段落。</div>
+	  </div>
+	</div>
+  </div>
+  <div id="part_visual_display_chart_big_div">
+	  <div id="wordcloud_display" class="part_visual_display_chart_big_div_partdiv">
+		<div id="wordcloud_display_background_div" class="wordcloud_display_children_div"> 
+			<img src="Image/picture/background.png" id="wordcloud_background_img" class="wordcloud_display_children_div" alt="wrong">
+		</div>
+		<div id="wordcloud_main_part" class="wordcloud_display_children_div"></div>
+	  </div>
+	  <div id="rising_sun_display" class="part_visual_display_chart_big_div_partdiv"></div>
+	  
+	  <div id="big_box" class="part_visual_display_chart_big_div_partdiv">
+		<div id="box_text"></div>
+		<div id="box_wordcloud"></div>
+		<canvas id="box_canvas" width="500" height="500"></canvas >
+	  </div>
+  </div>
+  
+</div>
+	
+	
+<div id="document_part" aos="fade-up">
+  
+  <div id="document_part_search_bar_part_div">
+	  <div id="search_input_div">
+		<input type="button" id="search_input_text_wordstatistics" value="">
+		<input type="text" id="search_input_text" value="" placeholder="搜索党章关键词">
+		<input type="button" id="search_input_button" value="搜索" onClick="start_search_all_content()">
+	  </div>
+  </div>
+	
+  <input type="button" value="显示全部内容" id="show_all_content_button" onClick="show_dangzhang_all_content()" >
+  <input type="button" value="返回主题河流" id="return_to_themeriver" onClick="click_return_to_themeriver()" >
+  <input type="button" value="返回气泡图" id="return_to_bubblechart" onClick="click_return_to_bubblechart()" >
+  <input type="button" value="返回词频统计" id="return_to_wordstatistics" onClick="click_return_to_wordstatistics()">
+   
+  <div id="document_content_div">
+    
+    <table id="zhengwen_table">
+      <tbody class="all_content all_types 章节 退党及除名 党员迁移 入党条件及过程 入党资格 第一章-党员 党员 部门机关管理 党的组织系统 全体党员大会及各级代表大会 民主集中制 .民主集中制. 第二章-党的建设 组织 中央委员会 监察委员会 全国代表大会 第三章-党的中央机关 省委员会工作 省委的选举 第四章-省的组织 市或县委工作 市或县委的选举 第五章-市及县的组织 第六章-区的组织 支部成员 支部的任务 支部的成立 第七章-党的支部 第八章-监察委员会 其他纪律 决议原则 纪律处罚 纪律的重要性 第九章-纪律 纪律 对问题的讨论 决议的执行 党团干事会或党团书记 其代表的发言权与表决权 党团的目的 第十章-党团 党团 第十一章-经费 党费 第十二章-与青年团的关系 青年团 &监督 &纪律 &组织建设 &群众">
+        <tr>
+          <td class="table_title" colspan="2">章节</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 退党及除名 党员迁移 入党条件及过程 入党资格 监察委员会 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第一章 党员</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 入党资格 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第一条</td>
+          <td class="concrete_content"> 本党党员无国籍性别之分，凡承认本党党纲及章程，服从党的决议，参加在党的一定组织中工作并缴纳党费者，均得为本党党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 入党条件及过程 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二条</td>
+          <td class="concrete_content">党员入党时，须有正式党员一人之介绍，经过支部干事会之审查，支部会议之通过，市委员会或县委员会之批准，始得为本党正式党员或候补党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 入党条件及过程 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三条</td>
+          <td class="concrete_content"> 候补党员候补期：劳动者（工人，农民，手工工人，店员，士兵等）无候补期；非劳动者（知识分子；自由职业者等）之候补期三个月；但市委员会或县委员会得酌量情形伸缩之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 入党条件及过程 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四条</td>
+          <td class="concrete_content"> 候补党员参加支部会议时只有发言权无表决权；但其义务与正式党员同，遇必要时得由市或县委员会决定允许其参加市或县党员大会；但无表决权。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 入党条件及过程 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五条 </td>
+          <td class="concrete_content">凡经中央委员会或省委员会直接承认之党员，当通告该党所在地之市或县委员会，非劳动者亦须经过候补期。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 入党条件及过程 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六条</td>
+          <td class="concrete_content"> 凡党员移转国外，须得中央之同意及第三国际之介绍，始得为所在国共产党党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 入党条件及过程 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七条 </td>
+          <td class="concrete_content">凡已加入第三国际所承认之各国共产党者，经中央审查后得为本党正式党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 入党条件及过程 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第八条 </td>
+          <td class="concrete_content">党员年龄须在十八岁以上，凡年龄在二十岁以内而以内而愿入党者，必须经过青年团；但青年军人不在此例。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 党员迁移 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第九条 </td>
+          <td class="concrete_content">党员由一地党部转到另一地党部，须在该地党部登记成为该地党员。凡党员在省内移转须得省委员会同意；省外的移转须得中央的同意；但遇有特别情形（如在秘密工作情形之下）得酌量通融。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 退党及除名 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十条</td>
+          <td class="concrete_content">党员自愿出党须经过所在地之市或县委员会之决定，收回其党证及其他重要文件，并须有介绍人担保其严守本党一切秘密，如违犯时由市或县委员会采用适当手段对待之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 监察委员会 章节 第一章-党员 退党及除名 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十一条</td>
+          <td class="concrete_content"> 凡开除党员须经隶属之支部大会及省监察委员会决议及得省委员会之批准方能生效，并将其开除的理由刊布在党的刊物；在省委未批准以前得停止其一切权利及工作。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的建设 部门机关管理 党的组织系统 全体党员大会及各级代表大会 民主集中制 .民主集中制. &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第二章　党的建设</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 民主集中制 章节 第二章-党的建设 .民主集中制. &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十二条</td>
+          <td class="concrete_content"> 党部的指导原则为民主集中制。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 民主集中制 章节 第二章-党的建设 .民主集中制. &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十三条</td>
+          <td class="concrete_content"> 按照民主集中制的原则在一定区域内建立这一区域内党的最高机关，管理这一区域内党的部分组织。
+            党部之执行机关概以党员大会或代表大会选举，上级机关批准为原则；但特殊情形之下，上级机关得指定之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的建设 .民主集中制. &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十四条</td>
+          <td class="concrete_content"> 地方党部对于地方部分的问题有自行解决的权利。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的建设 全体党员大会及各级代表大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十五条</td>
+          <td class="concrete_content"> 各级党部最高的机关为：全体党员大会及代表大会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的建设 全体党员大会及各级代表大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十六条</td>
+          <td class="concrete_content"> 全体党员大会及各级代表大会选举各级委员会。委员会在大会闭会期间为该级党部最高权力机关，执行并指导党务及政策。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的建设 党的组织系统 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="6">第十七条</td>
+          <td class="concrete_content"> 党的组织系统为：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">全国－－－全国代表大会－－－中央委员会</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">省－－－省代表大会－－－省委员会</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">市或县－－－市或县代表大会－－－市或县委员会</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">区－－－区代表大会－－－区委员会</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">生产单位－－－支部党员全体大会－－－支部干事会 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的建设 部门机关管理 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十八条</td>
+          <td class="concrete_content"> 下级机关对上级机关的报告及提议与上级机关对下级机关有所命令及指导均按照党的系统手续。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的建设 部门机关管理 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十九条 </td>
+          <td class="concrete_content">为党的各种专门工作各级党部得设立各部管理之（如组织部，宣传部，妇女部等等）各级党部之下的各部隶属于各级党部。各级党部之下的各部组织制度均须得中央之命令或同意。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的建设 部门机关管理 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第二十条</td>
+          <td class="concrete_content"> 区委员会之下的党部须得区委员会之批准与市或县委员会的追认；市或县委员会之下的党部须得市或县委员会之批准；省委员会之下的党部须得省委员会之批准；省委员会之组织须得中央委员会的批准。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 各级党部之执行机关（自省委至支分部干事会或书记）之选定及撤换须得上级机关之批准。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央机关 中央委员会 监察委员会 全国代表大会 &监督 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第三章 党的中央机关</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央机关 全国代表大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十一条</td>
+          <td class="concrete_content"> 党的最高机关为全国代表大会，全国代表大会每年由中央委员会召集一次；中央认为必要时或有三分之一党员及三分之一省的党部之请求得召集全国临时代表大会；中央已经决定或三分之一的党员及三分之一省的党部请求之临时代表大会中央须在两个月内实现之。全国党的代表大会之召集与大会之议事日程，中央委员会须在大会前一个半月公布；全国代表大会须有代表全国党员之过半数方为合法，代表人数百分率由中央委员会规定之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 监察委员会 章节 第三章-党的中央机关 全国代表大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="5">第二十二条</td>
+          <td class="concrete_content"> 党的全国代表大会工作为：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">1 ．讨论与批准中央委员会中央监察委员会及其他中央各部工作的报告。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">2 ．审查与修改党纲及党章。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">3 ．决定一切重要问题政策的方针。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">4 . 改选中央委员会及监察委员会及其他等等。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 监察委员会 章节 第三章-党的中央机关 中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十三条</td>
+          <td class="concrete_content"> 中央委员会及中央监察委员会人数由大会规定，遇中央执行委员或中央监察委员离职时由候补委员按次递补。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央机关 中央委员会 &监督 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十四条</td>
+          <td class="concrete_content"> 中央委员会得代表党与其他政党及机关发生关系；得组织党的各种机关并指导其行动；得指导与监督中央机关报并指定党的机关报的主任；得分配党的人才及支配党的经费。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央机关 中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十五条</td>
+          <td class="concrete_content"> 中央委员会经过党团指示政府及其他社会团体之工作方针。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央机关 中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十六条 </td>
+          <td class="concrete_content">中央委员会全体会议须每三个月召集一次；遇必要时得召集临时中央委员会议或扩大中央委员会议。候补中央委员得参加中央委员会议及扩大中央委员会议，只有发言权而无表决权；但中央委员缺席时，候补委员临时依次递补，则取得表决权。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央机关 中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十七条</td>
+          <td class="concrete_content"> 中央委员会，选举正式中央委员一人为总书记及中央正式委员若干人组织中央政治局指导全国一切政治工作，并选正式中央执行委员若干人为中央政治局候补委员。候补政治局委员参加政治局会议时，只有发言权而无表决权，正式政治局委员离职时候补政治局委员依次递补。全体中央委员会议得改组中央政治局；中央政治局互推若干人组织中央常务委员会（SECRETARIAT）处理党的日常事务。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央机关 中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十八条</td>
+          <td class="concrete_content"> 中央委员会至少每两月须给省委一次中央执行委员会工作书面的报告。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-省的组织 省委员会工作 省委的选举 &监督 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第四章 省的组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-省的组织 省委的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十九条</td>
+          <td class="concrete_content"> 各省有两个市或县委员会以上，中央委员会认为有组织省委员会之必要时，即派员到该省召集省代表大会，由该代表大会选举省委员会（简称省委）。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-省的组织 省委的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十条</td>
+          <td class="concrete_content"> 省委员会正式委员人数及候补委员人数由省代表大会决定；但须得中央委员会之同意。如正式委员缺席时得以候补委员代理之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-省的组织 省委的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十一条</td>
+          <td class="concrete_content"> 省之范围由中央委员会规定并得随时变更之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-省的组织 省委的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十二条</td>
+          <td class="concrete_content">中央委员会认为必要时得委托一个市委员会暂代省委员会之职权。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-省的组织 省委的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十三条</td>
+          <td class="concrete_content">凡不能成立省委员会之党部，由中央委员会决定其附属于邻近之省委员会或直接隶属于中央委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-省的组织 省委员会工作 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十四条</td>
+          <td class="concrete_content">省委员会可推举省委员若干人组织常务委员会处理日常事务。</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-省的组织 省委员会工作 &监督 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十五条</td>
+          <td class="concrete_content">省委员会得指导省委之下各种机关；得指导与监督省委机关报及指定省委机关报主任；得分配工作人才；得分配省委经费；得经过党团指导省政府及其他社会团体之工作方针。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-省的组织 省委员会工作 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十六条</td>
+          <td class="concrete_content">省委员会每六个月召集一次省代表大会报告省委员会工作，及改选省委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-省的组织 省委员会工作 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十七条</td>
+          <td class="concrete_content">省委员会每月须向中央委员会作省委员会及县或市委员会工作书面的报告。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-市及县的组织 市或县委工作 市或县委的选举 &监督 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第五章 市及县的组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-市及县的组织 市或县委的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十八条</td>
+          <td class="concrete_content">各市或县有两个区委员会以上或有五个支部以上经省委员会之认可，并派员至该市或县召集市或县代表大会，由该代表大会选举市或县委员会（简称市或县委）。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-市及县的组织 市或县委的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十九条</td>
+          <td class="concrete_content">市或县委员会均隶属省委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-市及县的组织 市或县委的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十条</td>
+          <td class="concrete_content">省委员会所在之市，该市不另组织市委员会，该市之区委员会，直接隶属于省委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-市及县的组织 市或县委的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十一条</td>
+          <td class="concrete_content">市或县委员会正式委员人数及候补委员人数由市或县代表大会决定，但须得省委员会之同意，正式委员缺席时，得以候补委员代理之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-市及县的组织 市或县委的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十二条 </td>
+          <td class="concrete_content">凡不能成立市或县委员会之地，该市或县之党部则由省委员会决定隶属于邻近之市或县委员会或直接隶属于省委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-市及县的组织 市或县委工作 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十三条</td>
+          <td class="concrete_content"> 市或县委员会可互推委员三人至五人组织常务委员会，处决临时事务。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-市及县的组织 市或县委工作 &监督 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十四条</td>
+          <td class="concrete_content"> 市及县委员会得指导市或县执行委员会下之各种机关；得指导与监督市或县机关报；得指定市或县委员会机关报主任；得经过党团指示市或县政府及社会团体之工作方针；得分配工作人才及支部市或县委员会的经费。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-市及县的组织 市或县委工作 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十五条</td>
+          <td class="concrete_content"> 市及县委员会每三个月召集市或县代表大会或全体党员大会一次，报告市或县委员会工作及改选市或县委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-市及县的组织 市或县委的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十六条</td>
+          <td class="concrete_content"> 市或县的划分，由省执行委员决定之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-区的组织 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第六章 区的组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-区的组织 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十七条</td>
+          <td class="concrete_content"> 凡在一区内有两个支部以上，市或县委员会认为必要时得派员赴该区召集党员大会，由该大会选举区委员会（简称区委）。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-区的组织 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十八条</td>
+          <td class="concrete_content"> 区委员会人数，由党员大会决定之；但须经市或县委员会之同意。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-区的组织 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十九条</td>
+          <td class="concrete_content"> 凡不能成立区委员会区域内之支部，由区委员会或市或县委员会，决定其附属邻近之区委员会，或直接隶属于市或县委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-区的组织 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十条</td>
+          <td class="concrete_content"> 区之划分，由市或县委员会决定之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-区的组织 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十一条</td>
+          <td class="concrete_content"> 区委员会每三个月改选一次。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的支部 支部成员 支部的任务 支部的成立 &组织建设 &群众 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第七章 党的支部</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的支部 支部的成立 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十二条</td>
+          <td class="concrete_content"> 支部是党的基本组织，各工厂，各铁路，各矿山，各农村，各兵营，各学校，各街道及其各机关内或附近，凡有党员三人以上均得成立支部但须得区或县委员会之批准。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的支部 支部的任务 &组织建设 &群众 ">
+        <tr>
+          <td class="entry_num" rowspan="7">第五十三条</td>
+          <td class="concrete_content"> 支部是党与群众直接发生关系的组织，支部的任务是：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）积极在各该工厂等之内活动，领导该处群众之日常斗争，扩大党的影响；</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）实行党的口号与决议于群众中；</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（三）吸收新的党员；</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（四）服从地方党部从事组织与宣传的工作；</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（五）积极参加地方政治经济的斗争；</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（六）尽可能讨论党的重要问题。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的支部 支部成员 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十四条</td>
+          <td class="concrete_content"> 每一个支部公推书记一人，或公推三人组织支部干事会，隶属于区委员会，无区委员会之地，则直接隶属于县或市委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的支部 支部成员 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十五条</td>
+          <td class="concrete_content"> 在多量党员产业生产部门中，可组织支分部，支分部亦可组织干事会，不能组织支分部之党员多的支部，得组织小组，支分部下亦得组织小组，小组公推小组组长一人，直隶属于支部干事会，或支分部干事会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的支部 支部成员 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十六条</td>
+          <td class="concrete_content">党员不满三人之处，则设一通讯员，属于最近之区委员会，或市县委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的支部 支部成员 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十七条</td>
+          <td class="concrete_content"> 支部干事会议，每两星期中，至少召集一次支部党员大会，报告支部干事会的工作，及讨论支部所在之机关或区域内的一切实际政治及经济斗争的问题。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的支部 支部成员 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十八条</td>
+          <td class="concrete_content"> 支部干事会每三个月改选一次。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的支部 支部成员 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十九条</td>
+          <td class="concrete_content"> 军队中支部，直归军事部管理，关于政治宣传及教育训练工作，则由宣传部及组织部经过军事部执行之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的支部 支部成员 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十条</td>
+          <td class="concrete_content"> 支部书记之撤换，须经过支部全体党员大会之通过及得区或县市委员会之同意。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第八章-监察委员会 监察委员会 &监督 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第八章 监察委员会</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 监察委员会 章节 第八章-监察委员会 &监督 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十一条</td>
+          <td class="concrete_content"> 为巩固党的一致及权威起见，在全国代表大会及省代表大会选举中央及省监察委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第八章-监察委员会 &监督 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十二条</td>
+          <td class="concrete_content"> 中央及省监察委员，不得以中央委员及省委员兼任。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第八章-监察委员会 &监督 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十三条</td>
+          <td class="concrete_content"> 中央及省监察委员，得参加中央及省委员会议，但只有发言权无表决权。遇必要时，得参加相当的党部之各种会议。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 监察委员会 章节 第八章-监察委员会 &监督 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十四条</td>
+          <td class="concrete_content"> 中央及省委员会，不得取消中央及省监察委员会之决议；但中央及省监察委员会之决议，必须得中央及省委员会之同意，方能生效与执行。遇中央或省监察委员会与中央或省委员会意见不同时，则移交至中央或省监察委员会与中央或省委员会联席会议，如联席会议再不能解决时，则移交省及全国代表大会或移交于高级监察委员会解决之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第九章-纪律 监察委员会 其他纪律 决议原则 纪律处罚 纪律的重要性 &纪律 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第九章 纪律</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第九章-纪律 纪律的重要性 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十五条</td>
+          <td class="concrete_content"> 严格党的纪律是全体党员及全体党部最初的最重要的义务，党部机关之决议，应当敏捷的与正确的执行之，但对于党内一切争论问题，在未解决以前，完全自由讨论之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第九章-纪律 纪律处罚 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="3">第六十六条</td>
+          <td class="concrete_content"> 不执行上级机关的决议及其他破坏党的行为，即认为违背党的共同意志而处罚之。处罚之方式如下：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">A . 对于整个的党部则加以警告，改组或举行总的重新登记（解散组织）。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">B . 对党员个人，则加以警告，在党内公开的警告，临时取消其党的，国民党的，国民政府的及其他的工作。留党察看，及开除党籍。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第九章-纪律 决议原则 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十七条</td>
+          <td class="concrete_content"> 党的一切决议取决于多数，少数绝对服从多数。党员及下级机关对于上级机关决议不同意时，得各该党部过半数党员的同意，得对于上级机关提出抗议，但在抗议时期内，未解决以前仍须执行上级机关之命令。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第九章-纪律 其他纪律 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十八条</td>
+          <td class="concrete_content">党员不经党的许可，不得加入一切政治党派，其前已隶属一切政治党派者，加入本党时，若不得党的许可，应正式宣告脱离。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第九章-纪律 其他纪律 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十九条</td>
+          <td class="concrete_content">党员未得党的同意，不得任国家机关内任何的职务。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 监察委员会 章节 第九章-纪律 其他纪律 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七十条</td>
+          <td class="concrete_content"> 对于违反党的纪律的行为，须经党的委员会，党员大会，或监察委员会，依合法手续审查之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十章-党团 对问题的讨论 决议的执行 党团干事会或党团书记 其代表的发言权与表决权 党团的目的 &群众 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第十章 党团</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十章-党团 党团的目的 &群众 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七十一条</td>
+          <td class="concrete_content"> 在所有一切非党群众会议，及执行的机关（国民党国民政府工会农协会等等）中，有党员三人以上，均须组织党团，党团的目的，是在各方面加紧党的影响，而实行党的政策于非党的群众中。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十章-党团 其代表的发言权与表决权 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七十二条</td>
+          <td class="concrete_content"> 在党的执行委员会中，讨论与某个党团有关系之问题时，该党团得派代表参加讨论。但只有发言权而无表决权。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十章-党团 党团干事会或党团书记 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七十三条</td>
+          <td class="concrete_content"> 为实行党团的日常工作，当指定党团干事会或党团书记处理党团的日常事务。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十章-党团 决议的执行 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七十四条</td>
+          <td class="concrete_content"> 各级党团均隶属各级党的委员会，党团对于党已有决议之各种问题，应严守与正确执行之。党的委员会得添派或撤回党团的分子，但须向党团说明其理由。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十章-党团 决议的执行 对问题的讨论 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七十五条</td>
+          <td class="concrete_content">党团对于其本身之日常问题得自由解决之，党团与党的委员会有不同意见时，党的委员会，应召集党团全体会议重新讨论之。并决定最后的办法，在党团方面对于最后之决定须敏捷执行之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十章-党团 对问题的讨论 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七十六条</td>
+          <td class="concrete_content"> 在党团所在之机关或组织中的重要位置的候补人选，党团须与所隶属之党部机关共同商定之。对于工作位置的调换，亦须用上列方法。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十章-党团 对问题的讨论 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七十七条</td>
+          <td class="concrete_content">党团所讨论之事项，有关于含有政治性的问题时，党部机关须派代表参加。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十章-党团 对问题的讨论 &群众 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七十八条</td>
+          <td class="concrete_content"> 在非党群众及组织中，遇有解决重要问题时，党团须在党团会议，或党团干事会中事先讨论与决定。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十章-党团 对问题的讨论 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七十九条</td>
+          <td class="concrete_content"> 在非党组织中对于每一个问题时决定，当在该非党的组织会议中付表决时，在该会议中之全体党员（即党团分子）如有违犯党的决议，则按党的纪律处罚。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党费 章节 第十一章-经费 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第十一章 经费</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党费 章节 第十一章-经费 ">
+        <tr>
+          <td class="entry_num" rowspan="4">第八十条</td>
+          <td class="concrete_content"> 本党经费的收入如下列各项：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）党费 党员每月收入在三十元以内者，月缴党费二角。凡无收入，及月薪不满二十元者，得由市或县委斟酌情形核定减免之。在三十元以上至六十元者缴一元；六十元以上至八十元者，缴百分之三，八十元以外者特别征收之，失业工人及在狱或在C Y 的党员均免缴党费。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）党内义务捐，由各地党的委员会酌量地方经费及党员经济力定之。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（三）党外协助。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党费 章节 第十一章-经费 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第八十一条</td>
+          <td class="concrete_content"> 军队中党员党费，由所在地军部征收，转交党部会计科。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党费 章节 第十一章-经费 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第八十二条</td>
+          <td class="concrete_content"> 本党一切经费收入， 均由中央委员会支配之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 青年团 章节 第十二章-与青年团的关系 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第十二章 与青年团的关系</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 青年团 章节 第十二章-与青年团的关系 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第八十三条</td>
+          <td class="concrete_content">青年团中央，应派代表出席党的中央政治局会议，各级团部亦应派代表参加各级党部机关之常务委员会议，此等团部之出席代表应有 表决 权。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 青年团 章节 第十二章-与青年团的关系 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第八十四条</td>
+          <td class="concrete_content"> 党的中央委员会应派中央委员任青年团中央执行委员会委员，各级青年团执行委员会书记应为当地党的委员会委员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 青年团 章节 第十二章-与青年团的关系 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第八十五条</td>
+          <td class="concrete_content"> 各地党部机关应派代表出席各级团部机关之会议。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  
+</div>
+	
+	
+<div id="part4_div_part">
+  <div id="tree_chart_div"></div>
+  <table id="part4_tree_table">
+    <tbody class="part4_历史背景 ">
+      <tr>
+        <td class="part4_tbody_head">党章制定的历史背景</td>
+      </tr>
+      <tr>
+        <td class= "part4_content">   1927年6月1日，中国共产党中央政治局会议在武汉召开。受中央委托，中央政治局会议根据党的第五次全国代表大会通过的《组织问题议决案》提出的原则和具体要求，对原有党章进行了全面修改，并议决通过了《中国共产党第三次修正章程决案》。它是中国共产党的组织章程规范化的一个开端。 <br/>   党的四大后，全国革命形势有了迅速发展。1925年5月，在上海爆发了著名的社会各界反帝游行示威，帝国主义采取了血腥镇压手段，酿成了震惊全国的五卅惨案。第一次革命高潮由此开始。这一时期，各地已经扭转了四大前的忽视党的自身建设的局面，在党的思想建设、组织建设和制度建设方面，都取得了进展。特别是在党的组织发展上，到1925年9月，党员人数已达到3000人，1926年4月，增加到11000人，1927年4月已达到57000余人。跟四大的时候相比，两年中党员人数增加了60倍。全国除新疆、青海、贵州、西藏、台湾外，都建立了党的组织或者有了党员①。 <br/>   
+          可是，当时中国革命处于危急关头。蒋介石在上海发动了“四一二”反革命政变，而党的主要领导人陈独秀则实行右倾投降主义政策，在政治上推行对国民党的妥协退让路线，在组织上忽视党的独立性，使革命受到严重挫折。为了正确分析革命形势的变化，明确党的任务，1927年4月27日至5月9日，中国共产党在武昌召开了第五次全国代表大会。尽管陈独秀仍在继续为他的右倾投降主义错误进行辩护，但大会否决了以陈独秀为代表的右倾投降主义主张，强调坚持无产阶级革命的领导权问题。但是，由于种种原因，在这次大会上，没有可能详细讨论组织问题，只是根据共产国际第七次扩大执行委员会通过的《中国问题议决案》中关于组织问题的指示，通过了一个《组织问题议决案》。在这个组织问题议决案中，确定“必须改正并补充旧时党章”，并把实际修改党章的工作交由中央政治局在大会后进行。 <br/>   
+          ①赵生晖著：《中国共产党组织史纲》，安徽人民出版社1988年2月版，第41页。 <br/>
+          <br/></td>
+      </tr>
+      <tr class="part4_test_href">
+        <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26481145.htm" target="_blank">中国国情-中国网</a></td>
+      </tr>
+      <tr>
+        <td class="part4_null_row_space"></td>
+      </tr>
+    </tbody>
+    <tbody class="part4_特点 ">
+      <tr>
+        <td class="part4_tbody_head">党章的特点</td>
+      </tr>
+      <tr>
+        <td class= "part4_content">   1.与以往的情况有一个很大的不同，《中国共产党第三次修正章程决案》是中国共产党的历史上唯一不是由党的代表大会制定和修改的党章 <br/>
+          这一点非常特殊，在以后的历次党章修改过程中再也没有出现过。从这个侧面可以看出我们党当时正处在非常危急的时期。这是这次修改党章的一个重要特点。 <br/>
+          <br/>   
+          2.它标志着党的组织章程开始进入了规范化的发展进程 <br/>   
+          同以往的党章相比较，《中国共产党第三次修正章程决案》从内容到体例，都发生了重大变化，做了根本性的修改。从体例和结构上看，由《中国共产党第二次修正章程》的六章三十一条，改为十二章八十五条，包括党员、党的建设、党的中央机关、省的组织、市及县的组织、区的组织、党的支部、监察委员会、纪律、党团、经费、与青年团的关系。它为后来党章的内容和结构提供了很好的范本。 <br/>
+          <br/>   
+          3.它对党的组织原则和组织制度作出了许多新规定，对后来党章的发展和完善产生了深远的影响 <br/>   
+          首次把“服从党的决议，参加在党的一定组织中工作并缴纳党费”作为入党条件之一；首次对入党志愿者的年龄作出了限制，规定“党员年龄必须在十八岁以上”，这一规定一直延续至今；专列了“党的建设”一章，第一次规定民主集中制，并且是把民主集中制作为“党部的指导原则”加以规定的，同时也规定党是按照民主集中制的原则建立起来的；党内民主制度有了重大突破，取消了二大党章以来关于地方执行委员会实行推举制度的规定，改为各级党部的执行机关一律实行党员大会或党员代表大会选举产生并由上级机关批准，当然，这是一个总的原则，如果遇到特殊情况，上级机关可以对下级党部的执行机关进行指定，这样，既体现了发展党内民主的原则性，也充分体现了灵活性；首次明确地把党的组织系统划分为中央、省、市或县、区和生产单位五级，各级党组织实行代表大会制度和委员会制度，并规定各级党部下设组织、宣传、妇女等职能部门，以加强党的领导机关的工作；改变原有党章在“纪律”一章中规定“全国代表大会为本党最高机关，在全国大会闭会期间，中央执行委员会为最高机关”的规定，改为在“党的建设”一章中规定“各级党部最高的机关为：全体党员大会及代表大会”；在中央和地方党组织的关系上，根据原来四大通过的《中国共产党第二次修正章程》的规定，区或地方执行委员会及各支部只有执行及宣传中央执行委员会制定的政策的职责和义务，不得自定政策，不得单独发表意见。这有利于党的高度统一性，却不利于区或地方委员会在特殊环境和特殊情况下，及时、果断地处理和解决问题，因此，这次修改党章时，充分注意到了这个问题，赋予了地方党部对于地方部分问题自行解决的权利。 <br/>   
+          同时，它首次将党的组织系统划分为四级。即全国代表大会——中央委员会；省代表大会——省委员会；市或县代表大会——市或县委员会；区代表大会——区委员会；支部党员全体大会——支部干事会。对党的中央组织、省的组织、市及县的组织、区的组织和党的支部的地位、任务和活动方式等内容，分别用专章加以规定，改变了原有党章将各级党组织都笼统地用“组织”一章加以规定的做法。首次用专门条款规定了党的全国代表大会的四项工作任务：讨论与批准中央委员会、中央监察委员会及其他中央各部工作的报告；审查与修改党纲及党章；决定一切重要问题政策的方针；改选中央委员会及监察委员会及其他，等等。关于全国代表大会的召开，第三次修正章程决案规定每年由中央委员会召集一次，中央认为必要时或有三分之一省的党部的请求，可以召集全国临时代表大会，全国党的代表大会的召集与大会的议事日程，中央委员会须在大会前一个半月公布；全国代表大会须有代表全国党员的过半数才是合法的，代表人数百分率由中央委员会决定。 <br/>   
+          首次在党章中规定了中央政治局和中央常委会的设置和组成。中央委员会选举若干名正式委员组成中央政治局，其任务是指导全国一切政治工作，选举中央政治局候补委员。候补政治局委员参加政治局会议时，只有发言权，没有表决权。正式政治局委员离职时，候补政治局委员依次递补。中央政治局由中央委员会全体会议进行改组。中央政治局互推若干人组成中央常务委员会处理党的日常事务。这项规定健全了党的中央机关，有利于增强党的集体领导，特别是在当时革命的关键时刻，至关重要，也为以后党的中央机关的组织建设奠定了基础。中央政治局这一组织机构一直保留至今。 <br/>   
+          首次在党章中规定了追认制度。就是区委员会以下各级党部的成立在必须得到区委员会的批准的同时，还必须得到市或县委员会的追认才算正式成立。此外，《中国共产党第三次修正章程决案》还首次明确规定“支部是党的基本组织”，“支部是党与群众直接发生关系的组织”，并详细规定了支部的六项任务，包括宣传和组织群众，教育、吸收党员，讨论党的重要问题等。 <br/>
+          <br/>   
+          4.为了维护党的权威和加强党的纪律，修改后的党章分别用专章规定了党的监督机关和党的纪律 <br/>   
+          首次规定在中央、省设立党的监察委员会。主要内容有两个方面：一是规定了两级监察委员会与中央和省委的相互制约的关系。各级监察委员会由同级党的代表大会选举产生；中央及省监察委员会的决议，必须征得中央及省委员会的同意，才能生效和执行；但是，如果中央及省委员会不同意中央及省监察委员会的决议，不能加以取消，在两者意见不同时，则采取将监察委员会的决议移交两者共同参加的联席会议讨论解决；如果联席会议还不能解决时，则移交省及全国代表大会或移交高级监察委员会解决。二是对监察委员做了一些限制性规定，如不得兼任中央委员和省委委员；监察委员可以参加同级党委会议，有发言权但无表决权，必要时可以参加同级党的各种会议。 <br/>   
+          在党的纪律方面，首次规定了对党部实行警告、改组或举行总的重新登记(解散组织)三种处罚方式；改变了以往只对党员实行开除的做法，增加了警告、在党内公开的警告、临时取消党内工作、留党察看4种处罚方式；此外，还规定对于违纪行为须经党委会、党员大会或监察委员会依合法手续加以审查。 <br/>
+          <br/>   
+          5.第一次在党章中规定了组建党团的目的和要求 <br/>   
+          所谓党团是指在所有一切非党群众会议以及执行的机关(包括革命党国民政府工会农协会等)中成立的党的组织。第三次章程修正决案规定：在一切非党群众团体中，有党员三人以上的，都必须组织党团。组建党团的目的是在各方面加强和加紧扩大党的影响，在非党群众中实行党的政策；在党团和党的委员会的关系上，规定各级党团隶属于各级党的委员会，党团必须严守和执行党的委员会的各项决议；党的委员会有权增派或撤回党团成员，但应向党团说明其理由；党团有权自由解决日常事务，如果党团与党的委员会有不同意见时，党的委员会应召集党团全体会议重新进行讨论，一旦作出最后决定，党团必须无条件执行；党团讨论政治性问题时，党部机关须派代表参加；党团成员在非党组织的会议进行表决时，必须坚决执行党的决议，如有违反，则给予纪律处罚。 <br/>
+          <br/>   
+          6.首次较为详尽地规定了党与青年团的关系 <br/>   
+          主要规定了党与青年团互派代表参加会议，即青年团中央，应派代表出席党的中央政治局会议，各级团部也应派代表参加各级党部机关的常务委员会议，并享有表决权；党的中央委员会应派中央委员任青年团中央执行委员会委员，各级青年团执行委员会书记应为当地党的委员会委员，各级党部机关应派代表出席各级团部机关。上述规定虽然没有明确指出党与青年团的关系是领导与被领导的关系，但实际上已把青年团置于党的领导之下。这是我们党对自身建设实践经验进行深刻总结的基础上作出的规定。在党的四大的时候，对党与青年团的关系问题在认识上存在一些分歧，在通过的《关于组织问题之议决案》中，曾经提出吸收党员应该多从有阶级觉悟的分子中直接入本党，而不宜经过青年团等群众组织后再行入党。这表明主张不把青年团作为党的后备军的思想在当时党内占据了主导地位。实践表明，这不利于在青年中扩大党的影响和发展党员。总结经验教训，我们党认识到了处理好与青年团关系问题的必要性和重要性，认识到了随着革命斗争形势的发展，青年团的地位和作用也越来越重要，特别是在当时的历史条件下，党需要组织浩浩荡荡的革命大军向反革命势力决战，青年团是一支不可忽视的重要力量。党的五大章程修正决案的上述规定，有利于扩大党的影响，发展壮大党的队伍。 <br/>
+          <br/>   
+          7.取消了自二大党章就规定的“附则”一章 <br/>   
+          将其中规定的党章修改权写入了党的全国代表大会的工作任务条款之中。 <br/>
+          <br/>   
+          与前两次局部修改党章相比较而言，这是建党以来对党章进行的第一次全面性的修改。在中国共产党党章发展史上，《中国共产党第三次修正章程决案》具有里程碑的作用。它是建党以来内容规定得最全面、最丰富的一部党章。不仅增加了大量的新规定，而且在许多方面都比过去大大前进和充实了。从章程结构和具体内容上来说，既有我们党的自身建设经验的总结，也充分吸收了第三国际各国党的经验，并参考和借鉴了苏联共产党(布)十四大党章。它不但在党章内容上确立了主要规范，而且在党章结构上也确立了基本框架，对后来的历次党章产生了很深远的影响。 <br/>
+          <br/>   
+          如果说，这次党章修改有什么不足的话，我们认为主要体现在对监察委员会的规定太不完善，突出反映在这个党章修正决案连监察委员会的性质、作用、基本权限和职能问题都没有做任何规定，只是把1925年通过的苏联共产党(布)十四大党章的有关规定照搬过来，以致监察委员会在实践中难以独立有效地开展工作，也就不难理解了。甚至个别条文之间的内容有相互矛盾之处，比如，根据第六十一条的规定，党的监察委员会应该有中央监察委员会和省监察委员会两个级别，但第六十四条中却又出现一个“高级监察委员会”，那么，这个高级监察委员会到底是指什么呢？至少单纯从党章条文的表述上看，是令人不得其解的。此外，没有规定中央委员会的任期，也反映出党章修改对程序问题存在一定程度的疏忽。  <br/>
+          <br/></td>
+      </tr>
+      <tr class="part4_test_href">
+        <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26481150.htm" target="_blank">中国国情-中国网</a></td>
+      </tr>
+      <tr >
+        <td class="part4_null_row_space"></td>
+      </tr>
+    </tbody>
+    <tbody class="part4_历史意义 ">
+      <tr>
+        <td class="part4_tbody_head">党章的历史意义</td>
+      </tr>
+      <tr>
+        <td class= "part4_content">   五大后政治局会议通过的党章（1927年）：唯一不是由党的代表大会制定和修改的党章，党的组织章程规范化的开端。 <br/>   
+          1927年4、5月间，党的五大召开之时，由于革命形势严峻，会议期间没有通过新党章。根据五大精神，6月1日，中央政治局会议通过《中国共产党第三次修正章程》决议案，对党章作了较大修改：第一次明确提出“党部的指导原则为民主集中制”；增加了设立中央政治局、监察委员会和党团等内容，并把党与青年团的关系列入党章。 <br/>
+          <br/></td>
+      </tr>
+      <tr class="part4_test_href">
+        <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26481167.htm" target="_blank">中国国情-中国网</a></td>
+      </tr>
+    <br/>
+    <br/>
+    <br/>
+    <tr>
+      <td class= "part4_content">   五大修正党章提出民主集中制原则 <br/>   
+        四大以后，在大革命的高潮中，党组织空前发展，党员人数急剧增加。1925年四大时有党员994人，1927年五大时已达57900余人。党员队伍的迅速发展，使巩固队伍与提高素质的问题被提上日程。五大关于《组织问题议决案》明确提出“必须改正并补充旧时党章”。由于“四·一二”政变后形势危急，1927年4月至5月召开的中共五大没有专门讨论修改党章的问题。五大闭幕后不久，中共中央政治局于1927年6月1日通过了《中国共产党第三次修正章程议决案》。这个章程共有12章，85条，对第二次修正章程作了许多新的补充和修正，特别是在党的组织系统方面，明确规定党组织的“指导原则为民主集中制”。这是在党的章程上第一次明确提出民主集中制的概念，自此以后，“民主集中制”成为党始终遵循的组织原则。同时，增加了许多新条文，第一次划分了党的组织系统；第一次规定入党者的年龄必须在18岁以上；第一次把党与青年团的关系列入党章，等等。 <br/>
+        <br/></td>
+    </tr>
+    <tr class="part4_test_href">
+      <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26481226.htm" target="_blank">中国国情-中国网</a></td>
+    </tr>
+    <tr>
+      <td class="part4_null_row_space"></td>
+    </tr>
+      </tbody>
+    
+  </table>
+</div>
+	
+	
+<div id="part5_question_answer_div">
+	<div id="question_answer_main_div">
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num1" disabled>
+				<label for="question_num1" class="question_content">1.五大党章中指明党部的指导原则是什么？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">党部的指导原则为民主集中制。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num2" disabled>
+				<label for="question_num2" class="question_content">2.五大党章中指明入党资格包括哪些？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">本党党员无国籍性别之分，凡承认本党党纲及章程，服从党的决议，参加在党的一定组织中工作并缴纳党费者，均得为本党党员。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num3" disabled>
+				<label for="question_num3" class="question_content">3.五大党章中指明如何解决党团与党委意见不统一的问题？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">党团对于其本身之日常问题得自由解决之，党团与党的委员会有不同意见时，党的委员会，应召集党团全体会议重新讨论之。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num4" disabled>
+				<label for="question_num4" class="question_content">4.五大党章由哪个机构通过的？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">由五大选举产生的中央政治局通过的《中国共产党第三次修正章程决案》，是唯一一部不是由党的全国代表大会通过的党章。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num5" disabled>
+				<label for="question_num5" class="question_content">5.五大党章规定，如何才能成为正式党员或候补党员？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">党员入党时，须有正式党员一人之介绍，经过支部干事会之审查，支部会议之通过，市委员会或县委员会之批准，始得为本党正式党员或候补党员。</div>
+		</div>
+		
+	</div>
+</div>
+	
+<div id="web_tail_part_div">
+	<div id="web_tail_part">
+		<div id="web_tail_logo"> <a href="#flexmenu"><img src="Image/picture/title_logo.png" id="web_tail_logo_img" alt="logo"></a> </div>
+		
+		<div id="web_tail_content_div">
+			<div id="director_name" class="web_tail_content">制作人员：   孙健   赵洒楠   秦语笑</div>
+			<div id="director_contact_method" class="web_tail_content">联系方式：   2281766692@qq.com</div>
+			<div id="friendly_href_div" class="web_tail_content">友情链接:   <a href="http://www.china.com.cn/">中国网</a>   <a href="http://www.12371.cn/">共产党员网</a>   <a href="http://www.people.com.cn/">人民网</a></div>
+		</div>
+		
+	</div>
+</div>
+		
+<input type="image" id="return_to_top_button" src="Image/picture/return_to_top.png" alt="top" onClick="return_to_top()">
+	
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+	var rising_sun_display_element = document.getElementById('rising_sun_display');
+        var myChart = echarts.init(rising_sun_display_element);
+		
+
+	
+var data = [
+	{
+		name:'章节',
+		children:[
+			{
+				name:'第一章 党员',
+				children:[
+					{
+						name:'入党资格',
+						value:60
+					},{
+						name:'入党条件及过程',
+						value:396
+					},{
+						name:'党员迁移',
+						value:88
+					},{
+						name:'退党及除名',
+						value:155
+					}
+				]
+			},{
+				name:'第二章 党的建设',
+				children:[
+					{
+						name:'.民主集中制.',
+						value:140
+					},{
+						name:'全体党员大会及各级代表大会',
+						value:85
+					},{
+						name:'党的组织系统',
+						value:108
+					},{
+						name:'部门机关管理',
+						value:262
+					}
+				]
+			},{
+				name:'第三章 党的中央机关',
+				children:[
+					{
+						name:'全国代表大会',
+						value:297
+					},{
+						name:'中央委员会',
+						value:487
+					}
+				]
+			},{
+				name:'第四章 省的组织',
+				children:[
+					{
+						name:'省委的选举',
+						value:239
+					},{
+						name:'省委员会工作',
+						value:191
+					}
+				]
+			},{
+				name:'第五章 市及县的组织',
+				children:[
+					{
+						name:'市或县委的选举',
+						value:280
+					},{
+						name:'市或县委工作',
+						value:190
+					}
+				]
+			},{
+				name:'第六章 区的组织',
+				value:191
+			},{
+				name:'第七章 党的支部',
+				children:[
+					{
+						name:'支部的成立',
+						value:79
+					},{
+						name:'支部的任务',
+						value:143
+					},{
+						name:'支部成员',
+						value:375
+					}
+				]
+			},{
+				name:'第八章 监察委员会',
+				value:281
+			},{
+				name:'第九章 纪律',
+				children:[
+					{
+						name:'纪律的重要性',
+						value:79
+					},{
+						name:'纪律处罚',
+						value:141
+					},{
+						name:'决议原则',
+						value:97
+					},{
+						name:'其他纪律',
+						value:133
+					}
+				]
+			},{
+				name:'第十章 党团',
+				children:[
+					{
+						name:'党团的目的',
+						value:89
+					},{
+						name:'其代表的发言权与表决权',
+						value:54
+					},{
+						name:'党团干事会或党团书记',
+						value:39
+					},{
+						name:'决议的执行',
+						value:73
+					},{
+						name:'对问题的讨论',
+						value:312
+					}
+				]
+			},{
+				name:'第十一章 经费',
+				value:233
+			},{
+				name:'第十二章 与青年团的关系',
+				value:150
+			}
+		]
+	}
+];	
+	
+
+	
+option = {
+	series: {
+        type: 'sunburst',
+        highlightPolicy: 'ancestor',
+        data: data,
+		width: rising_sun_display_element.style.width,
+		height: rising_sun_display_element.style.height,
+        radius: [0, '95%'],
+        sort: null,
+		label: part2_rising_sun_chart_label,
+        levels: part2_rising_sun_chart_levels
+    },
+	tooltip: {
+		formatter: function(params){
+			return params.name;
+		}
+    }
+};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script> 
+<script >
+	var wordcloud_chart = echarts.init(document.getElementById('wordcloud_main_part'));
+	var wordcloud_chart_width = $("#wordcloud_background_img").width;
+	var wordcloud_chart_height = $("#wordcloud_background_img").height;
+
+	var wordcloud_data = {
+		value: [{
+			"name": "党员",
+			"value": 51
+		}, {
+			"name": "组织",
+			"value": 32
+		}, {
+			"name": "纪律",
+			"value": 16
+		}, {
+			"name": "党团",
+			"value": 37
+		}, {
+			"name": "党费",
+			"value": 5
+		}, {
+			"name": "青年团",
+			"value": 15
+		}, {
+			"name": "民主集中制",
+			"value": 32
+		}, {
+			"name": "监察委员会",
+			"value": 22
+		}, ],
+	};
+	for (var i = 0; i < 1000; ++i) {
+		wordcloud_data.value.push({
+			"name": ".",
+			"value": 1
+		});
+	}
+
+	var maskImage = new Image();
+	maskImage.src = img_data;
+	maskImage.onload = function () {
+		wordcloud_chart.setOption({
+			backgroundColor: '',
+			tooltip: {
+				show: false
+			},
+			series: [{
+				type: 'wordCloud',
+				gridSize: 8,
+				sizeRange: part1_wordcloud_sizerange,
+				rotationRange: part1_wordcloud_rotationrange,
+				maskImage: maskImage,
+				width: wordcloud_chart_width,
+				height: wordcloud_chart_height,
+				textStyle: {
+					normal: {
+						color: function (v) {
+							return part1_wordcloud_get_color(v);
+						},
+						fontFamily: "字魂47号"
+					}
+				},
+				left: 'center',
+				top: 'center',
+				right: null,
+				bottom: null,
+				data: wordcloud_data.value
+			}]
+		});
+	};
+
+</script> 
+<script>
+	var txt_data = "第一条 本党党员无国籍性别之分。凡承认本党党纲及章程。服从党的决议。参加在党的一定组织中工作并缴纳党费者。均得为本党党员。第二条 党员入党时。须有正式党员一人之介绍。经过支部干事会之审查。支部会议之通过。市委员会或县委员会之批准。始得为本党正式党员或候补党员。第三条 候补党员候补期。劳动者（工人。农民。手工工人。店员。士兵等）无候补期。非劳动者（知识分子。自由职业者等）之候补期三个月。但市委员会或县委员会得酌量情形伸缩之。第四条 候补党员参加支部会议时只有发言权无表决权。但其义务与正式党员同。遇必要时得由市或县委员会决定允许其参加市或县党员大会。但无表决权。第五条 凡经中央委员会或省委员会直接承认之党员。当通告该党所在地之市或县委员会。非劳动者亦须经过候补期。第六条 凡党员移转国外。须得中央之同意及第三国际之介绍。始得为所在国共产党党员。第七条 凡已加入第三国际所承认之各国共产党者。经中央审查后得为本党正式党员。第八条 党员年龄须在十八岁以上。凡年龄在二十岁以内而以内而愿入党者。必须经过青年团。但青年军人不在此例。第九条 党员由一地党部转到另一地党部。须在该地党部登记成为该地党员。凡党员在省内移转须得省委员会同意。省外的移转须得中央的同意。但遇有特别情形（如在秘密工作情形之下）得酌量通融。第十条 党员自愿出党须经过所在地之市或县委员会之决定。收回其党证及其他重要文件。并须有介绍人担保其严守本党一切秘密。如违犯时由市或县委员会采用适当手段对待之。第十一条 凡开除党员须经隶属之支部大会及省监察委员会决议及得省委员会之批准方能生效。并将其开除的理由刊布在党的刊物。在省委未批准以前得停止其一切权利及工作。第十二条 党部的指导原则为民主集中制。第十三条 按照民主集中制的原则在一定区域内建立这一区域内党的最高机关。管理这一区域内党的部分组织。党部之执行机关概以党员大会或代表大会选举。上级机关批准为原则。但特殊情形之下。上级机关得指定之。第十四条 地方党部对于地方部分的问题有自行解决的权利。第十五条 各级党部最高的机关为。全体党员大会及代表大会。第十六条 全体党员大会及各级代表大会选举各级委员会。委员会在大会闭会期间为该级党部最高权力机关。执行并指导党务及政策。第十七条 党的组织系统为。。全国－－－全国代表大会－－－中央委员会。省－－－省代表大会－－－省委员会。市或县－－－市或县代表大会－－－市或县委员会。区－－－区代表大会－－－区委员会。生产单位－－－支部党员全体大会－－－支部干事会。第十八条 下级机关对上级机关的报告及提议与上级机关对下级机关有所命令及指导均按照党的系统手续。第十九条 为党的各种专门工作各级党部得设立各部管理之（如组织部。宣传部。妇女部等等）各级党部之下的各部隶属于各级党部。各级党部之下的各部组织制度均须得中央之命令或同意。第二十条 区委员会之下的党部须得区委员会之批准与市或县委员会的追认。市或县委员会之下的党部须得市或县委员会之批准。省委员会之下的党部须得省委员会之批准。省委员会之组织须得中央委员会的批准。各级党部之执行机关（自省委至支分部干事会或书记）之选定及撤换须得上级机关之批准。第二十一条 党的最高机关为全国代表大会。全国代表大会每年由中央委员会召集一次。中央认为必要时或有三分之一党员及三分之一省的党部之请求得召集全国临时代表大会。中央已经决定或三分之一的党员及三分之一省的党部请求之临时代表大会中央须在两个月内实现之。全国党的代表大会之召集与大会之议事日程。中央委员会须在大会前一个半月公布。全国代表大会须有代表全国党员之过半数方为合法。代表人数百分率由中央委员会规定之。第二十二条 党的全国代表大会工作为。1 ．讨论与批准中央委员会中央监察委员会及其他中央各部工作的报告。2 ．审查与修改党纲及党章。3 ．决定一切重要问题政策的方针。4 . 改选中央委员会及监察委员会及其他等等。第二十三条 中央委员会及中央监察委员会人数由大会规定。遇中央执行委员或中央监察委员离职时由候补委员按次递补。第二十四条 中央委员会得代表党与其他政党及机关发生关系。得组织党的各种机关并指导其行动。得指导与监督中央机关报并指定党的机关报的主任。得分配党的人才及支配党的经费。第二十五条 中央委员会经过党团指示政府及其他社会团体之工作方针。第二十六条 中央委员会全体会议须每三个月召集一次。遇必要时得召集临时中央委员会议或扩大中央委员会议。候补中央委员得参加中央委员会议及扩大中央委员会议。只有发言权而无表决权。但中央委员缺席时。候补委员临时依次递补。则取得表决权。第二十七条 中央委员会。选举正式中央委员一人为总书记及中央正式委员若干人组织中央政治局指导全国一切政治工作。并选正式中央执行委员若干人为中央政治局候补委员。候补政治局委员参加政治局会议时。只有发言权而无表决权。正式政治局委员离职时候补政治局委员依次递补。全体中央委员会议得改组中央政治局。中央政治局互推若干人组织中央常务委员会（SECRETARIAT）处理党的日常事务。第二十八条 中央委员会至少每两月须给省委一次中央执行委员会工作书面的报告。第二十九条 各省有两个市或县委员会以上。中央委员会认为有组织省委员会之必要时。即派员到该省召集省代表大会。由该代表大会选举省委员会（简称省委）。第三十条 省委员会正式委员人数及候补委员人数由省代表大会决定。但须得中央委员会之同意。如正式委员缺席时得以候补委员代理之。第三十一条 省之范围由中央委员会规定并得随时变更之。第三十二条中央委员会认为必要时得委托一个市委员会暂代省委员会之职权。第三十三条凡不能成立省委员会之党部。由中央委员会决定其附属于邻近之省委员会或直接隶属于中央委员会。第三十四条省委员会可推举省委员若干人组织常务委员会处理日常事务。第三十五条省委员会得指导省委之下各种机关。得指导与监督省委机关报及指定省委机关报主任。得分配工作人才。得分配省委经费。得经过党团指导省政府及其他社会团体之工作方针。第三十六条省委员会每六个月召集一次省代表大会报告省委员会工作。及改选省委员会。第三十七条省委员会每月须向中央委员会作省委员会及县或市委员会工作书面的报告。第三十八 条各市或县有两个区委员会以上或有五个支部以上经省委员会之认可。并派员至该市或县召集市或县代表大会。由该代表大会选举市或县委员会（简称市或县委）。第三十九条市或县委员会均隶属省委员会。第四十条省委员会所在之市。该市不另组织市委员会。该市之区委员会。直接隶属于省委员会。第四十一条市或县委员会正式委员人数及候补委员人数由市或县代表大会决定。但须得省委员会之同意。正式委员缺席时。得以候补委员代理之。第四十二条 凡不能成立市或县委员会之地。该市或县之党部则由省委员会决定隶属于邻近之市或县委员会或直接隶属于省委员会。第四十三条 市或县委员会可互推委员三人至五人组织常务委员会。处决临时事务。第四十四条 市及县委员会得指导市或县执行委员会下之各种机关。得指导与监督市或县机关报。得指定市或县委员会机关报主任。得经过党团指示市或县政府及社会团体之工作方针。得分配工作人才及支部市或县委员会的经费。第四十五条 市及县委员会每三个月召集市或县代表大会或全体党员大会一次。报告市或县委员会工作及改选市或县委员会。第四十六条 市或县的划分。由省执行委员决定之。第四十七条 凡在一区内有两个支部以上。市或县委员会认为必要时得派员赴该区召集党员大会。由该大会选举区委员会（简称区委）。第四十八条 区委员会人数。由党员大会决定之。但须经市或县委员会之同意。第四十九条 凡不能成立区委员会区域内之支部。由区委员会或市或县委员会。决定其附属邻近之区委员会。或直接隶属于市或县委员会。第五十条 区之划分。由市或县委员会决定之。第五十一条 区委员会每三个月改选一次。第五十二条 支部是党的基本组织。各工厂。各铁路。各矿山。各农村。各兵营。各学校。各街道及其各机关内或附近。凡有党员三人以上均得成立支部但须得区或县委员会之批准。第五十三条 支部是党与群众直接发生关系的组织。支部的任务是。（一）积极在各该工厂等之内活动。领导该处群众之日常斗争。扩大党的影响。（二）实行党的口号与决议于群众中。（三）吸收新的党员。（四）服从地方党部从事组织与宣传的工作。（五）积极参加地方政治经济的斗争。（六）尽可能讨论党的重要问题。第五十四条 每一个支部公推书记一人。或公推三人组织支部干事会。隶属于区委员会。无区委员会之地。则直接隶属于县或市委员会。第五十五条 在多量党员产业生产部门中。可组织支分部。支分部亦可组织干事会。不能组织支分部之党员多的支部。得组织小组。支分部下亦得组织小组。小组公推小组组长一人。直隶属于支部干事会。或支分部干事会。第五十六条 党员不满三人之处。则设一通讯员。属于最近之区委员会。或市县委员会。第五十七条 支部干事会议。每两星期中。至少召集一次支部党员大会。报告支部干事会的工作。及讨论支部所在之机关或区域内的一切实际政治及经济斗争的问题。第五十八条 支部干事会每三个月改选一次。第五十九条 军队中支部。直归军事部管理。关于政治宣传及教育训练工作。则由宣传部及组织部经过军事部执行之。第六十条 支部书记之撤换。须经过支部全体党员大会之通过及得区或县市委员会之同意。第六十一条 为巩固党的一致及权威起见。在全国代表大会及省代表大会选举中央及省监察委员会。第六十二条 中央及省监察委员。不得以中央委员及省委员兼任。第六十三条 中央及省监察委员。得参加中央及省委员会议。但只有发言权无表决权。遇必要时。得参加相当的党部之各种会议。第六十四条 中央及省委员会。不得取消中央及省监察委员会之决议。但中央及省监察委员会之决议。必须得中央及省委员会之同意。方能生效与执行。遇中央或省监察委员会与中央或省委员会意见不同时。则移交至中央或省监察委员会与中央或省委员会联席会议。如联席会议再不能解决时。则移交省及全国代表大会或移交于高级监察委员会解决之。第六十五条 严格党的纪律是全体党员及全体党部最初的最重要的义务。党部机关之决议。应当敏捷的与正确的执行之。但对于党内一切争论问题。在未解决以前。完全自由讨论之。第六十六条 不执行上级机关的决议及其他破坏党的行为。即认为违背党的共同意志而处罚之。处罚之方式如下。A . 对于整个的党部则加以警告。改组或举行总的重新登记（解散组织）。B . 对党员个人。则加以警告。在党内公开的警告。临时取消其党的。国民党的。国民政府的及其他的工作。留党察看。及开除党籍。第六十七条 党的一切决议取决于多数。少数绝对服从多数。党员及下级机关对于上级机关决议不同意时。得各该党部过半数党员的同意。得对于上级机关提出抗议。但在抗议时期内。未解决以前仍须执行上级机关之命令。第六十八条 党员不经党的许可。不得加入一切政治党派。其前已隶属一切政治党派者。加入本党时。若不得党的许可。应正式宣告脱离。第六十九条 党员未得党的同意。不得任国家机关内任何的职务。第七十条 对于违反党的纪律的行为。须经党的委员会。党员大会。或监察委员会。依合法手续审查之。第七十一条 在所有一切非党群众会议。及执行的机关（国民党国民政府工会农协会等等）中。有党员三人以上。均须组织党团。党团的目的。是在各方面加紧党的影响。而实行党的政策于非党的群众中。第七十二条 在党的执行委员会中。讨论与某个党团有关系之问题时。该党团得派代表参加讨论。但只有发言权而无表决权。第七十三条 为实行党团的日常工作。当指定党团干事会或党团书记处理党团的日常事务。第七十四条 各级党团均隶属各级党的委员会。党团对于党已有决议之各种问题。应严守与正确执行之。党的委员会得添派或撤回党团的分子。但须向党团说明其理由。第七十五条 党团对于其本身之日常问题得自由解决之。党团与党的委员会有不同意见时。党的委员会。应召集党团全体会议重新讨论之。并决定最后的办法。在党团方面对于最后之决定须敏捷执行之。第七十六条 在党团所在之机关或组织中的重要位置的候补人选。党团须与所隶属之党部机关共同商定之。对于工作位置的调换。亦须用上列方法。第七十七条 党团所讨论之事项。有关于含有政治性的问题时。党部机关须派代表参加。第七十八条 在非党群众及组织中。遇有解决重要问题时。党团须在党团会议。或党团干事会中事先讨论与决定。第七十九条 在非党组织中对于每一个问题时决定。当在该非党的组织会议中付表决时。在该会议中之全体党员（即党团分子）如有违犯党的决议。则按党的纪律处罚。第八十条 本党经费的收入如下列各项。（一）党费 党员每月收入在三十元以内者。月缴党费二角。凡无收入。及月薪不满二十元者。得由市或县委斟酌情形核定减免之。在三十元以上至六十元者缴一元。六十元以上至八十元者。缴百分之三。八十元以外者特别征收之。失业工人及在狱或在C Y 的党员均免缴党费。（二）党内义务捐。由各地党的委员会酌量地方经费及党员经济力定之。（三）党外协助。第八十一条 军队中党员党费。由所在地军部征收。转交党部会计科。第八十二条 本党一切经费收入。 均由中央委员会支配之。第八十三条 青年团中央。应派代表出席党的中央政治局会议。各级团部亦应派代表参加各级党部机关之常务委员会议。此等团部之出席代表应有 表决 权。第八十四条 党的中央委员会应派中央委员任青年团中央执行委员会委员。各级青年团执行委员会书记应为当地党的委员会委员。第八十五条 各地党部机关应派代表出席各级团部机关之会议";
+	var sentences = txt_data.split("。");
+	delete txt_data;
+	var sentences_length = sentences.length;
+
+	var x_center = document.getElementById("box_text").offsetWidth / 2;
+	var y_center = document.getElementById("box_text").offsetHeight / 2;
+	var radius = document.getElementById("box_text").offsetHeight * 0.4;
+	var angle = 360 / sentences_length;
+	var text_box_height = 4 * radius / sentences_length;
+	var present_angle = -90;
+
+	var txt_box_element = document.getElementById("box_text");
+	for (var i = 0; i < sentences_length; ++i) {
+		var pre_sentence = sentences[i];
+		var pre_sentence_element = document.createElement("div");
+		txt_box_element.appendChild(pre_sentence_element);
+		set_element_basic_style(pre_sentence_element);
+		set_element_location_style(pre_sentence_element);
+	}
+	
+	delete sentences;
+
+
+	/*--------------------------------------------------词云-------------------------------*/
+
+	var part3_wordcloud_data_name = ['党部', '党团', '支部', '中央委员会', '监察', '干事会', '党员大会', '省委', '全国代表大会', '候补委员', '群众', '中央政治局', '青年团', '发言权', '政治局', '审查', '命令', '义务', '常务委员会', '人才', '团部', '监督', '斗争', '管理', '组织部', '民主集中制', '军事部', '改组', '国民政府', '国民党', '联席会议', '自由', '宣传部', '党纲', '第三国际', '制度', '纪律', '教育', '政治宣传', '组织系统'];
+	var part3_wordcloud_data_value = [30, 27, 26, 23, 12, 11, 10, 8, 7, 7, 6, 6, 5, 5, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1];
+
+
+	var part3_wordcloud_data = [];
+	for (var i = 0; i < part3_wordcloud_data_value.length; ++i) {
+		part3_wordcloud_data.push({
+			name: part3_wordcloud_data_name[i],
+			value: part3_wordcloud_data_value[i]
+		});
+	}
+
+	var part3_wordcloud_width = $("#box_wordcloud").width;
+	var part3_wordcloud_height = $("#box_wordcloud").height;
+	var textarc_chart = echarts.init(document.getElementById('box_wordcloud'));
+	var option = {
+		backgroundColor: 'rgba(255, 255, 255, 0)',
+		series: [{
+			type: 'wordCloud',
+			gridSize: part3_wordcloud_gridsize,
+			sizeRange: part3_wordcloud_sizerange,
+			rotationRange: part3_wordcloud_rotationrange,
+			shape: 'circle',
+			width: part3_wordcloud_width,
+			height: part3_wordcloud_height,
+			textStyle: {
+				normal: {
+					color: function (v) {
+						return part3_wordcloud_get_color(v);
+					},
+					fontFamily: "字魂47号"
+				},
+				emphasis: {
+					shadowBlur: 10,
+					shadowColor: 'red'
+				}
+			},
+			data: part3_wordcloud_data
+		}]
+	};
+	textarc_chart.setOption(option);
+
+	</script> 
+<script>
+	var tree_chart_element = document.getElementById('tree_chart_div');
+	var tree_chart = echarts.init(tree_chart_element);
+	var data = [{
+		name: '五大党章',
+		children: [{
+			name: '历史背景',
+		}, {
+			name: '特点',
+		}, {
+			name: '历史意义',
+		}]
+	}];
+
+	tree_chart.hideLoading();
+	var tree_chart_option = {
+		tooltip: {
+			trigger: 'item',
+			triggerOn: 'mousemove'
+		},
+		series: [{
+			type: 'tree',
+
+			data: data,
+			width: tree_chart_element.style.width,
+			height: tree_chart_element.style.height,
+			top: '10%',
+			left: '20%',
+			bottom: '10%',
+			right: '40%',
+
+			symbolSize: 20,
+
+			label: {
+				position: 'left',
+				verticalAlign: 'middle',
+				align: 'right',
+				fontSize: 20,
+				fontFamily: "字魂47号",
+				fontWeight: "bold"
+			},
+
+			leaves: {
+				label: {
+					position: 'right',
+					verticalAlign: 'middle',
+					align: 'left',
+					fontFamily: "字魂47号",
+					fontWeight: "bold"
+				}
+			},
+
+			emphasis: {
+				focus: 'descendant'
+			},
+
+			expandAndCollapse: true,
+			animationDuration: 550,
+			animationDurationUpdate: 750
+		}]
+	}
+	tree_chart.setOption(tree_chart_option);
+	document.getElementById("part4_div_part").style.display = "none";
+	
+	
+
+</script> 
+<script src="JavaScript/dangzhang_js.js"></script>
+<script src="JavaScript/aos/aos.js"></script>
+<script>
+	AOS.init({
+		easing: 'ease-out-back',
+		duration: 1000
+	});
+</script>
+	
+</body>
+</html>

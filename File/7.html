@@ -1,0 +1,1453 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>七大党章</title>
+<link rel="stylesheet" href="CSS/dangzhang_css.css">
+<link rel="stylesheet" href="CSS/aos/aos.css">
+
+<script src="JavaScript/global_variable.js"></script>
+<script src="JavaScript/jquery_min.js"></script>
+
+<script src="JavaScript/echarts_min.js"></script>
+<script type="text/javascript" src="JavaScript/echarts-wordcloud.min.js"></script>
+<script type="text/javascript" src="JavaScript/jquery_highlight.js"></script>
+<script src="JavaScript/dangzhang_first.js"></script>
+<script src="JavaScript/dangzhang_js.js"></script>
+</head>
+
+
+	
+<body>
+<img id="a_bird" src="../Image/picture/bird.gif" alt="Not Found">
+	
+<div class="dangzhang_title_bar">
+  <nav id="flexmenu">
+    <div id="home_logo_div"> <a href="../main_html.html"><img src="Image/picture/title_logo.png" id="home_logo" alt="logo"></a> </div>
+	<div id="dangzhang_logo_div"> <a href="7.html"><img src="Image/picture/副标题/7.png" id="dangzhang_logo" alt="logo"></a> </div>
+    <div class="nav-inner">
+      <ul class="main-menu">
+        <li class="menu-item big_title_content"><a href="../main_html.html">主页</a> </li>
+        <li class="menu-item big_title_content"><a href="#">党章</a>
+          <ul class="sub-menu">
+			<li class="menu-item small_title_content"><a href="dangzhang_comparison.html">党章对比</a></li>
+            <li class="menu-item small_title_content"><a href="2.html">二大党章</a></li>
+            <li class="menu-item small_title_content"><a href="3.html">三大党章</a></li>
+            <li class="menu-item small_title_content"><a href="4.html">四大党章</a></li>
+            <li class="menu-item small_title_content"><a href="5.html">五大党章</a></li>
+            <li class="menu-item small_title_content"><a href="6.html">六大党章</a></li>
+            <li class="menu-item small_title_content"><a href="7.html">七大党章</a></li>
+            <li class="menu-item small_title_content"><a href="8.html">八大党章</a></li>
+            <li class="menu-item small_title_content"><a href="12.html">十二大党章</a></li>
+            <li class="menu-item small_title_content"><a href="13.html">十三大党章</a></li>
+            <li class="menu-item small_title_content"><a href="14.html">十四大党章</a></li>
+            <li class="menu-item small_title_content"><a href="15.html">十五大党章</a></li>
+            <li class="menu-item small_title_content"><a href="16.html">十六大党章</a></li>
+            <li class="menu-item small_title_content"><a href="17.html">十七大党章</a></li>
+            <li class="menu-item small_title_content"><a href="18.html">十八大党章</a></li>
+            <li class="menu-item small_title_content"><a href="19.html">十九大党章</a></li>
+          </ul>
+        </li>
+        <li class="menu-item big_title_content" id="keshihuazhanshi_button" onClick="show_display_method_chart()"><a href="#">可视化展示</a></li>
+        <li class="menu-item big_title_content" id="xiangguanneirong_button"><a href="#">相关内容</a>
+          <ul class="sub-menu relative_content_background">
+            <li class="menu-item small_title_content" onClick="show_tree_chart()"><a href="#">相关摘要</a></li>
+            <li class="menu-item small_title_content" onClick="show_question_answer_part()"><a href="#">党章问答</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+	
+<div id="conference_introduce_div" aos="fade-up">
+  <div id="conference_introduce_left_part_div"></div>
+  <div id="conference_introduce_content_div"> 
+    <div id="conference_introduce_content">1945年4月23日至6月11日，中国共产党第七次全国代表大会在延安召开。出席会议的代表共755名，其中正式代表547名，候补代表208名，代表全国121万名党员。4月23日，在延安杨家岭中央大礼堂，七大开幕式的主席台上，悬挂着毛泽东和朱德的巨幅画像，鲜艳的党旗挂在两边。会场后面的墙上，挂着“同心同德”四个大字。两侧墙上张贴着“坚持真理”“修正错误”等标语，靠墙边插着24面红旗，象征着中国共产党24年奋斗的历程。
+    </div>
+  </div>
+</div>
+
+	
+	
+<div id="part_visual_display_div" aos="fade-up">
+  <div id="part_visual_display_chart_big_div_left_div"></div>
+  <div id="change_display_method_button_div">
+	<div id="display_change_button_left_part_div"></div>
+    
+    <div class="display_change_button_div">
+	  <input type="button" id="risingsun_button" class="display_change_button" value="旭日图" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="risingsun_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">以层级结构展现党章内容，点击某一扇块，下文显示对应内容，支持数据下钻和上卷。</div>
+	  </div>
+	</div>
+	<div class="display_change_button_div">
+	  <input type="button" id="wordcloud_button" class="display_change_button" value="词云" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="wordcloud_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">主要根据词频呈现党章的关键词，点击词语可在下文中看到对应内容。</div>
+		
+	  </div>
+	</div>
+	<div class="display_change_button_div" >
+	  <input type="button" id="textarc_button" class="display_change_button" value="文本弧" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="textarc_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">展现所选词在党章中对应位置，点击词语，下文显示包含该词的段落。</div>
+	  </div>
+	</div>
+  </div>
+  <div id="part_visual_display_chart_big_div">
+	  <div id="wordcloud_display" class="part_visual_display_chart_big_div_partdiv">
+		<div id="wordcloud_display_background_div" class="wordcloud_display_children_div"> 
+			<img src="Image/picture/background.png" id="wordcloud_background_img" class="wordcloud_display_children_div" alt="wrong">
+		</div>
+		<div id="wordcloud_main_part" class="wordcloud_display_children_div"></div>
+	  </div>
+	  <div id="rising_sun_display" class="part_visual_display_chart_big_div_partdiv"></div>
+	  
+	  <div id="big_box" class="part_visual_display_chart_big_div_partdiv">
+		<div id="box_text"></div>
+		<div id="box_wordcloud"></div>
+		<canvas id="box_canvas" width="500" height="500"></canvas >
+	  </div>
+  </div>
+  
+</div>
+	
+<div id="document_part" aos="fade-up">
+  
+  <div id="document_part_search_bar_part_div">
+	  <div id="search_input_div">
+		<input type="button" id="search_input_text_wordstatistics" value="">
+		<input type="text" id="search_input_text" value="" placeholder="搜索党章关键词">
+		<input type="button" id="search_input_button" value="搜索" onClick="start_search_all_content()">
+	  </div>
+  </div>
+	
+  <input type="button" value="显示全部内容" id="show_all_content_button" onClick="show_dangzhang_all_content()" >
+  <input type="button" value="返回主题河流" id="return_to_themeriver" onClick="click_return_to_themeriver()" >
+  <input type="button" value="返回气泡图" id="return_to_bubblechart" onClick="click_return_to_bubblechart()" >
+  <input type="button" value="返回词频统计" id="return_to_wordstatistics" onClick="click_return_to_wordstatistics()">
+   
+  <div id="document_content_div">
+
+    
+    <table id="zonggang_table">
+      <tbody>
+        <tr class="all_content all_zonggang 总纲 党的性质 指导思想 革命 现阶段的中国社会 党的任务 革命的特点 革命斗争 斗争 群众 党是革命的中坚 保持队伍统一 批评与自我批评 全心全意为人民服务 .民主集中制 纪律 党员的自我牺牲 民主集中制 &纪律 &指导思想 &党风建设 &群众">
+          <td class="table_title "> 总纲 </td>
+        </tr>
+        <tr class="all_content all_zonggang 总纲 党的性质 ">
+          <td>中国共产党，是中国工人阶级的先进的有组织的部队，是它的阶级组织的最高形式。中国共产党代表中国民族与中国人民的利益。它在现阶段为实现中国的新民主主义制度而奋斗，它的最终目的，是在中国实现共产主义制度。</td>
+        </tr>
+        <tr class="all_content all_zonggang 革命 总纲 指导思想 &指导思想">
+          <td>中国共产党，以马克思列宁主义的理论与中国革命的实践统一的思想－－－毛泽东思想，作为自己一切工作的指针，反对任何教条主义的或经验主义的偏向。中国共产党以马克思主义的辩证唯物主义与历史唯物主义为基础，批判地接收中国的与外国的历史遗产，反对任何唯心主义的或机械唯物主义的世界观。</td>
+        </tr>
+        <tr class="all_content all_zonggang 革命 总纲 现阶段的中国社会 ">
+          <td>由于中国现时的社会，除了新民主主义的解放区外，还是一个半殖民地、半封建性质的社会，由于现时中国革命的动力是工人阶级、农民阶级、小资产阶级及其他民主分子，由于中国共产党的强大存在，并由于现时的国际条件，便规定了中国革命在目前阶段是新式资产阶级民主主义性质的革命，即无产阶级领导的人民大众的反帝反封建的新民主主义的革命。这个革命有国内外广泛的同盟军。因此，中国共产党在目前阶段的任务是：对内，组织与团结中国的工人、农民、小资产阶级、知识界和一切反帝反封建人们以及国内各少数民族同自己一道，对外，联合全世界无产阶级、被压迫人民及一切以平等待我之民族，为解除外国帝国主义对于中国民族的侵略，为肃清本国封建主义对于中国人民大众的压迫，为建立独立、自由、民主、统一与富强的各革命阶级联盟与各民族自由联合的新民主主义联邦共和国而奋斗，为实现世界的和平与进步而奋斗。</td>
+        </tr>
+        <tr class="all_content all_zonggang 革命 总纲 党的任务 ">
+          <td>在将来阶段，在中国民族革命与民主革命得到彻底胜利后，中国共产党的任务是：根据中国社会经济发展的需要与中国人民的意愿，经过必要步骤，为在中国实现社会主义与共产主义的制度而奋斗。</td>
+        </tr>
+        <tr class="all_content all_zonggang 群众 革命 斗争 总纲 革命的特点 革命斗争 &群众">
+          <td>半殖民地、半封建的中国，又是一个土地广大人口众多并且还不统一的国家，一方面，人民大众特别是工人、农民群众有英勇斗争的革命传统；另一方面，革命道路上的阻力特别强大，这就规定了中国革命的不平衡性，并由此产生了革命的长期性，革命斗争的复杂性，武装斗争在极长时期内成为中国革命的主要形式，革命在主要城市胜利以前强固的农村革命根据地之重要性，党在一切人民群众中进行长期忍耐工作的必要性 。因此，中国共产党必须是十分勇敢，十分有经验，十分机敏，在中国革命的长远道路上，根据中国革命的这些特点，放手动员与组织千百万群众，战胜一切阻难，绕过一切暗礁，以奔赴自己的目标，并不断锻炼自己的队伍。</td>
+        </tr>
+        <tr class="all_content all_zonggang 群众 革命 斗争 总纲 党是革命的中坚 革命斗争 ">
+          <td>中国共产党在革命斗争中，必须努力使自己成为一切革命的群众组织及革命的国家组织之中坚。中国共产党对于从内部或外部来破坏工人阶级统一、破坏各革命阶段联盟以及破坏其他革命事业的一切活动，必须进行严正的斗争。</td>
+        </tr>
+        <tr class="all_content all_zonggang 斗争 总纲 保持队伍统一 革命斗争 ">
+          <td>中国共产党必须用不调和的但是适当的斗争对待内部的机会主义者、投降主义者、冒险主义者，并将其中坚持错误的人清除出党，以保持自己队伍的统一。</td>
+        </tr>
+        <tr class="all_content all_zonggang 总纲 批评与自我批评 &党风建设 ">
+          <td>中国共产党应该不掩盖自己工作中的错误与缺点。中国共产党应该用批评和自我批评的方法，经常检讨自己工作中的错误与缺点，来教育自己的党员和干部，并及时纠正自己的错误。中国共产党反对那种自高自大、害怕承认自己错误、害怕批评与自我批评的情绪。</td>
+        </tr>
+        <tr class="all_content all_zonggang 群众 革命 斗争 总纲 全心全意为人民服务 &群众">
+          <td>中国共产党人必须具有全心全意为中国人民服务的精神，必须与工人群众、农民群众及其他革命人民建立广泛的联系。并经常注意巩固与扩大这种联系。每一个党员都必须理解党的利益与人民利益的一致性，对党负责与对人民负责的一致性。每一个党员都必须用心倾听人民群众的呼声和了解他们的需要，并帮助他们组织起来，为实现他们的需要而斗争。每一个党员都必须决心向人民群众学习，同时以革命精神不疲倦地去教育人民群众，启发与提高人民群众的党悟。中国共产党必须经常警戒自己脱离人民群众的危险性，必须经常注意防止和清洗自己内部的尾巴主义、命令主义、官僚主义与军阀主义等脱离群众的错误倾向。</td>
+        </tr>
+        <tr class="all_content all_zonggang 纪律 总纲 .民主集中制 &纪律 &党风建设 ">
+          <td>中国共产党是按民主的集中制组织起来的，是以自觉要履行的纪律联结起来的统一的战斗组织。中国共产党的力量，在于自己的坚强团结、意志统一、行动一致。在党内不容许有离开党的纲领和党章的行为，不能容许有破坏党纪、向党闹独立性、小组活动及阳奉阴违的两面行为。中国共产党必须经常注意清除自己队伍中破坏党的纲领和党章、党纪而不能改正的人出党。</td>
+        </tr>
+        <tr class="all_content all_zonggang 总纲 党员的自我牺牲 ">
+          <td>中国共产党要求自己的每一个党员，积极地自我牺牲地进行工作，以实现党的纲领和党的一切决议，达到中国民族与中国人民的彻底解放。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="a_useless_div"></div>
+    
+    <table id="zhengwen_table">
+      <tbody class="all_content all_types 章节 退党及除名 党员的发展 党员权利 斗争 革命 群众 党员义务 入党资格 第一章-党员 党员 组织的成立 民主原则 党的政策决议 选举 党的选举 组织系统 组织的建设原则 .民主集中制. 第二章-党的组织机构 组织 党的中央委员会 党的全国代表大会 第三章-党的中央组织 党委与代表会议关系 党委 代表大会 第四章-党的省及边区之组织 第五章-党的地方、县、市及区之组织 支部委员会选举 支部任务 纪律 支部的成立 第六章-党的基础组织 第七章-党的地下组织 第八章-党的监督机关 监督 第九章-党外组织中的党组 党组 奖励与处分目的 处分 奖励 第十章-奖励与处分 奖励与处分 第十一章-经费 经费 &监督 &纪律 &组织建设 &党风建设 &群众">
+        <tr>
+          <td class="table_title" colspan="2">章节</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 退党及除名 党员的发展 党员权利 斗争 革命 群众 党员义务 入党资格 &纪律 &群众">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第一章 党员</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 入党资格 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第一条</td>
+          <td class="concrete_content"> 凡承认本党纲领和党章、参加党的一个组织并在其中工作、服从党的决议、并缴纳党费者，均得为本党党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 群众 革命 斗争 章节 第一章-党员 党员义务 &纪律 &群众">
+        <tr>
+          <td class="entry_num" rowspan="5">第二条</td>
+          <td class="concrete_content"> 凡党员均有下列义务：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）努力地提高自己的觉悟程度和领会马克思列宁主义、毛泽东思想的基础。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）严格地遵守党纪，积极参加党内的政治生活和国内的革命运动，实际执行党的政策和党的组织的决议，和党内党外一切损害党的利益的现象进行斗争。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（三）为人民群众服务，巩固党与人民群众的联系，了解并及时反映人民群众的需要，向人民群众解释党的政策。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（四）模范地遵守革命政府和革命组织的纪律，精通自己的业务，在各种革命事业中起模范作用。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 党员权利 ">
+        <tr>
+          <td class="entry_num" rowspan="5">第三条</td>
+          <td class="concrete_content"> 凡党员均有下列权利：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）在党的会议或党的刊物上，参加关于党的政策的实施问题之自由的切实的讨论。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）党内的选举权和被选举权。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（三）向党的任何机关直至中央提出建议和声明。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（四）在党的会议上批评党的任何工作人员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 革命 章节 第一章-党员 党员的发展">
+        <tr>
+          <td class="entry_num" rowspan="6">第四条</td>
+          <td class="concrete_content"> 年满十八岁者，方得被接收为党员。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">凡新党员入党，均须依照下列规定，个别地履行入党手续，方能认为有效：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（甲）工人、苦力、雇农、贫农、城市贫民、革命士兵入党，须有正式党员二人介绍，经过党的支部大会的决定，经过区委或相当于区委之党委的批准，并须经过六个月的候补期，方能转为正式党员。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（乙）中农、职员、知识分子、自由职业者入党，须有正式党员二人介绍，其中须有一人为一年以上党龄之党员，经过党的支部大会的决定，经过区委或相当于区委之党委的批准，并须经过一年的候补期，方能转为正式党员。甲乙两项所规定之介绍人的资格及新党员的候补期，在革命新发展地区，得由党的中共中央代表机关或省委区党委规定临时办法变通办理之。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（丙）除甲乙两项所举各种成分以外之其他社会成分的人入党，须有正式党员二人介绍，其中须有一人为三年以上党龄之党员，经过党的支部大会的决定，经过县委、市委或相当于县委之党委的批准，并须经过二年的候补期，方能转为正式党员。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（丁）凡脱离其他政党加入本党者，如系其他政党之普通党员，须有正式党员二人介绍，其中须有一人为三年以上党龄之党员，经过党的支部大会的决定，经过县委或相当于县委之党委的批准，如系其他政党之负责人员，须有正式党员二人介绍，其中须有一人为五年以上党龄之党员，经过党的支部大会的决定，经过省委或相当于省委之党委的批准（如系其他政党之重要负责人员，则须经中央批准）；以上均须经过二年的候补期，方能转为正式党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 党员的发展 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五条 </td>
+          <td class="concrete_content">在特殊情形下，县委以上之党委及相当于县委之党委，有权直接决定个别地接收新党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 党员的发展 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第六条</td>
+          <td class="concrete_content"> 介绍人对被介绍人的思想、品质、经历，须真实地向党作负责的介绍，并须在介绍前，向被介绍人说明党章及党的纲领与政策。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 党委在决定和批准新党员入党前，须指定党的工作人员与之进行详细的谈话，并须经过负责的审查。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 党员的发展 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七条</td>
+          <td class="concrete_content"> 候补党员候补期的作用，是使候补人接受初步的党的教育，并在工作中保证党的组织考察候补人的政治品质。
+            候补党员的义务和权利，除无选举权、被选举权与表决权外，与正式党员同。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 党员的发展 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第八条</td>
+          <td class="concrete_content"> 候补党员候补期满，转为正式党员时，须经支部大会的决定，及原批准入党之上级党委或相当的上级党委的批准。
+            候补党员的候补期限，所属党委得决定延长或缩短之。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 候补党员经过候补期间考察后，被认为不能入党者，得取消其候补党员的资格。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 党员的发展 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第九条</td>
+          <td class="concrete_content">党员的党龄，由候补党员决定转为正式党员之日算起。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 党员的发展 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十条</td>
+          <td class="concrete_content">党员及候补党员由这一个组织移到另一个组织的工作地区时，即作为后一个组织的党员或候补党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 退党及除名 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十一条</td>
+          <td class="concrete_content">党员及候补党员请求脱党者，须向党的支部正式申请，由支部大会通过除名，并报告上级党委备案。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 退党及除名 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十二条</td>
+          <td class="concrete_content"> 凡党员及候补党员，没有正当理由，在六个月内不参加党的生活，不进行党所分配的工作，又不缴纳党费者，即认为自行脱党，由党的支部大会通过除名，并报告上级党委批准。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 退党及除名 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第十三条</td>
+          <td class="concrete_content"> 开除党员或候补党员的党籍，须经该党员或候补党员所属之支部党员大会的讨论和决定，并须经上级党委的批准，方能认为有效。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 支部以之各级党委，在特殊情况下，均得决定开除党员及候补党员的党籍，但均须经上级党委之批准，方能认为有效。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 组织的成立 民主原则 党的政策决议 选举 党的选举 组织系统 组织的建设原则 .民主集中制. &纪律 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第二章　党的组织机构</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 .民主集中制. &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="5">第十四条</td>
+          <td class="concrete_content"> 党的组织机构，是按照民主的集中制建设起来的。民主的集中制，即是在民主基础上的集中和在集中领导下的民主；其基本条件如下：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）党的各级领导机关由选举制产生。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）党的各级领导机关向选举自己的党的组织作定期的工作报告。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（三）党员个人服从所属党的组织，少数服从多数，下级组织服从上级组织，部分组织统一服从中央。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（四）严格地遵守党纪和无条件地执行决议。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 组织的建设原则 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="3">第十五条</td>
+          <td class="concrete_content"> 党的组织，是按照区或按照生产部门为标准建设起来的。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">在某一个地区内，管理全区党的工作的组织，对于该地区内各个部分党的组织来说，是上级机关。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">在某一个生产部门内，管理全部门党的工作的组织，对于该部门的各个部分党的组织来说，是上级机关。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 组织系统 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="7">第十六条</td>
+          <td class="concrete_content"> 党的组织系统如下：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）在全中国，是党的全国代表大会，中央委员会，全国代表合议。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）在省、边区、地方 ，是党的省代表大会，边区代表大会，地方代表大会，省委员会，边区委员会，地方委员会，省代表会议，边区代表会议，地方代表会议。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（三）在县，是党的县代表大会，县委员会，县代表会议。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（四）在城市，是党的市代表大会，市委员会，市代表会议。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（五）在城市中或乡村中的区，是党的区代表大会（或区全体党员大会），区委员会，区代表会议。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（六）在每一工厂、矿山、农村、企业、街道、连队、机关和学校，是全体党员大会，支部委员会，支部代表会议。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 组织系统 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十七条</td>
+          <td class="concrete_content"> 各级党的组织之最高领导机关，在支部－－－是全体党员大会，在区、县、市、地方、边区、省－－－是代表大会，在全党－－－是全国代表大会。在各级大会闭会时期由各级大会所选出之党的各级委员会，即为各级党的组织之最高领导机关。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 选举 章节 第二章-党的组织机构 党的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十八条</td>
+          <td class="concrete_content"> 党的各级领导机关，凡能进行选举的地方，均须由选举产生之。仅由于环境或条件的限制，不能召开党员大会或代表大会选举时，方得召集代表会议选举之，或由上级组织指定之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 选举 章节 第二章-党的组织机构 党的选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十九条</td>
+          <td class="concrete_content">选举党的各级委员会，须按候选人名单进行无记铭投票或表决，并保障选举人有批评与调换每一个候选人的权利。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 党的政策决议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十条</td>
+          <td class="concrete_content"> 各级党的组织，为了传达与讨论上级组织的重要决定及为了检查工作与布置工作，得召集各种干部会议及活动分子会议。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 党的政策决议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十一条</td>
+          <td class="concrete_content"> 党的政策及各种问题，在未经决定以前，每个党员在党的组织内及党的会议上，均可自由地切实地进行讨论，发表自己的意见。但一经决议以后，即须服从，并须无条件地执行。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 革命 纪律 章节 第二章-党的组织机构 民主原则 &纪律 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十二条</td>
+          <td class="concrete_content"> 党的各级领导机关，必须遵照党内民主的原则进行工作，才能发扬党员的革命积极性、创造性与巩固党的纪律，并使这种纪律成为自觉的而不是机械的纪律，才能使领导机关的领导工作臻于正确，才能建立与巩固在民主基础上的集中制。但是党的各级领导机关遵照党内民主原则进行工作时，不能妨害党内的集中原则，不能使正当的有利于集中行动的党内民主被误解为无政府倾向（向党闹独立性和极端民主化）。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 民主原则 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="4">第二十三条</td>
+          <td class="concrete_content"> 为了保证党内民主是按照有利于党的事业的方向进行，而不致在紧急情况下松懈党内的战斗意志和与战斗团结，不被可能的暗害分子、反党分子及企图进行小组织活动的人们利用党内民主来进行损害党、分裂党的活动，以及不致被极少数人利用党内极大多数人思想上一时没有准备的状态来达到自己的企图起见，凡关于全国范围或地方范围内的党的政策问题之全般的广泛的检讨与辩论，必须具备下列条件：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）在时间上允许，即在客观情况不紧急的条件下；并</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）有党中央或党的地方领导机关的决议；</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">或（三）有过半数之下级组织的提议，或有上级组织的提议。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 党的政策决议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十四条</td>
+          <td class="concrete_content"> 各级党的组织，必须保证在自己指导下的报纸，宣传中央机关和上级组织的决议与所定的政策。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 党的政策决议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十五条</td>
+          <td class="concrete_content"> 凡关于全国性质的问题，在中央没有发表意见和决定以前，各部分和各地方党的组织及党的负责人，除自行讨论及向中央建议外，均不得自由发布意见和决定。凡关于地方性质的问题，党的地方组织有自主决定之权；但不得和中央及上级的决定相抵触。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 组织的成立 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十六条</td>
+          <td class="concrete_content"> 凡新成立之党的组织，须经所属之上级机关批准。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 组织的成立 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十七条</td>
+          <td class="concrete_content"> 为便于指导各地方党的工作，中央委员会按情况之需要，在数省或几个边区范围内，得成立中央局与中央分局。中央局与中央分局为中央代表机关，由中央指定，并对中央负责。此种中央代表机关，在情况不需要时，得撤销或合并之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-党的组织机构 组织的成立 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十八条</td>
+          <td class="concrete_content"> 为分别进行各项实际工作起见，在党的各级委员会内，按照工作需要，得设立管理党务的、宣传教育的、军事的、经济的、民众运动的各种部门或委员会，在各级党委统一领导下分别进行各项工作。为进行某项临时的、特殊的工作，各级党委得设立临时的工作委员会或部门。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央组织 选举 党的中央委员会 党的全国代表大会 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第三章　党的中央组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央组织 党的全国代表大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="4">第二十九条</td>
+          <td class="concrete_content"> 党的全国代表大会，由中央委员会决定并召集之。在通常情况下，每三年召集一次。在特殊情况下，由中央委员会决定延期或提前召集。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">如有代表半数党员以上之党的地方组织要求召集全国代表大会时，中央委员会必须召集之。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">党的全国代表大会，必须有代表过半数的党员之代表出席时，方能认为有效。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">出席全国代表大会之代表数额及选举方法，由中央决定之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央组织 党的全国代表大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="5">第三十条</td>
+          <td class="concrete_content"> 党的全国代表大会的职权是：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）听取、讨论和批准中央委员会及中央其他机关的报告。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）决定和修改党的纲领与党章。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（三）决定党的基本方针和政策。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（四）选举中央委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央组织 党的中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十一条</td>
+          <td class="concrete_content"> 党的中央委员会的员额，由全国代表大会决定，选举之。中央委员出缺，由候补中央委员依次递补之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央组织 党的中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十二条</td>
+          <td class="concrete_content"> 中央委员会代表本党与其他政党和团体发生关系，建立党的各种机关并指导其活动，分配党的人力和财力。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央组织 党的中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十三条</td>
+          <td class="concrete_content"> 中央委员会全体会议，由中央政治局每半年召集一次 ，但中央政治局得按情况延期或提前召集之。候补中央委员出席全会，有发言权。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 选举 章节 第三章-党的中央组织 党的中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="5">第三十四条</td>
+          <td class="concrete_content"> 由中央委员会全体会议选举中央政治局与中央书记处，并选举中央委员会主席一人。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">中央政治局，在中央委员会前后两届全体会议期间，党的中央指导机关，指导党的一切工作。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">中央书记处在中央政治局决议之下处理中央日常工作。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">中央委员会主席即为中央政治局主席与中央书记处席。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">中央委员会依工作需要，设组织、宣传等部与军事、党报等委员会及其他工作机关，分别办理中央各项工作，受中央政治局、中央书记处及中央主席之指导监督。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央组织 党的中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十五条 </td>
+          <td class="concrete_content">在前后两届全国代表大会期间，中央委员会得召集各地方党委代表举行党的全国代表会议若干次，讨论并决定当前的党的政策问题。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央组织 党的全国代表会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第三十六条</td>
+          <td class="concrete_content"> 党的全国代表会议的代表，由各省委、边区党委及中央直属之其他各党委的全体委员会议上选举上。代表数额，由中央规定。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">党的全国代表会议，须有全国半数以上的省委及边区党委的代表出席。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央组织 党的全国代表会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十七条</td>
+          <td class="concrete_content"> 党的全国代表会议，有权撤换个别不能履行自己责任的中央委员及候补中央委员，并有权补选部分候补中央委员。但每次撤换之中央委员及候补中央委员或补选之候补中央委员的数额，均不得超过中央委员及候补中央委员总数的五分之一。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的中央组织 党的全国代表会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第三十八条</td>
+          <td class="concrete_content"> 党的全国代表会议所通过的决议及撤换与补选之中央委员及候补中央委员，须经中央委员会批准后，方能发生效力。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">经中央委员会批准之全国代表会议的决议，一切党的组织，都必须执行。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-党的省及边区之组织 党委与代表会议关系 党委 选举 代表大会 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第四章 党的省及边区之组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-党的省及边区之组织 代表大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十九条</td>
+          <td class="concrete_content"> 党的省或边区代表大会，省委或边区党委，均受中央或中央代表机关之领导。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 选举 章节 第四章-党的省及边区之组织 代表大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十条</td>
+          <td class="concrete_content"> 省或边区代表大会，由省委或边区党委每二年召集一次。在特殊情况下，省委或边区党委，得延期或提前召集。如有该省或该边区半数以上的下级组织之要求，或有中央、中央代表机关的提议，省委或边区党委必须召集之。出席省或边区代表大会之代表数额及选举方法，由省委或边区党委决定，中央或中央代表机关批准。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 选举 章节 第四章-党的省及边区之组织 代表大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十一条 </td>
+          <td class="concrete_content">省或边区代表大会，听取、讨论和批准省委或边区党委的报告及省或边区其他机关的报告，讨论和决定本省或本边区的各种问题与各种工作，选举党的省委员会或边区委员会以及出席全国代表大会之代表。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 选举 章节 第四章-党的省及边区之组织 党委 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十二条 </td>
+          <td class="concrete_content">由省委或边区党委之全体会议，选举省委或边区党委的常务委员会及正副书记，进行经常工作。省委或边区党委的书记和党委，须经中央批准。书记须有五年以上党龄的党员充任。省委或边区党委之全体会议，每年至少召开二次。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-党的省及边区之组织 党委 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十三条 </td>
+          <td class="concrete_content">省委或边区党委，在本省戒边区范围内，执行代表大会及中央机关的决议，建立党的各种机关，分配党的人力和财力，指导党外各种非党组织中党组的工作。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-党的省及边区之组织 党委与代表会议关系 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第四十四条 </td>
+          <td class="concrete_content">在前后两届省或边区代表大会期间，省委或边区党委得召集各地委、县委及其他直属党委的代表，举行省或边区代表会议若干次，讨论并决定该省或该边区范围内当前的各种工作问题。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">省或边区代表会议，有撤换与补选部分省委或边区党委委员之权；但其数额均不得超过该委员会总数的四分之一。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-党的省及边区之组织 党委与代表会议关系 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十五条</td>
+          <td class="concrete_content"> 省或边区代表会议所通过的决议及撤换与补选之委员，须经省或边区委员会批准后，方能发生效力。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-党的地方、县、市及区之组织革命 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第五章 党的地方、县、市及区之组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-党的地方、县、市及区之组织 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1"> 第四十六条</td>
+          <td class="concrete_content"> 党之在一个地方、一个县、一个城市、一个区的组织和工作规则，相同于前章党之在一个省或一个边区的组织和工作规则；各属于各该上级组织之领导。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-党的地方、县、市及区之组织 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十七条</td>
+          <td class="concrete_content"> 党的地方、县、市及区代表大会，每二年召集一次。在两届代表大会之间，均得召集代表会议若干次。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 革命 章节 第五章-党的地方、县、市及区之组织 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第四十八条</td>
+          <td class="concrete_content"> 地委、县委之全体会议，至少每年召开四次。市委、区委之全体会议，至少每一个月召开一次。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 地委、县委、市委、区委之委员及正副书记，均须经各该上级组织之批准。地委、县委、市委书记须有三年以上党龄之党员充任。区委书记，须有一年以上党龄之党员充任。在革命新发展地区，此项党龄规定得变通办理，但须得到省委或边区党委之批准。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-党的基础组织 支部委员会选举支部任务 群众 纪律 选举 支部的成立 &组织建设 &群众">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第六章 党的基础组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-党的基础组织 支部的成立 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十九条</td>
+          <td class="concrete_content"> 党的基础组织，是党的支部。在每一个工厂、矿山、农村、企业、街道、连队、机关、学校，等等之内，凡有党员三人以上者，即成立党的支部组织。党员不到三人者，则加入邻近之党的支部组级。党的支部组织，须经县委或市委之批准。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 选举 章节 第六章-党的基础组织 支部的成立 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十条</td>
+          <td class="concrete_content"> 凡在党员数量比较多的处所，在党的支部委之下，得按自然的、居住的或工作的情况，划分小组。选举组长一人，必要时冉选举副组长一人。凡有党员和候补党员超过五十人之乡村，或超过一百人厂、机关和学校，得成立党的总支部。在总支部下，按居住、车间、部门和班次，成立分支部。分支部享有普通支权利。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-党的基础组织 支部的成立 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十一条</td>
+          <td class="concrete_content"> 凡有党员及候补党员超过五百人以上之大乡镇、大工厂、机关和学校，得省委或边区党委之允许，得选举党的乡镇、工厂、机关、学校委员会。在委员会之下，按居住、车间、部门和班次，成立党的支部。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 群众 纪律 章节 第六章-党的基础组织 支部任务 &组织建设 &群众">
+        <tr>
+          <td class="entry_num" rowspan="6">第五十二条</td>
+          <td class="concrete_content"> 支部必须使人民群众与党密切结合起来。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">支部的任务是：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）在人民群众中进行宣传和组织工作，以实现党的主张和上级组织的各种决议。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）经常注意并向上级机关反映人民群众的情绪和要求，关心人民群众之政治的、经济的、文化的生活。并组织人民群众来解决他们自己的各种问题。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（三）吸收新党员，征收党费，审查与鉴定党员，对党员执行党的纪律。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（四）教育党员，组织党员的学习。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 选举 章节 第六章-党的基础组织 支部委员会选举 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第五十三条</td>
+          <td class="concrete_content"> 由支部全体党员大会选举支部委员会，进行经常工作。任期半年至一年。支部委员会人数之多少。由支部之大小来决定，最少者三人，最多者十一人。由委员会选举书记一人，必要时得再选举副书记一人。其他委员的分工，由委员会按照实际需要决定之。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">在七个党员以下的支部，只选举支部书记一人或正副书记各一人，不设支委。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的地下组织 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第七章 党的地下组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的地下组织 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十四条</td>
+          <td class="concrete_content"> 凡本党不能合法存在与活动的地区之党的地下组织形式与工作方法，由中央根据党章通过特别的决议规定之。本党章各条所规定之党的组织形式与工作方法，凡不适用于党的地下组织者，均得变通办理之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-党的地下组织 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十五条</td>
+          <td class="concrete_content"> 党的地下组织，在接收党员时，须经更慎重的考察。新党员入党时，只履行在秘密环境下所能允许的手续。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 监督 章节 第八章-党的监督机关 选举 &监督 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第八章 党的监督机关</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 监督 章节 第八章-党的监督机关 &监督 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十六条</td>
+          <td class="concrete_content"> 党的中央委员会认 为必要时，得成立党的中央监察委员会及各地方党的监察委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 监督 选举 章节 第八章-党的监督机关 &监督 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十七条</td>
+          <td class="concrete_content"> 中央监督委员会，由中央全体会议选举之。各地方党的监察委员会，由各该地方党委全体会议选举，并由上级组织批准之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 监督 章节 第八章-党的监督机关 &监督 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十八条</td>
+          <td class="concrete_content"> 中央及地方监察委员会的任务与职权，是决定或取消对党员的处分，受理党员的控诉。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 监督 章节 第八章-党的监督机关 &监督 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十九条</td>
+          <td class="concrete_content"> 党的各级监察委员会，在各该级党的委员会指导下进行工作。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党组 章节 第九章-党外组织中的党组 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第九章 党外组织中的党组</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党组 章节 第九章-党外组织中的党组 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十条</td>
+          <td class="concrete_content"> 在政府、工会、农会、合作社及其他群众组织的领导机关中，凡有担任负责工作的党员三人以上者，即成立党组。党组的任务，是在各该组织的领导机关中指导党员为加强党的影响，实现党的政策而工作。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党组 章节 第九章-党外组织中的党组 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十一条</td>
+          <td class="concrete_content">党组设书记一人，党员人数超过十人之党组，设党组干事会，担负经常工作。党组干事会及书记，由所属党委指定之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党组 章节 第九章-党外组织中的党组 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十二条</td>
+          <td class="concrete_content"> 各级非党组织中之党组，服从各该级党的委员会之领导，员会之领导，并执行其决议。各级党委的会议，得吸收重要党组的负责人参加。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 奖励与处分 章节 第十章-奖励与处分 奖励与处分目的 处分 奖励 纪律  群众 &党风建设">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第十章 奖励与处分</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 奖励与处分 群众 纪律 章节 第十章-奖励与处分 奖励 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十三条</td>
+          <td class="concrete_content"> 凡在工作中，表现自己是完全忠于党与人民的事业，是遵守党和革命政府纪律的模范，在实现党的纲领、党的政策和中央及上级组织的决议中富于创造性，出色地完成党的任务，取得人民群众真诚拥护的党员与党的组织，得给予奖励。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 奖励与处分 章节 第十章-奖励与处分 处分 ">
+        <tr>
+          <td class="entry_num" rowspan="3">第六十四条</td>
+          <td class="concrete_content"> 凡不执行中央和上级组织的决议，及违犯党章、党纪者，各级党的组织，按照具体情况，得以下列方法给予处分：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）对于整个组织的处分是：指责；部分改组其领导机关；撤消其领导机关并指定其临时的领导机关；解散整个组织，并进行党员的重新登记。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）对于党员个人的处分是：当面的劝告或警告；当众的劝告或警告上撤消工作；留党察看；开除党籍。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 奖励与处分 章节 第十章-奖励与处分 处分 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十五条</td>
+          <td class="concrete_content"> 党的中央委员或候补中央委员，如有严重地破坏党纪的行为，中央委员会有权开除其中央委员或候补中央委员直至开除其党籍，但须有三分之二以上的中央委员之赞成，方能认为有效。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 奖励与处分 章节 第十章-奖励与处分 处分 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十六条</td>
+          <td class="concrete_content"> 对党的组织及党员个人给予处分，须将处分的理由通知被处分者。凡被处分后不服者，均可进行辩护，并可要求复议及向上级机关申诉。各级党委对于任何党员的申诉书，须迅速转递，不得扣压。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 奖励与处分 章节 第十章-奖励与处分 处分 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十七条</td>
+          <td class="concrete_content"> 开除党籍，是党内的最高处分。各级党的组织，在决定和批准关于党员党籍问题时，应保持高度的慎重，仔细听取本人的申诉和分析其犯错误时的情况。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 奖励与处分 群众 章节 第十章-奖励与处分 奖励与处分目的 &党风建设">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十八条</td>
+          <td class="concrete_content"> 党对党员一切奖励与处分的积极目的，是教育党员与人民群众，并教育受奖励者与受处分者本人；既不是提倡党内的风头主义，也不是实行党内的惩办主义。党对成绩优异的同志给予奖励，是为着建立党内的优良作风，确立党员的模范标准；党对犯错误同志给予批评或处分，是为着惩前毖后，治病救人。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 经费 章节 第十一章-经费 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第十一章 经费</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 经费 章节 第十一章-经费 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六十九条</td>
+          <td class="concrete_content"> 党的经费，由党员缴纳的党费、党所经营的各种生产和企业的收入与党外捐助等方法筹集之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 经费 章节 第十一章-经费 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七十条</td>
+          <td class="concrete_content"> 各地党员及候补党员应缴党费数额，由各省委、边区党委或其他相当的党委规定实行之。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+ 
+</div>
+	
+	
+<div id="part4_div_part">
+  <div id="tree_chart_div"></div>
+  <table id="part4_tree_table">
+    <tbody class="part4_历史背景 ">
+      <tr>
+        <td class="part4_tbody_head">党章制定的历史背景</td>
+      </tr>
+      <tr>
+        <td class= "part4_content">   1945年4月23日至6月11日，中国共产党第七次全国代表大会在延安召开。出席大会的正式代表547人，候补代表208人，合计755人，代表着全党121万党员。修改党章是大会的一项重要议程。刘少奇作了《关于修改党章的报告》。大会经过多次充分的讨论，对六大党章进行了全面和重大修改，在大会的最后一天，通过了《中国共产党章程》，我们习惯上称为七大党章。七大党章是新民主主义革命时期最完备的一部党章。 <br/>
+          <br/>   
+          1.为了团结全党和全国各族人民夺取抗日战争的最后胜利，并把中国引向光明的前途，中央决定召开党的七大 <br/>   
+          党的六大以后，按照六大党章的规定，党的全国大会通常按照惯例应当每一年召开一次，但是，当时革命形势和客观环境使党章的这一规定难以实现。直到1945年春，国内外形势发生了急剧变化，全世界反法西斯战争已取得决定性胜利，抗日战争也已经胜利在望。但是，世界上还存在着强大的反动势力，日本帝国主义还在做最后的挣扎，中国内部仍然是分裂的，仍存在着内战的危机。此时此刻，中国人民面临着两个前途和两种命运：是建设一个光明的中国人民得到解放的新中国呢?还是仍然维持着半殖民地半封建的贫穷落后的旧中国?为了团结全党和全国各族人民夺取抗日战争的最后胜利，并把中国引向光明的前途，在这样重大的历史关头，中央决定召开党的七大，总结我国民主革命20多年曲折发展的历史经验，制定正确的纲领和策略，克服党内错误思想，用马克思列宁主义、毛泽东思想统一全党的思想，实现全党的团结统一，在党已经成为全国范围的、广大群众性的政党的情况下，从思想上、政治上、组织上巩固和加强党的建设，为新民主主义革命在全国的胜利奠定基础，并将这些成果通过修改党章的形式体现和反映在党章之中，成为全党共同遵守的行为规范。 <br/>
+          <br/>   
+          2.我们党已经形成了自己的指导思想和完备的建党理论，它为七大修改党章奠定了思想理论基础 <br/>   
+          尽管党的六大和党的七大时隔17年之久，但是，在这期间，我们党为七大的召开和党章的修改做了比较充分的准备。在长期的革命斗争实践中，我们党已经有了一个自己的领袖，逐渐形成了毛泽东思想。全党对毛泽东思想的认识也有一个过程。在形成全党共识的过程中，20世纪40年代前期的延安整风起了重大的历史作用。延安整风运动在全党范围内进行了一次普遍的马克思列宁主义教育，系统地清算了以王明为代表的“左”倾教条主义，使全党特别是高中级领导干部更加深刻地认识到以毛泽东为代表的理论和路线的正确性。经过党的六届七中全会的讨论，认识达成一致。在这次全会上讨论通过的《关于若干历史问题的决议》，高度评价、肯定了毛泽东思想的历史地位，指出：“中国共产党自一九二一年产生以来，就以马克思列宁主义的普遍真理和中国革命的具体实践相结合为自己一切工作的指针，毛泽东关于中国革命的理论和实践便是此种结合的代表”。“党在奋斗的过程中产生了自己的领袖毛泽东同志。毛泽东同志代表中国无产阶级和中国人民，将人类最高智慧——马克思列宁主义的科学理论，创造性地应用于中国这样的以农民为主要群众、以反帝反封建为直接任务而又地广人众、情况复杂、斗争极困难的半封建半殖民地的大国，发展了列宁斯大林关于殖民地半殖民地问题的学说和斯大林关于中国革命问题的学说。”《决议》还强调：二十四年来中国革命的实践证明了，并且还在证明着，毛泽东同志所代表的我们党和全国广大人民的奋斗方向是完全正确的。毛泽东思想为灾难深重的中华民族与中国人民指出了达到彻底解放的唯一正确的完整的明确的道路。为了团结全党和全国各族人民夺取抗日战争的最后胜利，并把中国引向光明的前途，迫切需要在党章中将中国化了的马克思主义——毛泽东思想写进党章，以进一步统一全党的思想。这些论断，为七大修改党章奠定了坚实的理论基础，后来都基本上写进了七大党章的修改草案和刘少奇在党的七大上所做的《关于修改党章的报告》之中。 <br/>
+          <br/>   
+          3.党内“法规”的制定和施行，为七大修改党章提供了规章制度保障 <br/>   
+          党的六大通过的党章，由于情况特殊，许多部分都不能适用，所以，随着实际工作的发展及组织经验的积累，党中央陆续颁布了许多决议和指示，实际上是对六大党章不适用的部分进行了修正。在党员方面，六大党章没有党员候补期的规定，1930年4月10日中央109号通知曾经决定恢复党员候补期规定，并详细规定了共产党员标准的六项条件：一是终身为共产主义奋斗；二是革命的利益高于一切；三是遵守党的纪律，严守党的秘密；四是百折不挠地执行决议；五是群众模范；六是学习。这是我们党历史上关于共产党员标准比较全面的说明。其中有些内容被七大党章吸收了。1935年12月25日，中央政治局在瓦窑堡会议上通过了《关于目前政治形势与党的任务决议》，抛弃了六大以后在党员标准问题上的“唯成分论”，明确指出：“能否为党所提出的主张而坚决奋斗，是党吸收新党员的主要标准”，“社会成分是应该注意到的，但不是主要的标准。”在监察委员会方面，六大党章取消了监察委员会的规定，并且没有设立常设机构来处理违犯党纪问题，这在实际工作中遇到了困难。1933年3月8日，中共临时中央决定在党的中央监察委员会未正式成立以前，为防止党内有违反党章、破坏党纪的行为发生以及对这些行为进行党纪处理，特设中央党务委员会。1940年12月，中央颁布《关于地方及军队中党务委员会工作的决定》，规定在地方党未建立党务委员会以及监察委员会的地方，由省委、区委等代行党务委员会的职权。从这些规定中可以看出，中央已经认识到恢复监察委员会的必要性，这为七大党章增加监察委员会的规定打下了基础。在党的民主集中制原则方面，1938年11月6日《中共扩大的六中全会政治决议案》宣布：认真实行党的民主集中制——个人服从组织，少数服从多数，下级服从上级，中央是全党的最高领导。1941年7月1日中共中央政治局通过的《关于增强党性的决定》重申了毛泽东同志的提法，正式表述为“个人服从组织，少数服从多数，下级服从上级，全党服从中央的基本原则”。这一表述基本上被七大党章所采纳。 <br/>
+          <br/></td>
+      </tr>
+      <tr class="part4_test_href">
+        <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26480696.htm" target="_blank">中国国情-中国网</a></td>
+      </tr>
+      <tr>
+        <td class="part4_null_row_space"></td>
+      </tr>
+    </tbody>
+    <tbody class="part4_特点 ">
+      <tr>
+        <td class="part4_tbody_head">党章的特点</td>
+      </tr>
+      <tr>
+        <td class= "part4_content">   七大党章包括总纲和十一章七十条。与六大党章相比，在章节体例上改动较大，增加了一个“总纲”和“奖励与处分”、“党的地下组织”、“党的监察机关”三章，删除了六大党章中“审查委员会”和“与共产青年团的互相关系”两章，分别将六大党章中“党的组织系统”改为“党的组织机构”，改“支部”为“党的基础组织”，改“党团”为“党外组织中的党组”，改“党的财政”为“经费”。这样，七大党章在结构体例上依次为：总纲，党员，党的组织机构，党的中央组织，党的省及边区之组织，党的地方、县、市及区之组织，党的基础组织，党的地下组织，党的监察机关，党外组织中的党组，奖励与处分，经费。党的七大党章主要有以下一些特点： <br/>
+          <br/>   
+          1.七大对党章的修改是充分发扬党内民主的产物 <br/>   
+          党的七大对党章的修改，是在充分发扬党内民主的基础上进行的。党章的修改工作是由毛泽东领导、刘少奇具体主持进行的。早在六届七中全会期间，即1945年3月31日，便讨论了准备提交七大讨论的党章草案。除七大会前有充分的酝酿、讨论、准备、征求各地一些干部的意见外，5月14日和5月15日，刘少奇就党章修改的有关问题分别作了两次报告，七大会上全体代表对党章问题，从5月21日至23日，共计进行了三天的专题讨论，党章起草委员会在此基础上，又进行了讨论和修改。5月30日，刘少奇代表中央就修改党章问题，做讨论总结。这是以往任何一次修改党章所没有过的，这充分地反映出我们党在七大修改党章的问题上，是充分地发扬了党内民主、集思广益和走群众路线的，七大党章成为民主革命时期最好的一部党章，也就是顺理成章的事情了。 <br/>
+          <br/>   
+          2.在党章条文之前增加了总纲，使党章在体例结构上分为总纲和条文两大部分，这在党章史上是一个先例 <br/>   
+          总纲实际上就是党的基本纲领。它是党章的组成部分，是党章的前提和总则。这个总纲概括了我们党24年斗争的经验，并吸收了世界工人运动中最好的经验，也概括了我们党的自身建设的历史经验。党的七大党章总纲主要阐述了以下一些内容： <br/>   
+          第一，关于党的性质问题。总纲开宗明义地指出：我们党是中国工人阶级的先进的有组织的部队，是它的阶级组织的最高形式。它代表中国民族与中国人民的利益。它在现阶段为实现中国的新民主主义制度而奋斗。它的最终目的是在中国实现共产主义制度。这是在党的历史上以党章的形式第一次规定党的性质，是民主革命时期对党的性质的表述，为党内外判断中国共产党的性质指明了方向。 <br/>   
+          当时，在我们党内，由于党的主要部分是处在农村中，党员的绝大多数是出身农民和小资产阶级知识分子，工人成分很少，在这种情况下，有人曾提出了中国共产党的性质还是不是无产阶级政党的疑问。对此，刘少奇在《关于修改党章的报告》中作了深刻阐述。报告指出，仅仅是党员的社会出身，还不能决定我们党的性质。如同欧洲某些国家工党中党员的社会成分不能决定工党的性质一样，在欧洲工党内的党员，虽然大多数是工人出身的，然而，它们并不是代表工人阶级的政党，它们不能执行工人阶级在这些国家的任务。 <br/>   
+          我们党的无产阶级性质，是由以下一些条件来决定的：(1)我们党是在伟大的世界无产阶级革命的时代，接受了世界马克思列宁主义运动中最优良的传统，在1927年中国革命及革命以前伟大的工人运动的基础上产生与发展起来的，并与中国工人运动有不断的联系；(2)党是一贯地遵循毛泽东同志创造的中国马克思列宁主义的思想及其所制订的政治路线与组织路线而发展起来的，有以毛泽东同志为首的党中央的领导和大批久经锻炼的，以马克思列宁主义、毛泽东思想武装起来的，其中并有许多是直接从工人运动中产生的干部。(3)我们党的无产阶级的纲领与政策，区别于任何其他政党，独立地组织和领导了新民主主义革命，实现了无产阶级对人民大众的革命的领导权，并以社会主义和共产主义为自己的最终目的。(4)党的无产阶级的铁的纪律，每个党员都必须遵守。(5)经过二十余年的国内战争与民族战争，我们党已经有几十万党员长期脱离了他们原来的社会职业，转入革命斗争中来，使他们在思想上、组织上受到了严格的教育与锻炼，这样，就提高了他们的阶级觉悟与集体的意志，加强了他们的组织性和纪律性，并使动摇分子在严酷的革命斗争中从党内不断地自然淘汰出去。(6)经过马克思列宁主义的教育，对党内小资产阶级出身的党员实行思想上的彻底改造使他们具有无产阶级先进战士的性格。 <br/>
+          因此，我们党应该十分注意吸收工人中的先进分子入党，但还必须大量吸收一切劳动人民中的先进分子入党，在中国有大批的小资产阶级革命分子加入我们党内来，这也是很好的现象，我们党不应该拒绝他们。 <br/>   
+          第二，关于中国革命的性质和党的纲领及任务。总纲指出中国的社会性质是半殖民地、半封建的性质。由于中国的这种社会性质，又由于中国革命的基本动力是无产阶级领导的以农民为主力的人民大众，以及中国共产党的强大存在和现时的国际条件，决定了中国革命的性质，既不是旧式资产阶级的民主革命，也不是最新式的无产阶级社会主义革命，而是新式的资产阶级民主主义性质的革命。因此，中国共产党在目前阶段的任务，就是联合所有一切能够参加这个革命的阶级、阶层、民族和个人，为彻底肃清外国帝国主义与封建主义的压迫，为建立各革命阶级联盟与各民族自由联合的中国新民主主义共和国而奋斗。这些是对新民主主义革命纲领的完整的表述，解决了在中国特殊条件下进行新式的资产阶级民主革命的问题，丰富和发展了列宁关于民族和殖民地革命的理论。 <br/>
+          同时，党章总纲还提出：在将来阶段，在中国民族革命与民主革命得到彻底胜利后，中国共产党的任务是根据中国社会经济发展的需要和中国人民的意愿，经过必要步骤，为在中国实现社会主义和共产主义的制度而奋斗。表明我们党已经吸取了“左”倾错误的教训，对新民主主义革命转变为社会主义革命的提法采取了非常慎重的态度。 <br/>   
+          第三，关于党的领导地位问题。七大党章总纲指出：“中国共产党在革命斗争中，必须努力使自己成为一切革命的群众组织及革命的国家组织之中坚。”这实际上阐述了党的领导问题。对此，刘少奇在修改党章的报告中进一步指出：“在各级党的组织中形成经常健全的、团结一致的、联系群众的领导核心，是极端重要的。”“但是这种领导核心的形成，决不是一蹴而就的，决不能性急，而必须是在长期的工作中、斗争中形成起来，有时还必须经过失败与成功、正确与错误和错误的改正等曲折的过程，才能形成。” <br/>   
+          第四，关于党的宗旨问题。这是第一次将党的为人民服务的宗旨问题载入党章，体现在党章总纲中规定：“中国共产党人必须具有全心全意为中国人民服务的精神”，同时，在“党员”一章中，也把“为人民服务”作为党员必须履行的四项义务之一。这一规定是我们党区别于其他政党的重要标志之一。 <br/>
+          第五，关于党的作风问题。由于批评与自我批评在中国共产党的建设史上发挥了特殊重要的作用，并在长期革命斗争实践中积累了这方面的经验和方法，在七大上毛泽东首次把党的作风概括为三大作风，即理论和实践相结合的作风，和人民群众紧密地联系在一起的作风以及批评与自我批评的作风。三大作风是在长期的实践斗争中逐步形成和发展起来的，深刻地反映了中国共产党建设的历史特点和区别于其他任何政党的显著特色，因此，七大把批评与自我批评写进了党章的总纲，提出：“中国共产党应该不掩盖自己工作中的错误与缺点。中国共产党应该用批评和自我批评的方法，经常检讨自己工作中的错误与缺点，来教育自己的党员和干部，并及时纠正自己的错误。” <br/>
+          <br/>   
+          3.七大党章突出了毛泽东思想的地位，首次将毛泽东思想确立为党的指导思想 <br/>
+          总纲上确定：“以马克思列宁主义的理论与中国革命的实践之统一的思想——毛泽东思想，作为自己一切工作的指针，反对任何教条主义的或经验主义的偏向。中国共产党以马克思主义的辩证唯物主义与历史唯物主义为基础，批判地接收中国的与外国的历史遗产，反对任何唯心主义的或机械唯物主义的世界观。”在党章的条文中又规定：努力地领会马克思列宁主义、毛泽东思想的基础，是每一个共产党员的义务。这是七大修改的党章的一个最大的历史特点。它准确地说明了毛泽东思想的科学性，以及不可怀疑和动摇的指导地位，从根本的世界观和方法论上划清了界限，是对中国共产党建设作出的最大的历史性贡献。 <br/>
+          <br/>   
+          4.在总纲和条文中都特别强调了党的群众路线 <br/>   
+          群众路线是毛泽东思想的重要内容之一，也是中国共产党人的独创，在过去的党的文件中虽然提到过，但反映在党章中，七大党章还是第一次。七大党章总纲中规定：中国共产党人“必须与工人群众、农民群众及其他革命人民建立广泛的联系。并经常注意巩固与扩大这种联系。”“每一个党员都必须用心倾听人民群众的呼声和了解他们的迫切需要，并帮助他们组织起来，为实现他们的需要而斗争。”“中国共产党必须经常警戒自己脱离人民群众的危险性，必须经常注意防止和清洗自己内部的尾巴主义、命令主义、关门主义、官僚主义与军阀主义等脱离群众的错误倾向。”这是从理论和实践的结合上对党的群众路线的阐述，也是全党贯彻执行群众路线的基本要求。毛泽东同志在党的七大上向大会作的报告中指出：要根据群众路线去进行工作。我们共产党人与最广大的人民群众取得最密切的联系，是我们区别于任何其他政党的一个显著的标志。 <br/>   
+          为了贯彻党的群众路线，在党章的总纲上和条文上都强调了每一个共产党员都必须牢固地建立起群众观点的思想，包括一切为了人民群众的观点，全心全意为人民服务的观点，一切向人民群众负责的观点，相信群众自己解放自己的观点，向人民群众学习的观点。有了上述坚固的明确的群众观点，才能有明确的工作中的群众路线，才能实现正确的领导。 <br/>
+          <br/>   
+          5.发展和完善了党的民主集中制 <br/>   
+          民主集中制是我们党的组织原则，在六大党章中已经明确地表述过，但没有七大党章这样对民主集中制的含义进行比较明确的理论概括：“民主的集中制，即是在民主基础上的集中和在集中领导下的民主”。这就是说，民主集中制的集中是建立在民主基础之上的，不是个人专制主义，民主是在集中领导下的民主，不是极端民主化和无政府主义。而个人专制主义和极端民主化及无政府主义，在过去党的历史上都曾经发生过，给党的建设和中国革命事业的发展造成了严重损失。七大党章第一次把民主与集中两者有机地结合起来，实际上是对过去党的建设经验和教训的深刻总结。七大党章规定了民主集中制的四项基本条件：一是党的各级领导机关由选举产生；二是党的各级领导机关向选举自己的党的组织作定期的工作报告；三是党员个人服从所属党的组织，少数服从多数，下级组织服从上级组织，部分组织统一服从中央；四是严格地遵守党纪和无条件地执行决议。七大党章还增加了一些扩大党内民主的规定，包括各级党的领导机关的产生原则上须经过党内民主选举，党的政策在正式作出决定之前，党员有充分发表意见的权利等内容。 <br/>
+          <br/>   
+          6.对党的各级组织的设立、构成、职权、任务进行了调整和充实 <br/>   
+          鉴于七大时党已经成为全国范围的广大群众性的大党，党的组织遍及全国各地，七大党章按照民主集中制的原则，对党的组织系统进行了适当的调整和充实。(1)否定了六大党章关于组织系统顺序安排，基本上恢复了《中国共产党第三次修正章程决案》的体例，从党的中央组织，党的省及边区组织，党的地方、县、市及区的组织到党的基础组织依次进行规定，考虑到当时的特殊情况，接下来用专章规定了“党的地下组织”。(2)首次采用了“党的全国代表大会的职权”这样规范性的表述语言。以往党章也有类似内容的规定，比如，《中国共产党第三次修正章程决案》中用的是“党的全国代表大会的工作”，六大党章干脆把工作两个字也去掉了，直接在“党的全国大会”的后面列举了具体权限。在党的代表大会的职权的具体规定上，用词也更加规范和准确，将六大党章规定的“接受和审查中央委员会及中央审查委员会的报告”，改为“听取、讨论和批准中央委员会及中央其他机关的报告”；将“决定党纲上的问题”，改为“决定和修改党的纲领与党章”；将“决定一切政治策略，及组织等问题的决议案”，改为“决定党的基本方针和政策”；将原来规定的选举中央审查委员会删除，保留“选举中央委员会”的规定。(3)党的代表大会实行的“年会制”改为“通常情况下，每三年召集一次，在特殊情况下，由中央委员会决定延期或提前召集”。这样，既有原则性，也有灵活性。(4)首次增设中央书记处，规定其在中央政治局决议之下处理中央日常工作，中央书记处主席由兼任中央政治局主席的中央委员会主席兼任。(5)首次明确规定了党的全国代表会议的职权，主要是撤换和补选部分中央委员及候补委员，但对每次撤换的人数作出了限制性规定，即不得超过中央委员及候补委员总数的五分之一。(6)第一次规定中央委员会实行主席制，由中央委员会全体会议选举产生，同时兼任中央政治局主席和中央书记处主席职务。(7)首次规定中央委员会可以召集各地方党委代表举行若干次党的全国代表会议，讨论并决定当前党的政策问题。 <br/>
+          <br/>   
+          7.第一次以条文的形式明确规定了党员的义务和权利 <br/>   
+          关于党员的义务，党章共规定了四项。(1)党章首先规定党员必须努力提高自己的觉悟程度和领会马克思列宁主义、毛泽东思想的基础的义务。之所以做这样的规定和要求，正如刘少奇在修改党章的报告中指出的那样，因为这是每一个党员能否正确地为人民事业而奋斗的基本关节。如果党员的觉悟程度不高，对于马克思列宁主义、毛泽东思想的基础不能领会，那他就不能作一个好的党员，不能自觉地为人民的事业而奋斗。党的组织上的统一，是由马克思列宁主义、毛泽东思想所造成的党员在思想上的一致为其前提的，如果没有这种思想上的一致，党在组织上行动上，就没有基础，党的纪律就不能建立在自觉的基础上，各种分歧就可能产生，党为人民事业而奋斗就不能胜利。党章把这一项规定为党员的义务，就是要求党员必须为人民的事业而去学习马克思列宁主义、毛泽东思想，而不是为了任何别的目的。没有强烈的学习精神和正确的学习态度，骄傲自满，不求进步，就是对人民事业一种不负责任的态度。(2)规定每一个党员都要严格遵守党纪，积极参加党内的政治生活和国内的革命运动，实际执行党的政策和党的组织的决议，和党内党外一切损害党的利益的现象进行斗争的义务。这里，突出强调了党员积极参加党内生活的必要性，而不只是强调参加党的组织生活，因为一个党员是必须在政治上关心党的一切，在政治上对党负责的。(3)规定为人民群众服务，巩固党与人民群众的联系，了解并及时反映人民群众的需要，有向人民群众解释党的政策的义务。(4)模范地遵守革命政府和革命组织的纪律，精通自己的业务，在各种革命事业中起模范作用。 <br/>   
+          关于党员的权利，七大党章做出了四项规定。(1)在党的会议或党的刊物上，参加关于党的政策的实施问题自由的讨论。(2)党内的选举权和被选举权。(3)向党的任何机关直至中央提出建议和声明。(4)在党的会议上批评党的任何工作人员。党章的这些新规定，是有很强的针对性的。当时，在党内实际工作中，不尊重党员的基本权利的现象是常常发生的。对此，刘少奇在修改党章的报告中进行了列举和批评。比如，有些同志在会议上想各种方法禁止那些反对自己意见的党员发言，在党内的选举与被选举中加以各种限制，禁止党员向上级机关提出建议和声明，或在中途稽留党员的申诉书，在党的会议上不允许党员对党的负责人提出批评，甚至有些党员因为批评与自我批评而受到命令主义、官僚主义分子的报复与打击。在党章中规定党员享有上述权利的目的，是为了提高党员的积极性与责任心，保障党员对于一切损害党的利益的现象进行斗争，也为党有效地反对官僚主义、命令主义提供了有力武器，以改善党的领导者与被领导者之间的关系并以此来改善党的各项工作。 <br/>   
+          七大党章对党员这些义务与权利的规定，对保证我们党内生活正常发展，提高党员对党的事业的积极性与责任心，并保证党的行动的统一，具有规范性作用。 <br/>
+          <br/>   
+          8.接收入党，除年龄的规定外，还依据被接收入党者的社会地位的不同分别做了不同规定 <br/>   
+          第一类是劳动者和革命士兵入党，其介绍人与候补期的规定均较宽，没有特殊的限制；第二类是接收小资产阶级出身的革命者入党，由于这个阶层出身的人们的思想常常是比较复杂的，对我们党的纪律及参加严重革命斗争有比较多的顾虑，因此，要求比较有经验的正式党员二人介绍，其中须有一人为一年以上党龄的党员，并须有较长的候补期(为一年)；第三类是社会中层与高层剥削阶级出身的革命者，他们的思想更加复杂，对我们党的纲领和纪律，是更难接受的，所以他们要求入党时，党章规定必须找有经验的两名党员介绍，经过比较高级的党委批准，并须有二年的候补期；第四类就是曾经有过其他政治信仰，并曾加入过其他政党或政治团体的人，他们中有些人要求入党，党章规定需要更有经验的党员介绍，经过更高级的党委审查、批准后，才能入党。同时还对其他政党的普通党员、比较负责的人员和重要负责人员分别作了区分。 <br/>
+          <br/>   
+          9.增设了“奖励与处分”一章 <br/>   
+          在党章中不只是规定有纪律处分，而且规定有奖励，这也是七大修改党章的特点之一。凡在工作中表现自己是完全忠于党与人民的事业，是遵守党和革命政府纪律的模范，在实现党的纲领、政策和中央及上级组织的决议中富于创造性，出色地完成党的任务，取得人民群众真诚拥护的党员与党组织，应给予奖励。同时，还规定凡不执行中央和上级组织的决议，及违犯党章、党纪者，各级党的组织，应当按照具体情况给予党纪处分。对党组织的处分，包括：指责；部分改组其领导机关；撤销其领导机关并指定其临时的领导机关；解散整个组织，并进行党员的重新登记。对党员个人的处分包括：劝告(分当面劝告和当众劝告两种)或警告；撤销工作；留党察看；开除党籍。并对进行党纪处理的具体程序作了规定。七大党章规定对党员进行奖励与处分的积极目的，是教育党员与人民群众，并教育受奖励与处分者本人。做这样的规定，既不是提倡党内的风头主义，也不是实行党内的惩办主义。对成绩优异的同志给予奖励，是为了建立党内的优良作风，确立党员的模范标准；对犯错误的同志给予批评或处分，是为着惩前毖后，治病救人。 <br/>
+          <br/>   
+          10.增加了“党的地下组织”和重新规定了党的监察机关 <br/>   
+          规定凡是党不能合法存在与活动的地区，应由中央根据党章通过特别的决议规定党的地下组织形式与工作方法。党章中规定的组织形式和工作方法不适用于党的地下组织的，中央都可以进行适当的变通。重新将“党的监察机关”作为一章，但同五大党章相比，这次对监察委员会的设立、组成和领导体制都作了较大的修改。规定党的中央委员会认为必要时，不仅要成立党的中央监察委员会，还要成立各地方党的监察委员会；各级监察委员会由同级党委全体会议选举产生；党的各级监察委员会，在同级党委指导下进行工作；各级党的监察委员会的任务与职权是决定或取消对党员的处分，受理党员的控诉。 <br/>
+          <br/>   
+          总的来说，七大党章是中国共产党第一部完全独立自主修改通过的党章，是一部具有鲜明的中国特色的民主革命时期最完备的党章，也是一部保证党能够领导中华民族和中国人民获得胜利和解放的党章。党的七大对党章的修改充分发扬了党内民主，刘少奇代表中央就修改党章问题，做讨论总结，并专题作《关于修改党章的报告》，这是以往任何一次修改党章所没有过的，充分地反映出当时党内民主的良好状况以及党中央对修改党章问题的高度重视。七大党章增加总纲部分，把总纲作为党的基本纲领、党章的前提和总则，这开创了中国共产党党章发展史上的一个先例，它既解决了《中国共产党第一个纲领》把党的纲领和条文混在一起的问题，也避免了党的二大以来历次党章存在的纯组织类型章程的局限性，同时在内容上也有很多开创性的比较科学的规定，这些都被后来的党章特别是党的十二大以来的党章继承和发扬。七大党章彻底摆脱了共产国际的影响和干扰，删除了六大党章中有关中国共产党与共产国际之间关系的全部条文，为我们党在后来的革命斗争实践中独立自主地处理党内外一切事务奠定了党规基础。七大党章既符合党的路线，又适合当时的客观实际，是我们党在民主革命阶段的根本性党规，成为当时党领导人民进行革命斗争的强大武器，为夺取抗日战争和全国革命的胜利，起到了非常重要的作用。它标志着中国共产党从政治上、思想上和组织上的完全成熟。 <br/>
+          <br/>   
+          七大党章的实施有力地推动和保证了党的建设沿着正确的轨道发展，为我们党执政后的自身建设提供了宝贵的理论指导和常规依据。党的七大党章不仅提出了彻底的新民主主义革命的纲领，而且提出了下一步社会主义革命的任务。党的七大党章关于党的组织原则、组织制度、党的纪律、党员的义务与权利，以及党的作风建设上的成熟，不仅保证了七大到八大期间党的政治任务的完成，而且为我们党执政后的自身建设提供了宝贵的理论指导和法规依据。党的七大以后，在七大党章确定的党的理论和指导思想以及各项组织建设的规定的指导下，党在组织工作上同在政治斗争上一样，是生气勃勃和蒸蒸日上的，党的组织工作，保证了党的政治任务的胜利完成。在从党的七大到八大的11年岁月中，我们党的组织力量迅速地壮大了，党同人民群众的联系大大地扩大和加强了，党内的生活日见活跃，党的队伍比历史上的任何时期更加团结一致，因而党的事业也就比历史上的任何时期得到更伟大的成就。因此，七大党章的历史作用是非常深远的。 <br/>
+          <br/>   
+          需要指出的是，七大党章也有不足之处，主要体现在两个方面：一方面是把党的最高权力集中于主席一人，规定中央委员会主席即为中央政治局主席与中央书记处主席，这意味着只要中央全会选举产生了党中央主席，中央政治局主席和中央书记处主席自然就由党中央主席兼任了。如此规定一身兼三任，这在当时特殊的战争环境下是必要的，但作为党内一项组织制度，是不利于坚持民主集中制和集体领导原则的，并对以后党内生活过分突出领袖个人作用产生了消极影响。另一方面对监察委员会的规定存在缺陷，尽管七大党章恢复了监察委员会并做了较详细的规定，但有一个致命的缺陷，就是不像《中国共产党第三次修正章程决案》那样规定党的监察委员会由同级党的全国代表大会选举产生，而是由同级党的委员会选举产生，并在其指导下工作。这不利于监察委员会对同级党委的监督。 <br/>
+          <br/></td>
+      </tr>
+      <tr class="part4_test_href">
+        <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26480717.htm" target="_blank">中国国情-中国网</a></td>
+      </tr>
+      <tr >
+        <td class="part4_null_row_space"></td>
+      </tr>
+    </tbody>
+    <tbody class="part4_历史意义 ">
+      <tr>
+        <td class="part4_tbody_head">党章的历史意义</td>
+      </tr>
+      <tr>
+        <td class= "part4_content">   七大党章（1945年）：第一部完全独立自主修改的党章，第一次将毛泽东思想确立为党的指导思想，第一次以条文形式明确规定党员的义务和权利。 <br/>   
+          1945年4月23日至6月11日，党的七大在延安隆重召开。七大党章首次增写总纲部分，阐明了党的性质、纲领、宗旨、作风、群众路线，从而使党章具备了完整的理论形态；第一次将毛泽东思想确立为党的指导思想写进党章，这是马克思主义中国化的第一次历史性飞跃；首次在党章中规定党员的权利和义务，各有四项；进一步完善了党的民主集中制，科学界定了民主集中制的内涵，即在民主的基础上的集中和在集中指导下的民主，提出了坚持民主集中制的“四个服从”。七大党章是民主革命时期最好、最完备的党章，具有里程碑意义。 <br/>
+          <br/></td>
+      </tr>
+      <tr class="part4_test_href">
+        <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26480734.htm" target="_blank">中国国情-中国网</a></td>
+      </tr>
+    <br/>
+    <br/>
+    <br/>
+    <tr>
+      <td class="part4_null_row_space"></td>
+    </tr>
+      </tbody>
+    
+  </table>
+</div>
+	
+	
+<div id="part5_question_answer_div">
+	<div id="question_answer_main_div">
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num1" disabled>
+				<label for="question_num1" class="question_content">1.七大党章中指明中国共产党的组织原则是？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">中国共产党是按民主的集中制组织起来的，是以自觉要履行的纪律联结起来的统一的战斗组织。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num2" disabled>
+				<label for="question_num2" class="question_content">2.七大党章中指明党的性质是什么？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">中国共产党，是中国工人阶级的先进的有组织的部队，是它的阶级组织的最高形式。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num3" disabled>
+				<label for="question_num3" class="question_content">3.七大党章中指明中国共产党的指针是什么？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">中国共产党，以马克思列宁主义的理论与中国革命的实践统一的思想－－－毛泽东思想，作为自己一切工作的指针，反对任何教条主义的或经验主义的偏向。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num4" disabled>
+				<label for="question_num4" class="question_content">4.七大党章中指明党对党员的要求是什么？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">中国共产党要求自己的每一个党员，积极地自我牺牲地进行工作，以实现党的纲领和党的一切决议，达到中国民族与中国人民的彻底解放。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num5" disabled>
+				<label for="question_num5" class="question_content">5.七大党章中指明入党资格包括哪些？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">凡承认本党纲领和党章、参加党的一个组织并在其中工作、服从党的决议、并缴纳党费者，均得为本党党员。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num6" disabled>
+				<label for="question_num6" class="question_content">6.七大党章中指明党员候补期的作用是什么？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">是使候补人接受初步的党的教育，并在工作中保证党的组织考察候补人的政治品质。</div>
+		</div>
+	</div>
+</div>
+	
+<div id="web_tail_part_div">
+	<div id="web_tail_part">
+		<div id="web_tail_logo"> <a href="#flexmenu"><img src="Image/picture/title_logo.png" id="web_tail_logo_img" alt="logo"></a> </div>
+		
+		<div id="web_tail_content_div">
+			<div id="director_name" class="web_tail_content">制作人员：   孙健   赵洒楠   秦语笑</div>
+			<div id="director_contact_method" class="web_tail_content">联系方式：   2281766692@qq.com</div>
+			<div id="friendly_href_div" class="web_tail_content">友情链接:   <a href="http://www.china.com.cn/">中国网</a>   <a href="http://www.12371.cn/">共产党员网</a>   <a href="http://www.people.com.cn/">人民网</a></div>
+		</div>
+		
+	</div>
+</div>
+		
+<input type="image" id="return_to_top_button" src="Image/picture/return_to_top.png" alt="top" onClick="return_to_top()">
+	
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+	var rising_sun_display_element = document.getElementById('rising_sun_display');
+        var myChart = echarts.init(rising_sun_display_element);
+var data = [
+//	{
+		//name:'七大党章',
+		//children:[
+			{
+				name:'总纲',
+				children:[
+					{
+						name:'党的性质',
+						value:99
+					},{
+						name:'指导思想',
+						value:136
+					},{
+						name:'现阶段的中国社会',
+						value:375
+					},{
+						name:'党的任务',
+						value:87
+					},{
+						name:'革命斗争',
+						children:[
+							{
+								name:'革命的特点',
+								value:286
+							},{
+								name:'党是革命的中坚',
+								value:100
+							},{
+								name:'保持队伍统一',
+								value:68
+							}
+						]
+					},{
+						name:'批评与自我批评',
+						value:116
+					},{
+						name:'全心全意为人民服务',
+						value:176
+					},{
+						name:'.民主集中制',
+						value:163
+					},{
+						name:'党员的自我牺牲',
+						value:61
+					}
+				]
+			},{
+				name:'章节',
+				children:[
+					{
+						name:'第一章 党员',
+						children:[
+							{
+								name:'入党资格',
+								value:51
+							},{
+								name:'党员义务',
+								value:210
+							},{
+								name:'党员权利',
+								value:108
+							},{
+								name:'党员的发展',
+								value:1024
+							},{
+								name:'退党及除名',
+								value:243
+							}
+						]
+					},{
+
+						name:'第二章 党的组织机构',
+						children:[
+							{
+								name:'.民主集中制.',
+								value:176
+							},{
+								name:'组织的建立原则',
+								value:118
+							},{
+								name:'组织系统',
+								value:375
+							},{
+								name:'党的选举',
+								value:137
+							},{
+								name:'党的政策决议',
+								value:321
+							},{
+								name:'民主原则',
+								value:443
+							},{
+								name:'组织的成立',
+								value:261
+							}
+						]
+					},{
+						name:'第三章 党的中央组织',
+						children:[
+							{
+								name:'党的全国代表大会',
+								value:251
+							},{
+								name:'党的中央委员会',
+								value:431
+							},{
+								name:'党的全国代表会议',
+								value:289
+							}
+						]
+					},{
+						name:'第四章 党的省及边区之组织',
+						children:[
+							{
+								name:'代表大会',
+								value:280
+							},{
+								name:'党委',
+								value:180
+							},{
+								name:'党委与代表会议关系',
+								value:185
+							}
+						]
+					},{
+						name:'第五章 党的地方、县、市及区之组织',
+						value:281
+					},{
+						name:'第六章 党的基础组织',
+						children:[
+							{
+								name:'支部的成立',
+								value:348
+							},{
+								name:'支部任务',
+								value:182
+							},{
+								name:'支部委员会选举',
+								value:151
+							}
+						]
+					},{
+						name:'第七章 党的地下组织',
+						value:147
+					},{
+						name:'第八章 监督机关',
+						value:176
+					},{
+						name:'第九章 党外组织中的党组',
+						value:216
+					},{
+						name:'第十章 奖励与处分',
+						children:[
+							{
+								name:'奖励',
+								value:108
+							},{
+								name:'处分',
+								value:415
+							},{
+								name:'奖励与处分目的',
+								value:139
+							}
+						]
+					},{
+						name:'第十一章 经费',
+						value:89
+					}
+				]
+			}
+//		]
+//	}
+];	
+	
+
+	
+option = {
+	series: {
+        type: 'sunburst',
+        highlightPolicy: 'ancestor',
+        data: data,
+		width: rising_sun_display_element.style.width,
+		height: rising_sun_display_element.style.height,
+        radius: [0, '95%'],
+        sort: null,
+		label: part2_rising_sun_chart_label,
+        levels: part2_rising_sun_chart_levels
+    },
+	tooltip: {
+		formatter: function(params){
+			return params.name;
+		}
+    }
+};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script> 
+<script >
+	var wordcloud_chart = echarts.init(document.getElementById('wordcloud_main_part'));
+	var wordcloud_chart_width = $("#wordcloud_background_img").width;
+	var wordcloud_chart_height = $("#wordcloud_background_img").height;
+
+	var wordcloud_data = {
+		value: [{
+			"name": "党员",
+			"value": 80
+		}, {
+			"name": "组织",
+			"value": 61
+		}, {
+			"name": "监督",
+			"value": 18
+		}, {
+			"name": "纪律",
+			"value": 12
+		}, {
+			"name": "党组",
+			"value": 18
+		}, {
+			"name": "经费",
+			"value": 7
+		}, {
+			"name": "群众",
+			"value": 49
+		}, {
+			"name": "革命",
+			"value": 55
+		}, {
+			"name": "斗争",
+			"value": 18
+		}, {
+			"name": "选举",
+			"value": 30
+		}, {
+			"name": "奖励与处分",
+			"value": 16
+		}, {
+			"name": "毛泽东思想",
+			"value": 17
+		}, {
+			"name": "民主集中制",
+			"value": 15
+		}, ],
+	};
+	for (var i = 0; i < 1000; ++i) {
+		wordcloud_data.value.push({
+			"name": ".",
+			"value": 1
+		});
+	}
+
+	var maskImage = new Image();
+	maskImage.src = img_data;
+	maskImage.onload = function () {
+		wordcloud_chart.setOption({
+			backgroundColor: '',
+			tooltip: {
+				show: false
+			},
+			series: [{
+				type: 'wordCloud',
+				gridSize: 8,
+				sizeRange: part1_wordcloud_sizerange,
+				rotationRange: part1_wordcloud_rotationrange,
+				maskImage: maskImage,
+				width: wordcloud_chart_width,
+				height: wordcloud_chart_height,
+				textStyle: {
+					normal: {
+						color: function (v) {
+							return part1_wordcloud_get_color(v);
+						},
+						fontFamily: "字魂47号"
+					}
+				},
+				left: 'center',
+				top: 'center',
+				right: null,
+				bottom: null,
+				data: wordcloud_data.value
+			}]
+		});
+	};
+
+</script> 
+<script>
+	var txt_data = "中国共产党，是中国工人阶级的先进的有组织的部队，是它的阶级组织的最高形式。中国共产党代表中国民族与中国人民的利益。它在现阶段为实现中国的新民主主义制度而奋斗，它的最终目的，是在中国实现共产主义制度。中国共产党，以马克思列宁主义的理论与中国革命的实践统一的思想－－－毛泽东思想，作为自己一切工作的指针，反对任何教条主义的或经验主义的偏向。中国共产党以马克思主义的辩证唯物主义与历史唯物主义为基础，批判地接收中国的与外国的历史遗产，反对任何唯心主义的或机械唯物主义的世界观。由于中国现时的社会，除了新民主主义的解放区外，还是一个半殖民地、半封建性质的社会，由于现时中国革命的动力是工人阶级、农民阶级、小资产阶级及其他民主分子，由于中国共产党的强大存在，并由于现时的国际条件，便规定了中国革命在目前阶段是新式资产阶级民主主义性质的革命，即无产阶级领导的人民大众的反帝反封建的新民主主义的革命。这个革命有国内外广泛的同盟军。因此，中国共产党在目前阶段的任务是：对内，组织与团结中国的工人、农民、小资产阶级、知识界和一切反帝反封建人们以及国内各少数民族同自己一道，对外，联合全世界无产阶级、被压迫人民及一切以平等待我之民族，为解除外国帝国主义对于中国民族的侵略，为肃清本国封建主义对于中国人民大众的压迫，为建立独立、自由、民主、统一与富强的各革命阶级联盟与各民族自由联合的新民主主义联邦共和国而奋斗，为实现世界的和平与进步而奋斗。在将来阶段，在中国民族革命与民主革命得到彻底胜利后，中国共产党的任务是：根据中国社会经济发展的需要与中国人民的意愿，经过必要步骤，为在中国实现社会主义与共产主义的制度而奋斗。半殖民地、半封建的中国，又是一个土地广大人口众多并且还不统一的国家，一方面，人民大众特别是工人、农民群众有英勇斗争的革命传统；另一方面，革命道路上的阻力特别强大，这就规定了中国革命的不平衡性，并由此产生了革命的长期性，革命斗争的复杂性，武装斗争在极长时期内成为中国革命的主要形式，革命在主要城市胜利以前强固的农村革命根据地之重要性，党在一切人民群众中进行长期忍耐工作的必要性 。因此，中国共产党必须是十分勇敢，十分有经验，十分机敏，在中国革命的长远道路上，根据中国革命的这些特点，放手动员与组织千百万群众，战胜一切阻难，绕过一切暗礁，以奔赴自己的目标，并不断锻炼自己的队伍。中国共产党在革命斗争中，必须努力使自己成为一切革命的群众组织及革命的国家组织之中坚。中国共产党对于从内部或外部来破坏工人阶级统一、破坏各革命阶段联盟以及破坏其他革命事业的一切活动，必须进行严正的斗争。中国共产党必须用不调和的但是适当的斗争对待内部的机会主义者、投降主义者、冒险主义者，并将其中坚持错误的人清除出党，以保持自己队伍的统一。中国共产党应该不掩盖自己工作中的错误与缺点。中国共产党应该用批评和自我批评的方法，经常检讨自己工作中的错误与缺点，来教育自己的党员和干部，并及时纠正自己的错误。中国共产党反对那种自高自大、害怕承认自己错误、害怕批评与自我批评的情绪。中国共产党人必须具有全心全意为中国人民服务的精神，必须与工人群众、农民群众及其他革命人民建立广泛的联系。并经常注意巩固与扩大这种联系。每一个党员都必须理解党的利益与人民利益的一致性，对党负责与对人民负责的一致性。每一个党员都必须用心倾听人民群众的呼声和了解他们的需要，并帮助他们组织起来，为实现他们的需要而斗争。每一个党员都必须决心向人民群众学习，同时以革命精神不疲倦地去教育人民群众，启发与提高人民群众的党悟。中国共产党必须经常警戒自己脱离人民群众的危险性，必须经常注意防止和清洗自己内部的尾巴主义、命令主义、官僚主义与军阀主义等脱离群众的错误倾向。中国共产党是按民主的集中制组织起来的，是以自觉要履行的纪律联结起来的统一的战斗组织。中国共产党的力量，在于自己的坚强团结、意志统一、行动一致。在党内不容许有离开党的纲领和党章的行为，不能容许有破坏党纪、向党闹独立性、小组活动及阳奉阴违的两面行为。中国共产党必须经常注意清除自己队伍中破坏党的纲领和党章、党纪而不能改正的人出党。中国共产党要求自己的每一个党员，积极地自我牺牲地进行工作，以实现党的纲领和党的一切决议，达到中国民族与中国人民的彻底解放。第一条 凡承认本党纲领和党章、参加党的一个组织并在其中工作、服从党的决议、并缴纳党费者，均得为本党党员。第二条 凡党员均有下列义务：（一）努力地提高自己的觉悟程度和领会马克思列宁主义、毛泽东思想的基础。（二）严格地遵守党纪，积极参加党内的政治生活和国内的革命运动，实际执行党的政策和党的组织的决议，和党内党外一切损害党的利益的现象进行斗争。（三）为人民群众服务，巩固党与人民群众的联系，了解并及时反映人民群众的需要，向人民群众解释党的政策。（四）模范地遵守革命政府和革命组织的纪律，精通自己的业务，在各种革命事业中起模范作用。第三条 凡党员均有下列权利：（一）在党的会议或党的刊物上，参加关于党的政策的实施问题之自由的切实的讨论。（二）党内的选举权和被选举权。（三）向党的任何机关直至中央提出建议和声明。（四）在党的会议上批评党的任何工作人员。第四条 年满十八岁者，方得被接收为党员。凡新党员入党，均须依照下列规定，个别地履行入党手续，方能认为有效：（甲）工人、苦力、雇农、贫农、城市贫民、革命士兵入党，须有正式党员二人介绍，经过党的支部大会的决定，经过区委或相当于区委之党委的批准，并须经过六个月的候补期，方能转为正式党员。（乙）中农、职员、知识分子、自由职业者入党，须有正式党员二人介绍，其中须有一人为一年以上党龄之党员，经过党的支部大会的决定，经过区委或相当于区委之党委的批准，并须经过一年的候补期，方能转为正式党员。甲乙两项所规定之介绍人的资格及新党员的候补期，在革命新发展地区，得由党的中共中央代表机关或省委区党委规定临时办法变通办理之。（丙）除甲乙两项所举各种成分以外之其他社会成分的人入党，须有正式党员二人介绍，其中须有一人为三年以上党龄之党员，经过党的支部大会的决定，经过县委、市委或相当于县委之党委的批准，并须经过二年的候补期，方能转为正式党员。（丁）凡脱离其他政党加入本党者，如系其他政党之普通党员，须有正式党员二人介绍，其中须有一人为三年以上党龄之党员，经过党的支部大会的决定，经过县委或相当于县委之党委的批准，如系其他政党之负责人员，须有正式党员二人介绍，其中须有一人为五年以上党龄之党员，经过党的支部大会的决定，经过省委或相当于省委之党委的批准（如系其他政党之重要负责人员，则须经中央批准）；以上均须经过二年的候补期，方能转为正式党员。第五条 在特殊情形下，县委以上之党委及相当于县委之党委，有权直接决定个别地接收新党员。第六条 介绍人对被介绍人的思想、品质、经历，须真实地向党作负责的介绍，并须在介绍前，向被介绍人说明党章及党的纲领与政策。党委在决定和批准新党员入党前，须指定党的工作人员与之进行详细的谈话，并须经过负责的审查。第七条 候补党员候补期的作用，是使候补人接受初步的党的教育，并在工作中保证党的组织考察候补人的政治品质。候补党员的义务和权利，除无选举权、被选举权与表决权外，与正式党员同。第八条 候补党员候补期满，转为正式党员时，须经支部大会的决定，及原批准入党之上级党委或相当的上级党委的批准。候补党员的候补期限，所属党委得决定延长或缩短之。候补党员经过候补期间考察后，被认为不能入党者，得取消其候补党员的资格。第九条 党员的党龄，由候补党员决定转为正式党员之日算起。第十条 党员及候补党员由这一个组织移到另一个组织的工作地区时，即作为后一个组织的党员或候补党员。第十一条 党员及候补党员请求脱党者，须向党的支部正式申请，由支部大会通过除名，并报告上级党委备案。第十二条 凡党员及候补党员，没有正当理由，在六个月内不参加党的生活，不进行党所分配的工作，又不缴纳党费者，即认为自行脱党，由党的支部大会通过除名，并报告上级党委批准。第十三条 开除党员或候补党员的党籍，须经该党员或候补党员所属之支部党员大会的讨论和决定，并须经上级党委的批准，方能认为有效。支部以之各级党委，在特殊情况下，均得决定开除党员及候补党员的党籍，但均须经上级党委之批准，方能认为有效。第十四条 党的组织机构，是按照民主的集中制建设起来的。民主的集中制，即是在民主基础上的集中和在集中领导下的民主；其基本条件如下：（一）党的各级领导机关由选举制产生。（二）党的各级领导机关向选举自己的党的组织作定期的工作报告。（三）党员个人服从所属党的组织，少数服从多数，下级组织服从上级组织，部分组织统一服从中央。（四）严格地遵守党纪和无条件地执行决议。第十五条 党的组织，是按照区或按照生产部门为标准建设起来的。在某一个地区内，管理全区党的工作的组织，对于该地区内各个部分党的组织来说，是上级机关。在某一个生产部门内，管理全部门党的工作的组织，对于该部门的各个部分党的组织来说，是上级机关。第十六条 党的组织系统如下：（一）在全中国，是党的全国代表大会，中央委员会，全国代表合议。（二）在省、边区、地方 ，是党的省代表大会，边区代表大会，地方代表大会，省委员会，边区委员会，地方委员会，省代表会议，边区代表会议，地方代表会议。（三）在县，是党的县代表大会，县委员会，县代表会议。（四）在城市，是党的市代表大会，市委员会，市代表会议。（五）在城市中或乡村中的区，是党的区代表大会（或区全体党员大会），区委员会，区代表会议。（六）在每一工厂、矿山、农村、企业、街道、连队、机关和学校，是全体党员大会，支部委员会，支部代表会议。第十七条 各级党的组织之最高领导机关，在支部－－－是全体党员大会，在区、县、市、地方、边区、省－－－是代表大会，在全党－－－是全国代表大会。在各级大会闭会时期由各级大会所选出之党的各级委员会，即为各级党的组织之最高领导机关。第十八条 党的各级领导机关，凡能进行选举的地方，均须由选举产生之。仅由于环境或条件的限制，不能召开党员大会或代表大会选举时，方得召集代表会议选举之，或由上级组织指定之。第十九条 选举党的各级委员会，须按候选人名单进行无记铭投票或表决，并保障选举人有批评与调换每一个候选人的权利。第二十条 各级党的组织，为了传达与讨论上级组织的重要决定及为了检查工作与布置工作，得召集各种干部会议及活动分子会议。第二十一条 党的政策及各种问题，在未经决定以前，每个党员在党的组织内及党的会议上，均可自由地切实地进行讨论，发表自己的意见。但一经决议以后，即须服从，并须无条件地执行。第二十二条 党的各级领导机关，必须遵照党内民主的原则进行工作，才能发扬党员的革命积极性、创造性与巩固党的纪律，并使这种纪律成为自觉的而不是机械的纪律，才能使领导机关的领导工作臻于正确，才能建立与巩固在民主基础上的集中制。但是党的各级领导机关遵照党内民主原则进行工作时，不能妨害党内的集中原则，不能使正当的有利于集中行动的党内民主被误解为无政府倾向（向党闹独立性和极端民主化）。第二十三条 为了保证党内民主是按照有利于党的事业的方向进行，而不致在紧急情况下松懈党内的战斗意志和与战斗团结，不被可能的暗害分子、反党分子及企图进行小组织活动的人们利用党内民主来进行损害党、分裂党的活动，以及不致被极少数人利用党内极大多数人思想上一时没有准备的状态来达到自己的企图起见，凡关于全国范围或地方范围内的党的政策问题之全般的广泛的检讨与辩论，必须具备下列条件：（一）在时间上允许，即在客观情况不紧急的条件下；并（二）有党中央或党的地方领导机关的决议；或（三）有过半数之下级组织的提议，或有上级组织的提议。第二十四条 各级党的组织，必须保证在自己指导下的报纸，宣传中央机关和上级组织的决议与所定的政策。第二十五条 凡关于全国性质的问题，在中央没有发表意见和决定以前，各部分和各地方党的组织及党的负责人，除自行讨论及向中央建议外，均不得自由发布意见和决定。凡关于地方性质的问题，党的地方组织有自主决定之权；但不得和中央及上级的决定相抵触。第二十六条 凡新成立之党的组织，须经所属之上级机关批准。第二十七条 为便于指导各地方党的工作，中央委员会按情况之需要，在数省或几个边区范围内，得成立中央局与中央分局。中央局与中央分局为中央代表机关，由中央指定，并对中央负责。此种中央代表机关，在情况不需要时，得撤销或合并之。第二十八条 为分别进行各项实际工作起见，在党的各级委员会内，按照工作需要，得设立管理党务的、宣传教育的、军事的、经济的、民众运动的各种部门或委员会，在各级党委统一领导下分别进行各项工作。为进行某项临时的、特殊的工作，各级党委得设立临时的工作委员会或部门。第二十九条 党的全国代表大会，由中央委员会决定并召集之。在通常情况下，每三年召集一次。在特殊情况下，由中央委员会决定延期或提前召集。如有代表半数党员以上之党的地方组织要求召集全国代表大会时，中央委员会必须召集之。党的全国代表大会，必须有代表过半数的党员之代表出席时，方能认为有效。出席全国代表大会之代表数额及选举方法，由中央决定之。第三十条 党的全国代表大会的职权是：（一）听取、讨论和批准中央委员会及中央其他机关的报告。（二）决定和修改党的纲领与党章。（三）决定党的基本方针和政策。（四）选举中央委员会。第三十一条 党的中央委员会的员额，由全国代表大会决定，选举之。中央委员出缺，由候补中央委员依次递补之。第三十二条 中央委员会代表本党与其他政党和团体发生关系，建立党的各种机关并指导其活动，分配党的人力和财力。第三十三条 中央委员会全体会议，由中央政治局每半年召集一次 ，但中央政治局得按情况延期或提前召集之。候补中央委员出席全会，有发言权。第三十四条 由中央委员会全体会议选举中央政治局与中央书记处，并选举中央委员会主席一人。中央政治局，在中央委员会前后两届全体会议期间，党的中央指导机关，指导党的一切工作。中央书记处在中央政治局决议之下处理中央日常工作。中央委员会主席即为中央政治局主席与中央书记处席。中央委员会依工作需要，设组织、宣传等部与军事、党报等委员会及其他工作机关，分别办理中央各项工作，受中央政治局、中央书记处及中央主席之指导监督。第三十五条 在前后两届全国代表大会期间，中央委员会得召集各地方党委代表举行党的全国代表会议若干次，讨论并决定当前的党的政策问题。第三十六条 党的全国代表会议的代表，由各省委、边区党委及中央直属之其他各党委的全体委员会议上选举上。代表数额，由中央规定。党的全国代表会议，须有全国半数以上的省委及边区党委的代表出席。第三十七条 党的全国代表会议，有权撤换个别不能履行自己责任的中央委员及候补中央委员，并有权补选部分候补中央委员。但每次撤换之中央委员及候补中央委员或补选之候补中央委员的数额，均不得超过中央委员及候补中央委员总数的五分之一。第三十八条 党的全国代表会议所通过的决议及撤换与补选之中央委员及候补中央委员，须经中央委员会批准后，方能发生效力。经中央委员会批准之全国代表会议的决议，一切党的组织，都必须执行。第三十九条 党的省或边区代表大会，省委或边区党委，均受中央或中央代表机关之领导。第四十条 省或边区代表大会，由省委或边区党委每二年召集一次。在特殊情况下，省委或边区党委，得延期或提前召集。如有该省或该边区半数以上的下级组织之要求，或有中央、中央代表机关的提议，省委或边区党委必须召集之。出席省或边区代表大会之代表数额及选举方法，由省委或边区党委决定，中央或中央代表机关批准。第四十一条 省或边区代表大会，听取、讨论和批准省委或边区党委的报告及省或边区其他机关的报告，讨论和决定本省或本边区的各种问题与各种工作，选举党的省委员会或边区委员会以及出席全国代表大会之代表。第四十二条 由省委或边区党委之全体会议，选举省委或边区党委的常务委员会及正副书记，进行经常工作。省委或边区党委的书记和党委，须经中央批准。书记须有五年以上党龄的党员充任。省委或边区党委之全体会议，每年至少召开二次。第四十三条 省委或边区党委，在本省戒边区范围内，执行代表大会及中央机关的决议，建立党的各种机关，分配党的人力和财力，指导党外各种非党组织中党组的工作。第四十四条 在前后两届省或边区代表大会期间，省委或边区党委得召集各地委、县委及其他直属党委的代表，举行省或边区代表会议若干次，讨论并决定该省或该边区范围内当前的各种工作问题。省或边区代表会议，有撤换与补选部分省委或边区党委委员之权；但其数额均不得超过该委员会总数的四分之一。第四十五条 省或边区代表会议所通过的决议及撤换与补选之委员，须经省或边区委员会批准后，方能发生效力。第四十六条 党之在一个地方、一个县、一个城市、一个区的组织和工作规则，相同于前章党之在一个省或一个边区的组织和工作规则；各属于各该上级组织之领导。第四十七条 党的地方、县、市及区代表大会，每二年召集一次。在两届代表大会之间，均得召集代表会议若干次。第四十八条 地委、县委之全体会议，至少每年召开四次。市委、区委之全体会议，至少每一个月召开一次。地委、县委、市委、区委之委员及正副书记，均须经各该上级组织之批准。地委、县委、市委书记须有三年以上党龄之党员充任。区委书记，须有一年以上党龄之党员充任。在革命新发展地区，此项党龄规定得变通办理，但须得到省委或边区党委之批准。第四十九条 党的基础组织，是党的支部。在每一个工厂、矿山、农村、企业、街道、连队、机关、学校，等等之内，凡有党员三人以上者，即成立党的支部组织。党员不到三人者，则加入邻近之党的支部组级。党的支部组织，须经县委或市委之批准。第五十条 凡在党员数量比较多的处所，在党的支部委之下，得按自然的、居住的或工作的情况，划分小组。选举组长一人，必要时冉选举副组长一人。凡有党员和候补党员超过五十人之乡村，或超过一百人厂、机关和学校，得成立党的总支部。在总支部下，按居住、车间、部门和班次，成立分支部。分支部享有普通支权利。第五十一条 凡有党员及候补党员超过五百人以上之大乡镇、大工厂、机关和学校，得省委或边区党委之允许，得选举党的乡镇、工厂、机关、学校委员会。在委员会之下，按居住、车间、部门和班次，成立党的支部。第五十二条 支部必须使人民群众与党密切结合起来。支部的任务是：（一）在人民群众中进行宣传和组织工作，以实现党的主张和上级组织的各种决议。（二）经常注意并向上级机关反映人民群众的情绪和要求，关心人民群众之政治的、经济的、文化的生活。并组织人民群众来解决他们自己的各种问题。（三）吸收新党员，征收党费，审查与鉴定党员，对党员执行党的纪律。（四）教育党员，组织党员的学习。第五十三条 由支部全体党员大会选举支部委员会，进行经常工作。任期半年至一年。支部委员会人数之多少。由支部之大小来决定，最少者三人，最多者十一人。由委员会选举书记一人，必要时得再选举副书记一人。其他委员的分工，由委员会按照实际需要决定之。在七个党员以下的支部，只选举支部书记一人或正副书记各一人，不设支委。第五十四条 凡本党不能合法存在与活动的地区之党的地下组织形式与工作方法，由中央根据党章通过特别的决议规定之。本党章各条所规定之党的组织形式与工作方法，凡不适用于党的地下组织者，均得变通办理之。第五十五条 党的地下组织，在接收党员时，须经更慎重的考察。新党员入党时，只履行在秘密环境下所能允许的手续。第五十六条 党的中央委员会认 为必要时，得成立党的中央监察委员会及各地方党的监察委员会。第五十七条 中央监督委员会，由中央全体会议选举之。各地方党的监察委员会，由各该地方党委全体会议选举，并由上级组织批准之。第五十八条 中央及地方监察委员会的任务与职权，是决定或取消对党员的处分，受理党员的控诉。第五十九条 党的各级监察委员会，在各该级党的委员会指导下进行工作。第六十条 在政府、工会、农会、合作社及其他群众组织的领导机关中，凡有担任负责工作的党员三人以上者，即成立党组。党组的任务，是在各该组织的领导机关中指导党员为加强党的影响，实现党的政策而工作。第六十一条 党组设书记一人，党员人数超过十人之党组，设党组干事会，担负经常工作。党组干事会及书记，由所属党委指定之。第六十二条 各级非党组织中之党组，服从各该级党的委员会之领导，员会之领导，并执行其决议。各级党委的会议，得吸收重要党组的负责人参加。第十章 奖励与处分第六十三条 凡在工作中，表现自己是完全忠于党与人民的事业，是遵守党和革命政府纪律的模范，在实现党的纲领、党的政策和中央及上级组织的决议中富于创造性，出色地完成党的任务，取得人民群众真诚拥护的党员与党的组织，得给予奖励。第六十四条 凡不执行中央和上级组织的决议，及违犯党章、党纪者，各级党的组织，按照具体情况，得以下列方法给予处分：（一）对于整个组织的处分是：指责；部分改组其领导机关；撤消其领导机关并指定其临时的领导机关；解散整个组织，并进行党员的重新登记。（二）对于党员个人的处分是：当面的劝告或警告；当众的劝告或警告上撤消工作；留党察看；开除党籍。第六十五条 党的中央委员或候补中央委员，如有严重地破坏党纪的行为，中央委员会有权开除其中央委员或候补中央委员直至开除其党籍，但须有三分之二以上的中央委员之赞成，方能认为有效。第六十六条 对党的组织及党员个人给予处分，须将处分的理由通知被处分者。凡被处分后不服者，均可进行辩护，并可要求复议及向上级机关申诉。各级党委对于任何党员的申诉书，须迅速转递，不得扣压。第六十七条 开除党籍，是党内的最高处分。各级党的组织，在决定和批准关于党员党籍问题时，应保持高度的慎重，仔细听取本人的申诉和分析其犯错误时的情况。第六十八条 党对党员一切奖励与处分的积极目的，是教育党员与人民群众，并教育受奖励者与受处分者本人；既不是提倡党内的风头主义，也不是实行党内的惩办主义。党对成绩优异的同志给予奖励，是为着建立党内的优良作风，确立党员的模范标准；党对犯错误同志给予批评或处分，是为着惩前毖后，治病救人。第六十九条 党的经费，由党员缴纳的党费、党所经营的各种生产和企业的收入与党外捐助等方法筹集之。第七十条 各地党员及候补党员应缴党费数额，由各省委、边区党委或其他相当的党委规定实行之。";
+	var sentences = txt_data.split("。");
+	delete txt_data;
+	var sentences_length = sentences.length;
+
+	var x_center = document.getElementById("box_text").offsetWidth / 2;
+	var y_center = document.getElementById("box_text").offsetHeight / 2;
+	var radius = document.getElementById("box_text").offsetHeight * 0.4;
+	var angle = 360 / sentences_length;
+	var text_box_height = 4 * radius / sentences_length;
+	var present_angle = -90;
+
+	var txt_box_element = document.getElementById("box_text");
+	for (var i = 0; i < sentences_length; ++i) {
+		var pre_sentence = sentences[i];
+		var pre_sentence_element = document.createElement("div");
+		txt_box_element.appendChild(pre_sentence_element);
+		set_element_basic_style(pre_sentence_element);
+		set_element_location_style(pre_sentence_element);
+	}
+	
+	delete sentences;
+
+
+	/*--------------------------------------------------词云-------------------------------*/
+
+	var part3_wordcloud_data_name = ['边区', '党委', '革命', '支部', '人民', '群众', '省委', '中央委员会', '民主', '党组', '全国代表大会', '党章', '统一', '党的政策', '中央政治局', '党纪', '民族', '党的纲领', '教育', '党员大会', '纪律', '监察', '奖励', '自由', '斗争', '中央书记处', '新民主主义', '制度', '地下组织', '资产阶级', '模范', '管理', '监督', '宣传', '团结', '地方党委', '军事', '干事会', '服务', '战斗', '群众组织', '自我批评', '民主集中制', '毛泽东思想', '马克思列宁主义'];
+	var part3_wordcloud_data_value = [41, 37, 31, 26, 26, 21, 21, 20, 13, 10, 10, 9, 9, 8, 7, 6, 6, 6, 6, 6, 5, 5, 5, 5, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2];
+
+
+	var part3_wordcloud_data = [];
+	for (var i = 0; i < part3_wordcloud_data_value.length; ++i) {
+		part3_wordcloud_data.push({
+			name: part3_wordcloud_data_name[i],
+			value: part3_wordcloud_data_value[i]
+		});
+	}
+
+	var part3_wordcloud_width = $("#box_wordcloud").width;
+	var part3_wordcloud_height = $("#box_wordcloud").height;
+	var textarc_chart = echarts.init(document.getElementById('box_wordcloud'));
+	var option = {
+		backgroundColor: 'rgba(255, 255, 255, 0)',
+		series: [{
+			type: 'wordCloud',
+			gridSize: part3_wordcloud_gridsize,
+			sizeRange: part3_wordcloud_sizerange,
+			rotationRange: part3_wordcloud_rotationrange,
+			shape: 'circle',
+			width: part3_wordcloud_width,
+			height: part3_wordcloud_height,
+			textStyle: {
+				normal: {
+					color: function (v) {
+						return part3_wordcloud_get_color(v);
+					},
+					fontFamily: "字魂47号"
+				},
+				emphasis: {
+					shadowBlur: 10,
+					shadowColor: 'red'
+				}
+			},
+			data: part3_wordcloud_data
+		}]
+	};
+	textarc_chart.setOption(option);
+
+
+	</script> 
+<script>
+	var tree_chart_element = document.getElementById('tree_chart_div');
+	var tree_chart = echarts.init(tree_chart_element);
+	var data = [{
+		name: '七大党章',
+		children: [{
+			name: '历史背景',
+		}, {
+			name: '特点',
+		}, {
+			name: '历史意义',
+		}]
+	}];
+
+	tree_chart.hideLoading();
+	var tree_chart_option = {
+		tooltip: {
+			trigger: 'item',
+			triggerOn: 'mousemove'
+		},
+		series: [{
+			type: 'tree',
+
+			data: data,
+			width: tree_chart_element.style.width,
+			height: tree_chart_element.style.height,
+			top: '10%',
+			left: '20%',
+			bottom: '10%',
+			right: '40%',
+
+			symbolSize: 20,
+
+			label: {
+				position: 'left',
+				verticalAlign: 'middle',
+				align: 'right',
+				fontSize: 20,
+				fontFamily: "字魂47号",
+				fontWeight: "bold"
+			},
+
+			leaves: {
+				label: {
+					position: 'right',
+					verticalAlign: 'middle',
+					align: 'left',
+					fontFamily: "字魂47号",
+					fontWeight: "bold"
+				}
+			},
+
+			emphasis: {
+				focus: 'descendant'
+			},
+
+			expandAndCollapse: true,
+			animationDuration: 550,
+			animationDurationUpdate: 750
+		}]
+	}
+	tree_chart.setOption(tree_chart_option);
+	document.getElementById("part4_div_part").style.display = "none";
+	
+	
+
+</script> 
+<script src="JavaScript/dangzhang_js.js"></script>
+<script src="JavaScript/aos/aos.js"></script>
+<script>
+	AOS.init({
+		easing: 'ease-out-back',
+		duration: 1000
+	});
+</script>
+	
+</body>
+</html>

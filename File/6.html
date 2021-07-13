@@ -1,0 +1,1175 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>六大党章</title>
+<link rel="stylesheet" href="CSS/dangzhang_css.css">
+<link rel="stylesheet" href="CSS/aos/aos.css">
+
+<script src="JavaScript/global_variable.js"></script>
+<script src="JavaScript/jquery_min.js"></script>
+
+<script src="JavaScript/echarts_min.js"></script>
+<script type="text/javascript" src="JavaScript/echarts-wordcloud.min.js"></script>
+<script type="text/javascript" src="JavaScript/jquery_highlight.js"></script>
+<script src="JavaScript/dangzhang_first.js"></script>
+<script src="JavaScript/dangzhang_js.js"></script>
+</head>
+
+
+	
+<body>
+<img id="a_bird" src="../Image/picture/bird.gif" alt="Not Found">
+	
+<div class="dangzhang_title_bar">
+  <nav id="flexmenu">
+    <div id="home_logo_div"> <a href="../main_html.html"><img src="Image/picture/title_logo.png" id="home_logo" alt="logo"></a> </div>
+	<div id="dangzhang_logo_div"> <a href="6.html"><img src="Image/picture/副标题/6.png" id="dangzhang_logo" alt="logo"></a> </div>
+    <div class="nav-inner">
+      <ul class="main-menu">
+        <li class="menu-item big_title_content"><a href="../main_html.html">主页</a> </li>
+        <li class="menu-item big_title_content"><a href="#">党章</a>
+          <ul class="sub-menu">
+			<li class="menu-item small_title_content"><a href="dangzhang_comparison.html">党章对比</a></li>
+            <li class="menu-item small_title_content"><a href="2.html">二大党章</a></li>
+            <li class="menu-item small_title_content"><a href="3.html">三大党章</a></li>
+            <li class="menu-item small_title_content"><a href="4.html">四大党章</a></li>
+            <li class="menu-item small_title_content"><a href="5.html">五大党章</a></li>
+            <li class="menu-item small_title_content"><a href="6.html">六大党章</a></li>
+            <li class="menu-item small_title_content"><a href="7.html">七大党章</a></li>
+            <li class="menu-item small_title_content"><a href="8.html">八大党章</a></li>
+            <li class="menu-item small_title_content"><a href="12.html">十二大党章</a></li>
+            <li class="menu-item small_title_content"><a href="13.html">十三大党章</a></li>
+            <li class="menu-item small_title_content"><a href="14.html">十四大党章</a></li>
+            <li class="menu-item small_title_content"><a href="15.html">十五大党章</a></li>
+            <li class="menu-item small_title_content"><a href="16.html">十六大党章</a></li>
+            <li class="menu-item small_title_content"><a href="17.html">十七大党章</a></li>
+            <li class="menu-item small_title_content"><a href="18.html">十八大党章</a></li>
+            <li class="menu-item small_title_content"><a href="19.html">十九大党章</a></li>
+          </ul>
+        </li>
+        <li class="menu-item big_title_content" id="keshihuazhanshi_button" onClick="show_display_method_chart()"><a href="#">可视化展示</a></li>
+        <li class="menu-item big_title_content" id="xiangguanneirong_button"><a href="#">相关内容</a>
+          <ul class="sub-menu relative_content_background">
+            <li class="menu-item small_title_content" onClick="show_tree_chart()"><a href="#">相关摘要</a></li>
+            <li class="menu-item small_title_content" onClick="show_question_answer_part()"><a href="#">党章问答</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+	
+<div id="conference_introduce_div" aos="fade-up">
+  <div id="conference_introduce_left_part_div"></div>
+  <div id="conference_introduce_content_div"> 
+    <div id="conference_introduce_content">1928年6月18日至7月11日，中国共产党第六次全国代表大会在莫斯科近郊兹维尼果罗德镇“银色别墅”秘密召开。出席大会的代表共142人，其中有表决权的正式代表为84人。1927年大革命失败后，中国共产党开始走上了独立领导中国革命的道路。在关于中国社会性质以及革命性质、对象、动力、前途等关系革命成败的重大问题上，迫切需要召开一次党的全国代表大会认真加以解决。但国内当时正处在极为严重的白色恐怖中，而且中共中央也迫切希望能够得到共产国际的及时指导，遂决定党的六大在莫斯科召开。
+    </div>
+  </div>
+</div>
+
+	
+	
+<div id="part_visual_display_div" aos="fade-up">
+  <div id="part_visual_display_chart_big_div_left_div"></div>
+  <div id="change_display_method_button_div">
+	<div id="display_change_button_left_part_div"></div>
+    
+    <div class="display_change_button_div">
+	  <input type="button" id="risingsun_button" class="display_change_button" value="旭日图" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="risingsun_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">以层级结构展现党章内容，点击某一扇块，下文显示对应内容，支持数据下钻和上卷。</div>
+	  </div>
+	</div>
+	<div class="display_change_button_div">
+	  <input type="button" id="wordcloud_button" class="display_change_button" value="词云" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="wordcloud_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">主要根据词频呈现党章的关键词，点击词语可在下文中看到对应内容。</div>
+		
+	  </div>
+	</div>
+	<div class="display_change_button_div" >
+	  <input type="button" id="textarc_button" class="display_change_button" value="文本弧" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="textarc_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">展现所选词在党章中对应位置，点击词语，下文显示包含该词的段落。</div>
+	  </div>
+	</div>
+  </div>
+  <div id="part_visual_display_chart_big_div">
+	  <div id="wordcloud_display" class="part_visual_display_chart_big_div_partdiv">
+		<div id="wordcloud_display_background_div" class="wordcloud_display_children_div"> 
+			<img src="Image/picture/background.png" id="wordcloud_background_img" class="wordcloud_display_children_div" alt="wrong">
+		</div>
+		<div id="wordcloud_main_part" class="wordcloud_display_children_div"></div>
+	  </div>
+	  <div id="rising_sun_display" class="part_visual_display_chart_big_div_partdiv"></div>
+	  
+	  <div id="big_box" class="part_visual_display_chart_big_div_partdiv">
+		<div id="box_text"></div>
+		<div id="box_wordcloud"></div>
+		<canvas id="box_canvas" width="500" height="500"></canvas >
+	  </div>
+  </div>
+  
+</div>
+	
+<div id="document_part" aos="fade-up">
+  
+  <div id="document_part_search_bar_part_div">
+	  <div id="search_input_div">
+		<input type="button" id="search_input_text_wordstatistics" value="">
+		<input type="text" id="search_input_text" value="" placeholder="搜索党章关键词">
+		<input type="button" id="search_input_button" value="搜索" onClick="start_search_all_content()">
+	  </div>
+  </div>
+	
+  <input type="button" value="显示全部内容" id="show_all_content_button" onClick="show_dangzhang_all_content()" >
+  <input type="button" value="返回主题河流" id="return_to_themeriver" onClick="click_return_to_themeriver()" >
+  <input type="button" value="返回气泡图" id="return_to_bubblechart" onClick="click_return_to_bubblechart()" >
+  <input type="button" value="返回词频统计" id="return_to_wordstatistics" onClick="click_return_to_wordstatistics()">
+   
+  <div id="document_content_div">
+    
+    <table id="zhengwen_table">
+      <tbody class="all_content all_types 章节 共产国际 第一章-名称 党员 开除党员 党员迁移 组织改变 入党手续及条件 入党资格 第二章-党员 党部机关 组织系统 批准问题 各级执委 各级党部的高级机关 各级机关执行权 党的地域划分 指定指导机关 民主集中制 组织原则：民主集中制 第三章-党的组织系统 组织 支部干事会 支部任务 支部特别组织 党支部 第四章-支部 区委 区代表会 第五章-城乡区的组织 各级委员会关系 县委员会 县代表大会 第六章-县或市的组织 省委员会 省代表大会 第七章-省之组织 第八章-党的全国会议 第九章-党的全国大会 第十章-中央委员会 第十一章-审查委员会 纪律的执行 纪律的重要性 第十二章-党的纪律 纪律 第十三章-党的财政 党费 问题的决议 职务人员的调动 党团干事会 其代表的发言权 党团的成立及其自由权 第十四章-党团 党团 第十五章-与共产青年团的互相关系 青年团 妇女运动 &监督 &纪律 &组织建设 &群众">
+        <tr>
+          <td class="table_title" colspan="2">章节</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 章节 第一章-名称 共产国际 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第一章 名称</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 共产国际 章节 第一章-名称 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第一条</td>
+          <td class="concrete_content"> 定名：中国共产党为共产国际之一部分，命名为：中国共产党，共产国际支部。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第二章-党员 开除党员 党员迁移 组织改变 入党手续及条件 入党资格 共产国际 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第二章 党员</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 共产国际 章节 第二章-党员 入党资格 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二条</td>
+          <td class="concrete_content"> 入党资格：凡承认共产国际和本党党纲及党章加入党的组织之一，在其中积极工作，服从共产国际和本党一切决议案，且经常缴纳党费者，均得为本党党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第二章-党员 入党手续及条件 ">
+        <tr>
+          <td class="entry_num" rowspan="6">第三条</td>
+          <td class="concrete_content">入党手续：新党员入党时，由党支部通过，并须经过市县委，或等于县委组织的区委之批准。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 入党的条件分下列数种：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （甲）工厂工人，须经党员一人之介绍，由生产支部通过。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （乙）农民手工业者，智识份子及各机关下级原务人员，须有党员二人之介绍。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （丙）各机关服务人员，须有党员三人之介绍。 附注：（1）介绍人应对被介绍者负责，如遇有介绍书不确实时，则应受党纪之制裁，以至于开除党籍。（2）在新党员未批准为正式党员时，各相当党部得委任该新党员以某种工作，借以考察其程度及其对于党之了解。（3）共产青年团团员入党时，由团委员会介绍，亦须经上项各相当之手续，由支部党员大会通过或上级党部之批准。（4）在某种特殊情形之下，党的各级委员会均有直接征收或通过新党员之权。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （丁）脱离其他政党（如国民党等）而加入本党者，须经有党籍一年以上之党员三人介绍。若从前为其他政党之普通党员者，则经省委之批准；若从前为其他政党之负责人员者，则须经中央之批准。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第二章-党员 组织改变 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四条</td>
+          <td class="concrete_content">组织改变：其他部分的政治组织或整个的政治集团，以及整个的党的组织加入或转入共产党时，必须经中央之决议。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第二章-党员 党员迁移 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五条</td>
+          <td class="concrete_content">党员迁移：党员由这一个组织迁至别一个组织的工作范围内（区域内）时，应转入其所在地之组织中去，作为这一个组织之一员。党员由这一组织转别一组织及由一国移至他国的一切手续，须按照中央颁布的规例。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第二章-党员 开除党员 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六条</td>
+          <td class="concrete_content">开除问题，开除党员须由该支部党员大会通过，须经党的上级委员会之批准，始发生效力。同时，在开除决议还未经上级机关批准以前，应即停止被开除者在党内一切工作。不服从开除的决议者，可以上诉至最高的党的机关。党的各级委员会在党员有反党行为时，有直接开除其党籍的权利，不过此开除的决议应通知被开除者所加入的下级党部的组织。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的组织系统 党部机关 组织系统 批准问题 各级执委 各级党部的高级机关 各级机关执行权 党的地域划分 指定指导机关 共产国际  民主集中制  组织原则：民主集中制 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第三章 党的组织系统</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 民主集中制 共产国际 章节 第三章-党的组织系统 组织原则：民主集中制 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="4">第七条</td>
+          <td class="concrete_content">组织原则：中国共产党与共产国际的其他支部一样，其组织原则为民主集中制。民主集中制的根本原则如下：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （1）下级党部与高级党部由党员大会、代表会议及全国大会选举之。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （2）各级党部对选举自己的党员，应作定期的报告。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （3）下级党部一定要承认上级党部的决议，严守党纪，迅速且切实的执行共产国际执行委员会和党的指导机关之决议。管辖某一区域的组织，对该区域的各部份的组织为上级机关。党员对党内某个问题，只有在相当机关对此问题的决议未通过以前可以举行争论。共产国际代表大会或本党代表大会或党内指导机关所提出的某种决议，应无条件的执行，即或某一部份的党员或几个地方组织不同意于该项决议时，亦应无条件的执行。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的组织系统 指定指导机关 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第八条</td>
+          <td class="concrete_content">指定指导机关：在秘密环境之下，于必要时党的下级机关得由上级机关指定，且经上级机关之批准，得指定新委员加入党部委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的组织系统 党的地域划分 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第九条</td>
+          <td class="concrete_content">党的地域区分：党以地域原则划分为单位，管辖某一区域的组织，对于该区域内各部分的组织，为上级机关。所有党员无民族与国界之分，都应加入中国共产党的地方党部的组织，成为中国共产党的党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 共产国际 章节 第三章-党的组织系统 各级机关执行权 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十条</td>
+          <td class="concrete_content">各级机关执行权：党的组织在共产国际和党的决议范围内，对于地方问题有自由处决权。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的组织系统 各级党部的高级机关 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十一条</td>
+          <td class="concrete_content">各级党部的高级机关：各级党部之高级机关为党员大会，代表会议或全体大会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的组织系统 各级执委 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十二条</td>
+          <td class="concrete_content">各级执委：党员大会，代表会议或全国大会选举其同级党部执行委员会，此执行委员会在前后两次大会期间内为指导机关，指导各级相当组织之一切经常工作。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的组织系统 批准问题 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十三条</td>
+          <td class="concrete_content">批准问题：一切新成立的党的组织（支部，县委等等），必须经过其隶属的上级机关的批准。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的组织系统 组织系统 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="8">第十四条</td>
+          <td class="concrete_content">本党组织系统如下：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （1）在每个工厂，作坊，商店，街道，乡村，小市镇，军队等中：支部党员大会--支部干事会。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （2）城区或乡区内：区党员大会或区代表会议--区委员会。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （3）县或市的范围内：县或市代表会议--县或市委员会。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （4）特别区（包括几县或省之一部分）：特别区代表会议--特别区委员会。特别区的组织如有必要时得由省委决议成立之。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （5）省：省代表大会--省委员会。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （6）全国：全国代表大会--中央委员会。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （7）为易于指导各党部工作起见，中央委员会得按情势之需要，在数省范围内成立中央执行局或中央特派员。中央执行局和中央特派员由中央委员会指定之，并只对中央委员会负责。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第三章-党的组织系统 党部机关 妇女运动 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第十五条</td>
+          <td class="concrete_content">党部机关：为处决党的各种特殊任务起见，各级党部委员会之下行成立各部或各委员会，如组织部，宣传部，职工运动委员会，妇女运动委员会等等。各部或各委员会隶属于党部委员会，受其指导而工作，并经过党委员会而实行自己的决议。党部委员会下各部之组织由中央决定之。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 附注：为在其他民族的工农分子中用其民族语言以便于工作起见，于当地的党委员会之下设立小〔少〕数民族工作部。此少数民族工作部应在当地党部指导和监督下工作。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-支部 支部干事会 支部任务 支部特别组织 党支部 &组织建设 &群众 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第四章 支部</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-支部 党支部 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十六条</td>
+          <td class="concrete_content">党的基本组织是党的支部（工厂，矿山，作坊，商店，街道，农村，军队等），所有在该地工作之党员应一律加入支部。如有党员三人之上的地方，得成立新的党的支部组织，但须由县委或等于县委组织的区委批准之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-支部 支部特别组织 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="3">第十七条</td>
+          <td class="concrete_content">支部特别组织：在有党员一人或二人工作的企业中，这些党员得并入与该企业最接近的生产支部，或与邻近之企业的党员共同组织支部。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 在任何企业中工作的党员，如手工业者，个别工人，家庭工作的工人，智识份子等等，按住处的地方为标准，组织街道支部。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 如在农村支部中有农村经济企业，如小的矿山或某种农业工人，得按生产关系组织支部。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-支部 支部任务 &组织建设 &群众 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十八条</td>
+          <td class="concrete_content">支部任务：支部为使与工农联系起来的组织。支部的任务：（1）用有计划的共产主义的鼓动和宣传，在无党的工农群众中实行党的口号与决议，使工农站到党方面来。（2）以党的组织的力量积极参加工农的一切的政治的经济的斗争，以革命的阶级斗争的观点讨论他们的要求，组织群众的革命行动，为取得工农的一切革命行动的领导而斗争，努力工作以吸收工农参加中国的与国际的无产阶级一般的革命斗争。（3）征收和教育新党员，散布党的出版品，在党员及无党工农中进行文化的和政治教育的工作。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第四章-支部 支部干事会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十九条</td>
+          <td class="concrete_content">支部干事会：以党员人数多寡为标准，支部选举三人或五人组织干事会以进行日常党务。该干事会进行支部的工作，分配支部中党员的工作，如宣传，分发印刷品，在工会及农民组织中进行党团工作，妇女工作，与支部发生联系等。支部干事会选举支部书记一人，执行党员大会或支部会议的决议及上级党部的指示。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-城乡区的组织 区委 区代表会 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第五章 城乡区的组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-城乡区的组织 区代表会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十条</td>
+          <td class="concrete_content">代表会：在城或乡的分区范围内，党的上级机关为全体党员大会或该城区中各支部之代表大会。城乡区的党员大会或代表大会，接受和批准区委之报告，并选举区委员会和出席县市委或特别区及省代表大会之代表。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第五章-城乡区的组织 区委 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十一条</td>
+          <td class="concrete_content">区委：城乡区委员会于前后全体党员大会或代表大会期间内指导各区范围内一切党务。城乡区委员会之常会应该秘密条例所许的范围内经常召集，每半月至少一次。区委员会前后会议期间内，工作由区委员会之常务委员会指导之，常务委员会由区委员会自身委员中选举之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-县或市的组织 各级委员会关系县委员会 县代表大会 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第六章 县或市的组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-县或市的组织 县代表大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十二条</td>
+          <td class="concrete_content">县市委〔县代表大会〕：一县范围内党的上级机关为县代表大会。县代表大会每三月召集一次。临时县代表大会，或经该县半数以上之组织的要求，或根据省委员会（或特别区委员会）的决议，由县委员会召集之。县代表大会接受县委员会和县审查委员会之报告，并选举县委员会及县审查委员会，以及选举出席特别区代表大会或省代表大会之代表。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-县或市的组织 县委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第二十三条</td>
+          <td class="concrete_content">县委：县委员会由县代表大会选举之，于前后县代表大会期间内，为该县党的最高机关。县委员会中除应有县城的代表加入外，该县乡区或各重要乡村党部的代表亦同样须加入。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 县委员会全体会议的时期，可由县委县会自己决定，但至少须每月开会一次。县委员会推举常务委员会以进行日常工作。县委员会选举县委书记一人以处理日常工作。县委之书记须得上级党部之批准。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-县或市的组织 县委员会 妇女运动 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十四条</td>
+          <td class="concrete_content">县委机关：县委员会应执行县代表大会，省委员会及中央委员会的决议，并应尽可能的成立各部或各委员会（如组织，宣传鼓动，妇女运动，农民运动等）以进行各项工作。各部及各委员会主任照例应为县委员会之委员，且受县委员会之指导而工作。县委员会在出版党报时，应指定该党报之编辑。县委员会执行该县范围内之党务，在前后县代表大会期间内，对上级党部负责，并对上级党部关于自己的工作应作经常的报告。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-县或市的组织 县委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十五条</td>
+          <td class="concrete_content">县委员会所在的城市，不设市委员会，其工作直接由县委员会指导，城市的组织可分为城区，领导城区的工作者为城区委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-县或市的组织 各级委员会关系 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十六条</td>
+          <td class="concrete_content">市委的组织如县委，除于其下得分城区外，并得管辖邻近乡区或近郊直属支部。在省委或特别区委所在的城市不另设市委，其工作直接由省委或特委指导。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第六章-县或市的组织 各级委员会关系 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十七条</td>
+          <td class="concrete_content">在特别区组织已经成立的地方，特别区按照一切县组织条件〔例〕而工作。在没有省委的地方，特别区直接与中央发生联系，按照一切省委组织条例而工作。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-省之组织 省委员会 省代表大会 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第七章 省之组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-省之组织 省代表大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十八条</td>
+          <td class="concrete_content">在省范围内省之代表大会是最高级机关。省代表大会的经常大会每半年召集一次。临时的省代表大会或经该省有半数以上之组织之要求，或依据中央之决议，由省委员会召集之。省代表大会听省委员会及省审查委员会之报告，讨论该省党务和社会工作问题，选举省委员会和省审查委员会及出席全国大会之代表。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-省之组织 省委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第二十九条</td>
+          <td class="concrete_content">省委员会由省代表大会选出，在前后省代表大会期间内，省委员会是省之范围内的党的最高机关。省之中心（省会）组织的代表及省内其他重要地方党部的代表均应参加省委员会。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 省委员会决定自己开会的时期，但一个半月至少须开会一次。在省委员会前后会议期间内，为工作便利起见，省委员会得从省委员会委员中推举一常务委员会，并为执行日常工作起见，选举书记一人。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-省之组织 省委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十条</td>
+          <td class="concrete_content">省委员会执行省代表大会及中央委员会的决议。省委员会在省之范围内组织党的各种机关，指定该省党报的编辑，在省之范围内支配党的力量和经费，管辖党部的会计处，省委员会指导省内的非党组织中的党团工作。省委员会经常的向中央作工作报告，并经常的把自己的活动通知下级党部。省委员会为研究各重要问题而设立各部或各委员会，如组织部，宣传鼓动部，职工运动委员会等等。每部的主任，按照一般通例，应由省委员会之正式委员或候补委员充任之，并有〔在〕省委员会之常务委员会直接指导之下工作。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第七章-省之组织 省委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十一条</td>
+          <td class="concrete_content">省委凭借省〔城〕区委员会在其所在地之城市进行工作。因此在省委员会所在地如设县委会仅得在其本县乡区内进行工作。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第八章-党的全国会议 共产国际 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第八章 党的全国会议</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第八章-党的全国会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十二条</td>
+          <td class="concrete_content">党的全国会议，按通常规例一年召集两次。全国会议的成份及选举率（即每若干人选举一代表）由中央委员会决定。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第八章-党的全国会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十三条</td>
+          <td class="concrete_content">党的全国会议的决议案，经过中央委员会审查后才发生效力。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 共产国际 组织 章节 第八章-党的全国会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十四条</td>
+          <td class="concrete_content">党的全国会议开会时如恰当共产国际世界大会之前，经共产国际执行委员会之同意，可以选举参加共产国际世界大会之代表。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第九章-党的全国大会 共产国际 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第九章 党的全国大会</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 共产国际 组织 章节 第九章-党的全国大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第三十五条</td>
+          <td class="concrete_content">党的全国大会是党的最高机关。按通常规例每年开会一次。由中央委员会得共产国际之同意后召集之。党的全国大会的临时大会，或由中央委员会自动决定，或由共产国际执行委员会创议，或由出席最后一次的全国大会的代表，代表党员半数以上的组织之要求，由中央委员会召集之。但党的全国大会的临时大会之召集，必须经过共产国际执行委员会之批准。党的全国大会只有在出席代表能够代表过半数以上之党员时，始能通过决议案。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 党的全国大会的选举率由共产国际执委决定，或由中央委员会决定，或由党的全国大会之前开会的党的会议决定。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第九章-党的全国大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="5">第三十六条</td>
+          <td class="concrete_content">党的全国大会</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （1）接受并审查中央委员会及中央审查委员会的报告。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （2）决定党的党纲上的问题。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （3）决定一切政治，策略及组织等问题的决议案。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> （4）选举中央委员会，中央审查委员会等。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 共产国际 组织 章节 第九章-党的全国大会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十七条</td>
+          <td class="concrete_content">党的全国大会的代表，应由党的省代表大会选举之。但在秘密工作的条件之下，得共产国际委员会之同意，则代表可由省委员会派遣之。党的全国大会，如得共产国际执行委员会之同意，可以党的临时全国大会代替之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第十章-中央委员会 &组织建设 &监督 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第十章 中央委员会</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第十章-中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十八条</td>
+          <td class="concrete_content">中央委员会委员之数量，由全国大会规定之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第十章-中央委员会 &组织建设 &监督 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第三十九条</td>
+          <td class="concrete_content">中央委员会在党的全国大会前后期间内是党的最高机关。代表党与其他政党发生关系，设立党的各种机关，指导党的一切政治的组织的工作，指定在他指导和监督之下的党的中央机关报的编辑，按环境之需要，可派中央特派员于各省党的组织并设立中央执行局，进行含有全党意义的印刷局等事业，分配党的财政和力量，并〔设〕管理中央会计处等等。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">中央委员会应按期召集全体委员会之会议--至少每三月一次。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第十章-中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十条</td>
+          <td class="concrete_content">中央委员会由其本身委员中选出政治局，以指导中央委员会全体会议前后期间内之党的政治工作，并选举常务委员会以进行日常工作。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第十章-中央委员会 妇女运动 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十一条</td>
+          <td class="concrete_content">中央委员会按照各种工作部门而设立各部或各委员会，例如：组织部，宣传鼓动部，职工运动委员会，农民运动委员会，妇女运动委员会等等。各部或各委员会的任务，是由各该工作部门中依照中央的指示进行各项工作。中央委员会指定各部及各委员会主任，这些主任应尽可能的由中央委员会中的委员充任之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第十章-中央委员会 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十二条</td>
+          <td class="concrete_content">中央委员会以经济政治之条件为标准而规定各地党部组织活动之范围，依全国之行政区域而划分各种地域的单位。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第十一章-审查委员会 &组织建设 &监督 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第十一章 审查委员会</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第十一章-审查委员会 &组织建设 &监督 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十三条</td>
+          <td class="concrete_content">为监督各级党部之财政，会计及各机关之工作起见，党的全国大会，省县市代表大会选举中央或省县市审查委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第十二章-党的纪律 纪律的执行 共产国际 纪律的重要性 &纪律 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第十二章 党的纪律</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 共产国际 章节 第十二章-党的纪律 纪律的重要性 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第四十四条</td>
+          <td class="concrete_content">严格的遵守党纪为所有党员及各级党部之最高责任。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">共产国际，中国共产党全国大会，中央委员会及其他上级机关的决议，都应当迅速而且正确的执行。同时在未经决议以前，党内的一切争论问题可以自由讨论。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第十二章-党的纪律 纪律的执行 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第四十五条</td>
+          <td class="concrete_content">不执行上级党部的决议和犯了党内认为有错误的其他过失，应由相当的党部予以纪律上的处分。党部执行纪律的方法，对于团体的是：指责，指定临时委员会，解散组织和党员重新登记。对于党员个人的是：各种形式的指责，警告，公开的指责，临时取消其党的重要工作，开除党籍或予以相当时间的察看。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 关于犯纪律的问题，由党员大会或各级党部审查之。各级委员会得成立特别委员会以预先审查关于违犯党纪的问题。此种特别委员会之决议，经该级党部批准后，方发生效力。开除党籍的问题，由本章程第六条所规定之手续决定之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党费 章节 第十三章-党的财政 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第十三章 党的财政</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党费 章节 第十三章-党的财政 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十六条</td>
+          <td class="concrete_content">党部的用费由党费，特别捐，党的印刷机关及上级党部之津贴等充之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党费 章节 第十三章-党的财政 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十七条</td>
+          <td class="concrete_content">入党费和党费的多少由中央委员会规定，失业和极贫苦的党员可完全不缴党费。无充分理由连续三月不缴党费者，以自愿脱党论，并将此宣布于党员大会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十四章-党团 问题的决议 职务人员的调动 党团干事会 其代表的发言权 党团的成立及其自由权 &监督 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第十四章 党团</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十四章-党团 党团的成立及其自由权 &监督 ">
+        <tr>
+          <td class="entry_num" rowspan="2">第四十八条</td>
+          <td class="concrete_content">在非党组织（如职工会，农会，社会团体及文化组织等）之各种代表大会和会议上及机关中，凡有党员三人以上者均成立党团。其任务在于非党的组织中，加强党的影响，实行党的政策，并监督党员在非党组织中之工作。党团选举干事及书记进行日常工作。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">党团在处决自身内部问题及日常工作有自由权。在党部委员会和党团中发生不同意见时，党部委员会应协同党团代表重新考查问题，并通过决议，该决议党团应即刻执行。如党团有不同意见而上诉时，问题由最近之高级党部解决，但在上诉期间，仍应执行党委之决议。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十四章-党团 其代表的发言权 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四十九条</td>
+          <td class="concrete_content">党委员会在讨论与党团有关系的问题时，应使该党团的代表出席党部的委员会之相当会议，有发言权。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十四章-党团 党团干事会">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十条</td>
+          <td class="concrete_content">党团选举党团干事会，此干事会应得其所隶属之党部之批准。党团干事会在党团工作上，应对该级党部负责。党部得派自己的委员为代表加入党团干事会之组织，并有权召回任何委员，但同时，将召回的原因通知党团。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十四章-党团 职务人员的调动 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十一条</td>
+          <td class="concrete_content">在党团工作的各组织中，各种职务人员的名单，得当地党部之同意由党团提出，关于调遣党员由这一党团至别个党团的问题，亦同样决定。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党团 章节 第十四章-党团 问题的决议 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十二条</td>
+          <td class="concrete_content">党团所在组织中各项要解决的问题，应该先经党团会议或党团干事会之讨论。
+            凡党团对于每一问题之决议，加入该党团的党员应在该组织之大会上一致拥护和表决。凡破坏此条的党员，应由党部按党章给以党纪上之制裁。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 青年团 章节 第十五章-与共产青年团的互相关系 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第十五章 与共产青年团的互相关系</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 青年团 章节 第十五章-与共产青年团的互相关系 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五十三条</td>
+          <td class="concrete_content"> 在党与青年团的各指导机关中（从支部至中央）均应互派代表，交换发言权同表决权。同样，青年团得以自己团员的数量为比例选派代表出席党的一切代表大会。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+ 
+</div>
+	
+	
+	
+<div id="part4_div_part">
+  <div id="tree_chart_div"></div>
+  <table id="part4_tree_table">
+    <tbody class="part4_历史背景 ">
+      <tr>
+        <td class="part4_tbody_head">党章制定的历史背景</td>
+      </tr>
+      <tr>
+        <td class= "part4_content">   1928年6月18日至7月11日，在共产国际的帮助下，中国共产党第六次全国代表大会在莫斯科召开。大会代表142人，其中有选举权的代表84人。除通过了其他一些重要决议外，在会议结束的前一天，大会讨论、审议并正式通过了《中国共产党章程》，习惯上称为六大党章。 <br/>
+          党的五大和其后召开的中央政治局会议之后不久，以蒋介石为代表的国民党右派势力把矛头指向了当时革命中心武汉，可是，陈独秀继续推行右倾投降主义，践踏民主集中制原则，党面临着灭亡的危险。在党处于异常艰难和危险的时刻，中央政治局根据共产国际的命令，对中央领导机关进行了改组，免除了陈独秀的职务，成立了临时中央政治局常务委员会，代行中央政治局的职权。可是，我们党又受到了瞿秋白的“左”倾盲动主义的侵害。在蒋介石和汪精卫合流，在中国大地上进行血腥大屠杀、党员队伍受到严重损失的情况下，瞿秋白仍然反对退却，要求进攻，继续命令一些共产党员和群众组织搞无任何胜利希望的城市武装暴动，使党的组织接二连三地遭受本来可以避免的损失。在敌人的残酷迫害下，党的一批优秀领导人包括李大钊、陈延年、罗亦农、赵世炎、蔡和森等都先后英勇牺牲。中国共产党党员和党所依靠的革命群众，许多人也遭到杀害。据不完全统计，从1927年到1928年上半年，仅被屠杀的共产党员和革命群众竟达30多万人，已经发展到6万多党员的党只剩下了1万多党员。 <br/>
+          客观局势的变化要求我们党的活动应由公开或半公开状态转入地下的秘密状态，由国共合作时期我们以政治斗争为主转到独立地领导武装斗争，党的工作重心应从城市转到农村。为了适应革命形势发展的要求，总结第一次国内革命战争失败的经验教训，纠正错误，确定党在新时期的任务，统一思想，推动革命向前发展，党中央决定召开第六次全国代表大会，修改《中国共产党第三次修正章程决案》。 <br/>
+          <br/></td>
+      </tr>
+      <tr class="part4_test_href">
+        <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26480947.htm" target="_blank">中国国情-中国网</a></td>
+      </tr>
+      <tr>
+        <td class="part4_null_row_space"></td>
+      </tr>
+    </tbody>
+    <tbody class="part4_特点 ">
+      <tr>
+        <td class="part4_tbody_head">党章的特点</td>
+      </tr>
+      <tr>
+        <td class= "part4_content">   六大党章基本上保留了第三次修正章程的内容，但在结构上调整较大，全文共十五章五十三条，比原党章增加三章，减少三十二条。它主要有以下一些特点： <br/>
+          <br/>   
+          1.它第一次明确规定党的组织原则为民主集中制，并详细规定了民主集中制的三项根本原则 <br/>   
+          包括下级党部与高级党部由党员代表会议及全国大会选举产生；各级党部对选举自己的党员，应作定期的报告；下级党部一定要承认上级党部的决议，执行党的指导机关的决议；党员对党内某一个问题，只有在相当机关对此问题的决议未通过以前可以举行争论；党的代表大会或党内指导机关所提出的某种决议，即使是某一部分党员或几个地方组织不同意，也应无条件执行。从上述规定的具体内容上可以看出，民主集中制的基本要求体现在民主和集中两个方面，特别是有了党内民主的基本要求，这对后来我们党的建设的影响是积极和深远的。因为在八七会议以前，在我们党内一时曾经存在着家长制，只有集中。可是，八七会议以后，提出了改造党的任务，一些地方又出现了极端民主化的倾向。家长制和极端民主化这两种倾向，对党的危害都是相当大的。党的六大党章第一次提出了民主集中制的三项根本原则，有利于纠正党内存在的家长制和极端民主化两种倾向，正确处理党内民主和民主集中制的关系，对党的建设影响深远 <br/>
+          <br/>   
+          2.它是在共产国际的协助下形成的，其内容和体例都深受共产国际的影响 <br/>   
+          六大党章是中国共产党党章发展史上唯一在国外(莫斯科)修改和通过的党章。它是在共产国际的协助下起草的，从一定意义上说，共产国际对中国共产党的六大党章的修改是做出了自己的贡献的，特别是在中国共产党处于极其险恶的局势下，共产国际的帮助十分必要。然而，必须看到，尽管六大党章规定“中国共产党为共产国际的一部分”、把“服从共产国际和本党一切决议案”作为入党的一个必备资格，这很有必要，但其他一些关于共产国际与中国共产党的关系的规定，就明显地把共产国际在中国共产党的建设中的地位和作用强调得过分了。这些规定包括：中国共产党的各级党组织必须无条件地服从共产国际代表大会提出的某种决议；强调中国共产党要执行共产国际的指示，以至党的中央委员会召集党的全国大会(实际上就是现在党的全国代表大会)，都得由共产国际同意后方可进行；党的全国大会的选举率也要由共产国际执行委员会决定；党的全国大会代表也得由共产国际委员会的同意；尽管我们党的中央委员会可以自行决定召开党的全国大会临时会议，但同时又把此项权利赋予了共产国际执行委员会，并对党的中央委员会决定召开党的临时会议的决定权做了严格的限制——党的全国大会的临时大会的召集，必须经过共产国际执行委员会的批准。这些规定都是不合适的。它不但违背了马克思主义的基本原则，也使我们党不能根据本国实际情况独立自主地领导革命运动，自行处理党内事务。 <br/>   
+          后来的实践表明，这些规定难以执行和发挥效力。因为，由于许多客观原因，特别是在长征开始后不久，党中央就同共产国际的电台失去了联系，迫使我们党只能独立自主地处理党内事务。有鉴于此，1935年7月，共产国际七大作出决定，各国领导者可以“独立地来正确解决共产主义运动中的政治任务及策略任务”，“在解决一切问题时要根据每个国家的具体情况和特点，一般的不要直接干涉各国共产党内组织上的事宜”，这就否定或纠正了六大党章中涉及共产国际的一些条文规定。 <br/>
+          <br/>   
+          3.它在党员管理制度方面做了较大调整 <br/>   
+          它首次规定了党员自愿脱党的制度，其条件是党员无充分理由连续三个月不缴党费。以往党章对党员定期交纳党费只是在物质上帮助党的精神和要求，六大党章还进一步把党员及时按规定缴纳党费，作为党员应有的组织观念来要求。从六大党章起，一直到以后的七大、八大、十二大、十四大、十五大和十六大党章，都坚持了这一基本精神。它改变了原有党章只将直接接收新党员的权利赋予中央委员会和省委员会的做法，将权利主体扩大到党的各级委员会，但是，与以往党章不同的是，六大党章对党的各级委员会行使这项权利做了限制性规定，即必须是以遇到某种特殊情况为前提条件；强调所有党员都无民族和国界之分，都应加入中国共产党的地方党部组织。 <br/>
+          <br/>   
+          4.它对党的组织机构作出了一些新规定 <br/>   
+          (1)在体例上把党的组织系统作为单独一章。改变了原来按照从党的中央组织到基层组织的规定顺序，而是按照从基层组织到党的中央组织的顺序，分别作了规定。(2)规定了中央委员会可以根据需要，在数省范围内成立中央执行局，或委派中央特派员。中央局和中央特派员由中央委员会指定，并只对中央委员会负责。(3)在支部的工作任务方面，增加了两条新规定，即“有计划地在工农群众中宣传共产主义”和“在党员及工农中进行文化和政治教育的工作”。这对于支部作为党与工农联系起来的组织，在工农群众中进行思想政治工作，加强党的思想建设，起到了极大的指导作用。(4)首次在党章中规定实行党的全国会议的制度。规定党的全国会议通常按惯例一年召集两次，参加会议的代表的成分和选举率(每若干人选举一代表)，由中央委员会决定。党的全国会议决议案，必须经过中央委员会审定才能生效。过去，在党的三大通过的《中国共产党第二次修正章程》和党的五大以后中央政治局会议上通过的《中国共产党第三次修正章程决案》中，考虑到在全国代表大会闭会期间可能会出现一些特殊情况，需要召集会议讨论和决定党内一些重大问题，所以，都规定了在严格限制条件下可召开“临时会议”的制度。而六大党章没有继续采用召开临时会议的办法，而是改为“党的全国会议”，相当于我们现在党章中规定的“党的全国代表会议”。这一规定是我们党的组织建设的一大进步。(5)用专章规定了“党的全国大会”，改变了《中国共产党第三次修正章程决案》将相关内容写在相应的组织机构章节的做法。(6)增设了“审查委员会”一章。把审查委员会分为中央审查委员会、省审查委员会、县市审查委员会三级，其主要任务是监督党部财务、会计工作及各机关的工作。(7)删除了监察委员会一章及其全部条文规定；撤销了党的总书记这一职务。 <br/>   
+          此外，将“经费”一章修改为“党的财政”，规定党部费用来源主要是党费、特别捐、党的印刷机关及上级党部拨给的津贴，等等；还首次将“无充分理由连续三个月不交党费”，作为认定党员自行脱党的一个前提条件。 <br/>
+          <br/>   
+          5.六大党章存在着明显的缺陷 <br/>   
+          一是党员的“唯成分论”思想在六大党章里有所反映。八七会议以后，党内出现了“左”的错误倾向，在强调组织问题的重要性的同时，却提出了党员和干部最好是工农出身的要求，并用工农分子的新干部替换非无产阶级的知识分子干部，各级党组织成员的成分，必须大多数是工人或农民。在这样的思想指导下，党的六大通过的《组织问题议决案提纲》把改造党员成分作为党的三项任务之一，提出发展党员应加调节，吸收工人分子入党，党应特别注意在主要的大工业中巩固和发展党的影响，建立坚强的党的工厂支部。农村支部中应注意中心干部的建立。要使积极的工农分子参加各级党部的指导机关。其结果体现在六大党章中就是减少工人的入党介绍人数，增加机关服务人员的入党介绍人数(如前所述)；将《中国共产党第三次修正章程决案》中规定的“支部是党与群众直接发生关系的组织”作用的正确定位，改为“支部为便与工农联系起来的组织”，改“群众”为“工农”，直接体现了党在这方面指导思想所发生的重大变化。这些规定恰恰又跟六大提出中国共产党的总任务是争取群众准备暴动的要求不完全吻合。 <br/>   
+          二是撤销了刚刚成立的监察委员会的做法是不可取的。六大党章对于处理违反党纪问题，没有建立常设机关的规定，只规定“由党员大会或各级党部审定之”，规定“成立特别委员会以预先审查关于违犯党纪的问题”。其实，设立党的纪检监察常设机关是非常必要的，六大在修改党章的时候，本来可以在《中国共产党第三次修正章程决案》的基础上，对监察委员会的性质、地位和任务进行一些充实和完善，但六大党章不但没有这样做，反而取消了《第三次章程修正决案》关于监察委员会的全部条款。尽管增设了审查委员会一章，但其任务过窄，主要是监督各级党部的财政，况且，即便是这方面内容的规定也过于简单，对于如何监督，都无任何规定。事实上，审查委员会也替代不了监察委员会的作用。这对后来党的建设起到了不良的影响。 <br/>
+          三是有的地方在文字表述上不够科学。比如，第十章39项规定：“中央委员会在党的全国大会期间内，是党的最高机关。”这里什么是党的全国代表大会的“期间内”，是指全国代表大会会议期间内呢，还是指这次大会到下次大会召开之前这段时期呢？仅从此条文来看，就显得比较模糊。只有结合上下文来看，才能够判断出指的是后者。实际上，比较科学的表述为“党的全国代表大会闭会期间内”，这样就一目了然了。 <br/>
+          <br/>   
+          六大党章是中国共产党党章发展史上唯一在国外修改和通过的党章。其突出贡献是第一次明确规定民主集中是党的组织原则，并详细规定了民主集中制的一些基本原则。六大党章的总的原则和精神基本上是正确的，对在当时极其特殊的严酷环境下加强党的自身建设，起到了一定的积极作用。但是，由于六大党章是在共产国际的协助下修改的，我们党对中国革命道路问题认识不足，加上革命形势迫使党的六大在国外召开，使得六大党章的修改深受共产国际的影响，很多规定实际上脱离了我们党当时的实际情况。对此，刘少奇在《论党》中曾经作过这样的评价：“党的六次大会通过的党章，由于情况的特殊，许多部分不能使用。 <br/>
+          <br/></td>
+      </tr>
+      <tr class="part4_test_href">
+        <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26480976.htm" target="_blank">中国国情-中国网</a></td>
+      </tr>
+      <tr >
+        <td class="part4_null_row_space"></td>
+      </tr>
+    </tbody>
+    <tbody class="part4_历史意义 ">
+      <tr>
+        <td class="part4_tbody_head">党章的历史意义</td>
+      </tr>
+      <tr>
+        <td class= "part4_content">   六大党章（1928年）：唯一不是在国内修改和通过的党章，第一次明确规定民主集中制是党的组织原则。 <br/>
+          1928年7月，在莫斯科召开的党的六大，首次提出民主集中制的三项根本原则，适应了革命形势迅速发展和党自身建设的需要，对巩固党的组织、推动革命发展起了重要作用；同时规定，中国共产党为共产国际的一部分，无条件服从共产国际的决议。 <br/>
+          <br/></td>
+      </tr>
+      <tr class="part4_test_href">
+        <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26480995.htm" target="_blank">中国国情-中国网</a></td>
+      </tr>
+    <br/>
+    <br/>
+    <br/>
+    <tr>
+      <td class="part4_null_row_space"></td>
+    </tr>
+      </tbody>
+    
+  </table>
+</div>
+	
+	
+<div id="part5_question_answer_div">
+	<div id="question_answer_main_div">
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num1" disabled>
+				<label for="question_num1" class="question_content">1.六大党章中指明中国共产党的组织原则是？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">中国共产党与共产国际的其他支部一样，其组织原则为民主集中制。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num2" disabled>
+				<label for="question_num2" class="question_content">2.六大党章中指明入党资格包括哪些？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">凡承认共产国际和本党党纲及党章加入党的组织之一，在其中积极工作，服从共产国际和本党一切决议案，且经常缴纳党费者，均得为本党党员。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num3" disabled>
+				<label for="question_num3" class="question_content">3.六大党章中指明党员对党内意见的争论规定是什么？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">党员对党内某个问题，只有在相当机关对此问题的决议未通过以前可以举行争论。</div>
+		</div>
+		
+		
+	</div>
+</div>
+	
+<div id="web_tail_part_div">
+	<div id="web_tail_part">
+		<div id="web_tail_logo"> <a href="#flexmenu"><img src="Image/picture/title_logo.png" id="web_tail_logo_img" alt="logo"></a> </div>
+		
+		<div id="web_tail_content_div">
+			<div id="director_name" class="web_tail_content">制作人员：   孙健   赵洒楠   秦语笑</div>
+			<div id="director_contact_method" class="web_tail_content">联系方式：   2281766692@qq.com</div>
+			<div id="friendly_href_div" class="web_tail_content">友情链接:   <a href="http://www.china.com.cn/">中国网</a>   <a href="http://www.12371.cn/">共产党员网</a>   <a href="http://www.people.com.cn/">人民网</a></div>
+		</div>
+		
+	</div>
+</div>
+		
+<input type="image" id="return_to_top_button" src="Image/picture/return_to_top.png" alt="top" onClick="return_to_top()">
+	
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+	var rising_sun_display_element = document.getElementById('rising_sun_display');
+        var myChart = echarts.init(rising_sun_display_element);
+	
+var data = [
+	{
+		name:'章节',
+		children:[
+			{
+				name:'第一章 名称',
+				value:38
+			},{
+				name:'第二章 党员',
+				children:[
+					{
+						name:'入党资格',
+						value:72
+					},{
+						name:'入党手续及条件',
+						value:407
+					},{
+						name:'组织改变',
+						value:54
+					},{
+						name:'党员迁移',
+						value:97
+					},{
+						name:'开除党员',
+						value:155
+					}
+				]
+			},{
+				name:'第三章 党的组织系统',
+				children:[
+					{
+						name:'组织原则：民主集中制',
+						value:295
+					},{
+						name:'指定指导机关',
+						value:60
+					},{
+						name:'党的地域划分',
+						value:93
+					},{
+						name:'各级机关执行权',
+						value:42
+					},{
+						name:'各级党部的高级机关',
+						value:39
+					},{
+						name:'各级执委',
+						value:72
+					},{
+						name:'批准问题',
+						value:45
+					},{
+						name:'组织系统',
+						value:280
+					},{
+						name:'党部机关',
+						value:202
+					}
+				]
+			},{
+				name:'第四章 支部',
+				children:[
+					{
+						name:'党支部',
+						value:99
+					},{
+						name:'支部特别组织',
+						value:158
+					},{
+						name:'支部任务',
+						value:229
+					},{
+						name:'支部干事会',
+						value:143
+					}
+				]
+			},{
+				name:'第五章 城乡区的组织',
+				children:[
+					{
+						name:'区代表会',
+						value:99
+					},{
+						name:'区委',
+						value:125
+					}
+				]
+			},{
+				name:'第六章 县或市的组织',
+				children:[
+					{
+						name:'县代表大会',
+						value:159
+					},{
+						name:'县委员会',
+						value:424
+					},{
+						name:'各级委员会关系',
+						value:146
+					}
+				]
+			},{
+				name:'第七章 省之组织',
+				children:[
+					{
+						name:'省代表大会',
+						value:142
+					},{
+						name:'省委员会',
+						value:464
+					}
+				]
+			},{
+				name:'第八章 党的全国会议',
+				value:148
+			},{
+				name:'第九章 党的全国大会',
+				value:442
+			},{
+				name:'第十章 中央委员会',
+				value:471
+			},{
+				name:'第十一章 审查委员会',
+				value:56
+			},{
+				name:'第十二章 党的纪律',
+				children:[
+					{
+						name:'纪律的重要性',
+						value:98
+					},{
+						name:'纪律的执行',
+						value:242
+					}
+				]
+			},{
+				name:'第十三章 党的财政',
+				value:109
+			},{
+				name:'第十四章 党团',
+				children:[
+					{
+						name:'党团的成立及其自由权',
+						value:237
+					},{
+						name:'其代表的发言权',
+						value:50
+					},{
+						name:'党团干事会',
+						value:100
+					},{
+						name:'职务人员的调动',
+						value:66
+					},{
+						name:'问题的决议',
+						value:102
+					}
+				]
+			},{
+				name:'第十五章 与共产青年团的互相关系',
+				value:76
+			}
+		]
+	}
+];	
+	
+
+	
+option = {
+	series: {
+        type: 'sunburst',
+        highlightPolicy: 'ancestor',
+        data: data,
+		width: rising_sun_display_element.style.width,
+		height: rising_sun_display_element.style.height,
+        radius: [0, '95%'],
+        sort: null,
+		label: part2_rising_sun_chart_label,
+        levels: part2_rising_sun_chart_levels
+    },
+	tooltip: {
+		formatter: function(params){
+			return params.name;
+		}
+    }
+};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script> 
+<script >
+	var wordcloud_chart = echarts.init(document.getElementById('wordcloud_main_part'));
+	var wordcloud_chart_width = $("#wordcloud_background_img").width;
+	var wordcloud_chart_height = $("#wordcloud_background_img").height;
+	var wordcloud_data = {
+		value: [{
+			"name": "党员",
+			"value": 38
+		}, {
+			"name": "组织",
+			"value": 40
+		}, {
+			"name": "纪律",
+			"value": 4
+		}, {
+			"name": "党团",
+			"value": 17
+		}, {
+			"name": "党费",
+			"value": 6
+		}, {
+			"name": "青年团",
+			"value": 4
+		}, {
+			"name": "民主集中制",
+			"value": 15
+		}, {
+			"name": "共产国际",
+			"value": 34
+		}, {
+			"name": "妇女运动",
+			"value": 3
+		}, ],
+	};
+	for (var i = 0; i < 1000; ++i) {
+		wordcloud_data.value.push({
+			"name": ".",
+			"value": 1
+		});
+	}
+
+	var maskImage = new Image();
+	maskImage.src = img_data;
+	maskImage.onload = function () {
+		wordcloud_chart.setOption({
+			backgroundColor: '',
+			tooltip: {
+				show: false
+			},
+			series: [{
+				type: 'wordCloud',
+				gridSize: 8,
+				sizeRange: part1_wordcloud_sizerange,
+				rotationRange: part1_wordcloud_rotationrange,
+				maskImage: maskImage,
+				width: wordcloud_chart_width,
+				height: wordcloud_chart_height,
+				textStyle: {
+					normal: {
+						color: function (v) {
+							return part1_wordcloud_get_color(v);
+						},
+						fontFamily: "字魂47号"
+					}
+				},
+				left: 'center',
+				top: 'center',
+				right: null,
+				bottom: null,
+				data: wordcloud_data.value
+			}]
+		});
+	};
+
+</script> 
+<script>
+	var txt_data = "（一）定名：中国共产党为共产国际之一部分。命名为：中国共产党。共产国际支部。（二）入党资格：凡承认共产国际和本党党纲及党章加入党的组织之一。在其中积极工作。服从共产国际和本党一切决议案。且经常缴纳党费者。均得为本党党员。（三）入党手续：新党员入党时。由党支部通过。并须经过市县委。或等于县委组织的区委之批准。入党的条件分下列数种：（甲）工厂工人。须经党员一人之介绍。由生产支部通过。（乙）农民手工业者。智识份子及各机关下级原务人员。须有党员二人之介绍。（丙）各机关服务人员。须有党员三人之介绍。 附注：（1）介绍人应对被介绍者负责。如遇有介绍书不确实时。则应受党纪之制裁。以至于开除党籍。（2）在新党员未批准为正式党员时。各相当党部得委任该新党员以某种工作。借以考察其程度及其对于党之了解。（3）共产青年团团员入党时。由团委员会介绍。亦须经上项各相当之手续。由支部党员大会通过或上级党部之批准。（4）在某种特殊情形之下。党的各级委员会均有直接征收或通过新党员之权。（丁）脱离其他政党（如国民党等）而加入本党者。须经有党籍一年以上之党员三人介绍。若从前为其他政党之普通党员者。则经省委之批准。若从前为其他政党之负责人员者。则须经中央之批准。（四）组织改变：其他部分的政治组织或整个的政治集团。以及整个的党的组织加入或转入共产党时。必须经中央之决议。（五）党员迁移：党员由这一个组织迁至别一个组织的工作范围内（区域内）时。应转入其所在地之组织中去。作为这一个组织之一员。党员由这一组织转别一组织及由一国移至他国的一切手续。须按照中央颁布的规例。（六）开除问题。开除党员须由该支部党员大会通过。须经党的上级委员会之批准。始发生效力。同时。在开除决议还未经上级机关批准以前。应即停止被开除者在党内一切工作。不服从开除的决议者。可以上诉至最高的党的机关。党的各级委员会在党员有反党行为时。有直接开除其党籍的权利。不过此开除的决议应通知被开除者所加入的下级党部的组织。（七）组织原则：中国共产党与共产国际的其他支部一样。其组织原则为民主集中制。民主集中制的根本原则如下：（1）下级党部与高级党部由党员大会、代表会议及全国大会选举之。（2）各级党部对选举自己的党员。应作定斯的报告。（3）下级党部一定要承认上级党部的决议。严守党纪。迅速且切实的执行共产国际执行委员会和党的指导机关之决议。管辖某一区域的组织。对该区域的各部份的组织为上级机关。党员对党内某个问题。只有在相当机关对此问题的决议未通过以前可以举行争论。共产国际代表大会或本党代表大会或党内指导机关所提出的某种决议。应无条件的执行。即或某一部份的党员或几个地方组织不同意于该项决议时。亦应无条件的执行。（八）指定指导机关：在秘密环境之下。于必要时党的下级机关得由上级机关指定。且经上级机关之批准。得指定新委员加入党部委员会。（九）党的地域区分：党以地域原则划分为单位。管辖某一区域的组织。对于该区域内各部分的组织。为上级机关。所有党员无民族与国界之分。都应加入中国共产党的地方党部的组织。成为中国共产党的党员。（十）各级机关执行权：党的组织在共产国际和党的决议范围内。对于地方问题有自由处决权。（十一）各级党部的高级机关：各级党部之高级机关为党员大会。代表会议或全体大会。（十二）各级执委：党员大会。代表会议或全国大会选举其同级党部执行委员会。此执行委员会在前后两大会期间内为指导机关。指导各级相当组织之一切经常工作。（十三）批准问题：一切新成立的党的组织（支部。县委等等）。必须经过其隶属的上级机关的批准。（十四）本党组织系统如下：（1）在每个工厂。作坊。商店。街道。乡村。小市镇。军队等中：支部党员大会--支部干事会。（2）城区或乡区内：区党员大会或区代表会议--区委员会。（3）县或市的范围内：县或市代表会议--县或市委员会。（4）特别区（包括几县或省之一部分）：特别区代表会议--特别区委员会。特别区的组织如有必要时得由省委决议成立之。（5）省：省代表大会--省委员会。（6）全国：全国代表大会--中央委员会。（7）为易于指导各党部工作起见。中央委员会得按情势之需要。在数省范围内成立中央执行局或中央特派员。中央执行局和中央特派员由中央委员会指定之。并只对中央委员会负责。（十五）党部机关：为处决党的各种特殊任务起见。各级党部委员会之下行成立各部或各委员会。如组织部。宣传部。职工运动委员会。妇女运动委员会等等。各部或各委员会隶属于党部委员会。受其指导而工作。并经过党委员会而实行自己的决议。党部委员会下各部之组织由中央决定之。附注：为在其他民族的工农分子中用其民族语言以便于工作起见。于当地的党委员会之下设立小〔少〕数民族工作部。此少数民族工作部应在当地党部指导和监督下工作。（十六）党的基本组织是党的支部（工厂。矿山。作坊。商店。街道。农村。军队等）。所有在该地工作之党员应一律加入支部。如有党员三人之上的地方。得成立新的党的支部组织。但须由县委或等于县委组织的区委批准之。（十七）支部特别组织：在有党员一人或二人工作的企业中。这些党员得并入与该企业最接近的生产支部。或与邻近之企业的党员共同组织支部。在任何企业中工作的党员。如手工业者。个别工人。家庭工作的工人。智识份子等等。按住处的地方为标准。组织街道支部。如在农村支部中有农村经济企业。如小的矿山或某种农业工人。得按生产关系组织支部。（十八）支部任务：支部为使与工农联系起来的组织。支部的任务：（1）用有计划的共产主义的鼓动和宣传。在无党的工农群众中实行党的口号与决议。使工农站到党方面来。（2）以党的组织的力量积极参加工农的一切的政治的经济的斗争。以革命的阶级斗争的观点讨论他们的要求。组织群众的革命行动。为取得工农的一切革命行动的领导而斗争。努力工作以吸收工农参加中国的与国际的无产阶级一般的革命斗争。（3）征收和教育新党员。散布党的出版品。在党员及无党工农中进行文化的和政治教育的工作。（十九）支部干事会：以党员人数多寡为标准。支部选举三人或五人组织干事会以进行日常党务。该干事会进行支部的工作。分配支部中党员的工作。如宣传。分发印刷品。在工会及农民组织中进行党团工作。妇女工作。与支部发生联系等。支部干事会选举支部书记一人。执行党员大会或支部会议的决议及上级党部的指示。（二十）区代表会：在城或乡的分区范围内。党的上级机关为全体党员大会或该城区中各支部之代表大会。城乡区的党员大会或代表大会。接受和批准区委之报告。并选举区委员会和出席县市委或特别区及省代表大会之代表。（二十一）区委：城乡区委员会于前后全体党员大会或代表大会期间内指导各区范围内一切党务。城乡区委员会之常会应该秘密条例所许的范围内经常召集。每半月至少一次。区委员会前后会议期间内。工作由区委员会之常务委员会指导之。常务委员会由区委员会自身委员中选举之。（二十二）县市委〔县代表大会〕：一县范围内党的上级机关为县代表大会。县代表大会每三月召集一次。临时县代表大会。或经该县半数以上之组织的要求。或根据省委员会（或特别区委员会）的决议。由县委员会召集之。县代表大会接受县委员会和县审查委员会之报告。并选举县委员会及县审查委员会。以及选举出席特别区代表大会或省代表大会之代表。（二十三）县委：县委员会由县代表大会选举之。于前后县代表大会期间内。为该县党的最高机关。县委员会中除应有县城的代表加入外。该县乡区或各重要乡村党部的代表亦同样须加入。县委员会全体会议的时期。可由县委县会自己决定。但至少须每月开会一次。县委员会推举常务委员会以进行日常工作。县委员会选举县委书记一人以处理日常工作。县委之书记须得上级党部之批准。（二十四）县委机关：县委员会应执行县代表大会。省委员会及中央委员会的决议。并应尽可能的成立各部或各委员会（如组织。宣传鼓动。妇女运动。农民运动等）以进行各项工作。各部及各委员会主任照例应为县委员会之委员。且受县委员会之指导而工作。县委员会在出版党报时。应指定该党报之编辑。县委员会执行该县范围内之党务。在前后县代表大会期间内。对上级党部负责。并对上级党部关于自己的工作应作经常的报告。（二十五）县委员会所在的城市。不设市委员会。其工作直接由县委员会指导。城市的组织可分为城区。领导城区的工作者为城区委员会。（二十六）市委的组织如县委。除于其下得分城区外。并得管辖邻近乡区或近郊直属支部。在省委或特别区委所在的城市不另设市委。其工作直接由省委或特委指导。（二十七）在特别区组织已经成立的地方。特别区按照一切县组织条件〔例〕而工作。在没有省委的地方。特别区直接与中央发生联系。按照一切省委组织条例而工作。（二十八）在省范围内省之代表大会是最高级机关。省代表大会的经常大会每半年召集一次。临时的省代表大会或经该省有半数以上之组织之要求。或依据中央之决议。由省委员会召集之。省代表大会听省委员会及省审查委员会之报告。讨论该省党务和社会工作问题。选举省委员会和省审查委员会及出席全国大会之代表。（二十九）省委员会由省代表大会选出。在前后省代表大会期间内。省委员会是省之范围内的党的最高机关。省之中心（省会）组织的代表及省内其他重要地方党部的代表均应参加省委员会。省委员会决定自己开会的时期。但一个半月至少须开会一次。在省委员会前后会议期间内。为工作便利起见。省委员会得从省委员会委员中推举一常务委员会。并为执行日常工作起见。选举书记一人。（三十）省委员会执行省代表大会及中央委员会的决议。省委员会在省之范围内组织党的各种机关。指定该省党报的编辑。在省之范围内支配党的力量和经费。管辖党部的会计处。省委员会指导省内的非党组织中的党团工作。省委员会经常的向中央作工作报告。并经常的把自己的活动通知下级党部。省委员会为研究各重要问题而设立各部或各委员会。如组织部。宣传鼓动部。职工运动委员会等等。每部的主任。按照一般通例。应由省委员会之正式委员或候补委员充任之。并有〔在〕省委员会之常务委员会直接指导之下工作。（三十一）省委凭借省〔城〕区委员会在其所在地之城市进行工作。因此在省委员会所在地如设县委会仅得在其本县乡区内进行工作。（三十二）党的全国会议。按通常规例一年召集两次。全国会议的成份及选举率（即每若干人选举一代表）由中央委员会决定。（三十三）党的全国会议的决议案。经过中央委员会审查后才发生效力。（三十四）党的全国会议开会时如恰当共产国际世界大会之前。经共产国际执行委员会之同意。可以选举参加共产国际世界大会之代表。（三十五）党的全国大会是党的最高机关。按通常规例每年开会一次。由中央委员会得共产国际之同意后召集之。党的全国大会的临时大会。或由中央委员会自动决定。或由共产国际执行委员会创议。或由出席最后一次的全国大会的代表。代表党员半数以上的组织之要求。由中央委员会召集之。但党的全国大会的临时大会之召集。必须经过共产国际执行委员会之批准。党的全国大会只有在出席代表能够代表过半数以上之党员时。始能通过决议案。党的全国大会的选举率由共产国际执委决定。或由中央委员会决定。或由党的全国大会之前开会的党的会议决定。（三十六）党的全国大会（1）接受并审查中央委员会及中央审查委员会的报告。（2）决定党的党纲上的问题。（3）决定一切政治。策略及组织等问题的决议案。（4）选举中央委员会。中央审查委员会等。（三十七）党的全国大会的代表。应由党的省代表大会选举之。但在秘密工作的条件之下。得共产国际委员会之同意。则代表可由省委员会派遣之。党的全国大会。如得共产国际执行委员会之同意。可以党的临时全国大会代替之。（三十八）中央委员会委员之数量。由全国大会规定之。（三十九）中央委员会在党的全国大会前后期间内是党的最高机关。代表党与其他政党发生关系。设立党的各种机关。指导党的一切政治的组织的工作。指定在他指导和监督之下的党的中央机关报的编辑。按环境之需要。可派中央特派员于各省党的组织并设立中央执行局。进行含有全党意义的印刷局等事业。分配党的财政和力量。并〔设〕管理中央会计处等等。中央委员会应按期召集全体委员会之会议--至少每三月一次。（四十）中央委员会由其本身委员中选出政治局。以指导中央委员会全体会议前后期间内之党的政治工作。井选举常务委员会以进行日常工作。（四十一）中央委员会按照各种工作部门而设立各部或各委员会。例如：组织部。宣传鼓动部。职工运动委员会。农民运动委员会。妇女运动委员会等等。各部或各委员会的任务。是由各该工作部门中依照中央的指示进行各项工作。中央委员会指定各部及各委员会主任。这些主任应尽可能的由中央委员会中委员充任之。（四十二）中央委员会以经济政治之条件为标准而规定各地党部组织活动之范围。依全国之行政区域而划分各种地域的单位。（四十三）为监督各级党部之财政。会计及各机关之工作起见。党的全国大会。省县市代表大会选举中央或省县市审查委员会。（四十四）严格的遵守党纪为所有党员及各级党部之最高责任。共产国际。中国共产党全国大会。中央委员会及其他上级机关的决议。都应当迅速而且正确的执行。同时在未经决议以前。党内的一切争论问题可以自由讨论。（四十五）不执行上级党部的决议和犯了党内认为有错误的其他过失。应由相当的党部予以纪律上的处分。党部执行纪律的方法。对于团体的是：指责。指定临时委员会。解散组织和党员重新登记。对于党员个人的是：各种形式的指责。警告。公开的指责。临时取消其党的重要工作。开除党籍或予以相当时间的察看。关于犯纪律的问题。由党员大会或各级党部审查之。各级委员会得成立特别委员会以预先审查关于违犯党纪的问题。此种特别委员会之决议。经该级党部批准后。方发生效力。开除党籍的问题。由本章程第六条所规定之手续决定之。（四十六）党部的用费由党费。特别捐。党的印刷机关及上级党部之津贴等充之。（四十七）入党费和党费的多少由中央委员会规定。失业和极贫苦的党员可完全不缴党费。无充分理由连续三月不缴党费者。以自愿脱党论。并将此宣布于党员大会。（四十八）在非党组织（如职工会。农会。社会团体及文化组织等）之各种代表大会和会议上及机关中。凡有党员三人以上者均成立党团。其任务在于非党的组织中。加强党的影响。实行党的政策。并监督党员在非党组织中之工作。党团得选举干事及书记进行日常工作。党团在处决自身内部问题及日常工作有自由权。在党部委员会和党团中发生不同意见时。党部委员会应协同党团代表重新考查问题。并通过决议。该决议党团应即刻执行。如党团有不同意见而上诉时。问题由最近之高级党部解决。但在上诉期间。仍应执行党委之决议。（四十九）党委员会在讨论与党团有关系的问题时。应使该党团的代表出席党部的委员会之相当会议。有发言权。（五十）党团选举党团干事会。此干事会应得其所隶属之党部之批准。党团干事会在党团工作上。应对该级党部负责。党部得派自己的委员为代表加入党团干事会之组织。并有权召回任何委员。但同时。将召回的原因通知党团。（五十一）在党团工作的各组织中。各种职务人员的名单。得当地党部之同意由党团提出。关于调遣党员由这一党团至别个党团的问题。亦同样决定。（五十二）党团所在组织中各项要解决的问题。应该先经党团会议或党团干事会之讨论。凡党团对于每一问题之决议。加入该党团的党员应在该组织之大会上一致拥护和表决。凡破坏此条的党员。应由党部按党章给以党纪上之制裁。（五十三）在党与青年团的各指导机关中（从支部至中央）均应互派代表。交换发言权同表决权。同样。青年团得以自己团员的数量为比例选派代表出席党的一切代表大会";
+	var sentences = txt_data.split("。");
+	delete txt_data;
+	var sentences_length = sentences.length;
+
+	var x_center = document.getElementById("box_text").offsetWidth / 2;
+	var y_center = document.getElementById("box_text").offsetHeight / 2;
+	var radius = document.getElementById("box_text").offsetHeight * 0.4;
+	var angle = 360 / sentences_length;
+	var text_box_height = 4 * radius / sentences_length;
+	var present_angle = -90;
+
+	var txt_box_element = document.getElementById("box_text");
+	for (var i = 0; i < sentences_length; ++i) {
+		var pre_sentence = sentences[i];
+		var pre_sentence_element = document.createElement("div");
+		txt_box_element.appendChild(pre_sentence_element);
+		set_element_basic_style(pre_sentence_element);
+		set_element_location_style(pre_sentence_element);
+	}
+	
+	delete sentences;
+
+
+	/*--------------------------------------------------词云-------------------------------*/
+
+	var part3_wordcloud_data_name = ['党部', '支部', '党团', '中央委员会', '共产国际', '党员大会', '审查', '干事会', '省委', '常务委员会', '党纪', '宣传', '党务', '监督', '青年团', '纪律', '党章', '民族', '组织部', '特派员', '妇女运动', '民主集中制', '群众', '党报', '文化', '斗争', '教育', '发言权', '自由', '党纲', '革命行动', '民族语言', '革命', '全国代表大会', '候补委员', '宣传部'];
+	var part3_wordcloud_data_value = [46, 30, 27, 26, 18, 13, 11, 10, 7, 6, 5, 5, 4, 4, 4, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1];
+
+
+	var part3_wordcloud_data = [];
+	for (var i = 0; i < part3_wordcloud_data_value.length; ++i) {
+		part3_wordcloud_data.push({
+			name: part3_wordcloud_data_name[i],
+			value: part3_wordcloud_data_value[i]
+		});
+	}
+
+	var part3_wordcloud_width = $("#box_wordcloud").width;
+	var part3_wordcloud_height = $("#box_wordcloud").height;
+	var textarc_chart = echarts.init(document.getElementById('box_wordcloud'));
+	var option = {
+		backgroundColor: 'rgba(255, 255, 255, 0)',
+		series: [{
+			type: 'wordCloud',
+			gridSize: part3_wordcloud_gridsize,
+			sizeRange: part3_wordcloud_sizerange,
+			rotationRange: part3_wordcloud_rotationrange,
+			shape: 'circle',
+			width: part3_wordcloud_width,
+			height: part3_wordcloud_height,
+			textStyle: {
+				normal: {
+					color: function (v) {
+						return part3_wordcloud_get_color(v);
+					},
+					fontFamily: "字魂47号"
+				},
+				emphasis: {
+					shadowBlur: 10,
+					shadowColor: 'red'
+				}
+			},
+			data: part3_wordcloud_data
+		}]
+	};
+	textarc_chart.setOption(option);
+
+	</script> 
+<script>
+	var tree_chart_element = document.getElementById('tree_chart_div');
+	var tree_chart = echarts.init(tree_chart_element);
+	var data = [{
+		name: '六大党章',
+		children: [{
+			name: '历史背景',
+		}, {
+			name: '特点',
+		}, {
+			name: '历史意义',
+		}]
+	}];
+
+	tree_chart.hideLoading();
+	var tree_chart_option = {
+		tooltip: {
+			trigger: 'item',
+			triggerOn: 'mousemove'
+		},
+		series: [{
+			type: 'tree',
+
+			data: data,
+			width: tree_chart_element.style.width,
+			height: tree_chart_element.style.height,
+			top: '10%',
+			left: '20%',
+			bottom: '10%',
+			right: '40%',
+
+			symbolSize: 20,
+
+			label: {
+				position: 'left',
+				verticalAlign: 'middle',
+				align: 'right',
+				fontSize: 20,
+				fontFamily: "字魂47号",
+				fontWeight: "bold"
+			},
+
+			leaves: {
+				label: {
+					position: 'right',
+					verticalAlign: 'middle',
+					align: 'left',
+					fontFamily: "字魂47号",
+					fontWeight: "bold"
+				}
+			},
+
+			emphasis: {
+				focus: 'descendant'
+			},
+
+			expandAndCollapse: true,
+			animationDuration: 550,
+			animationDurationUpdate: 750
+		}]
+	}
+	tree_chart.setOption(tree_chart_option);
+	document.getElementById("part4_div_part").style.display = "none";
+	
+	
+
+</script> 
+<script src="JavaScript/dangzhang_js.js"></script>
+<script src="JavaScript/aos/aos.js"></script>
+<script>
+	AOS.init({
+		easing: 'ease-out-back',
+		duration: 1000
+	});
+</script>
+	
+</body>
+</html>

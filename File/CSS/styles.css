@@ -1,0 +1,470 @@
+@charset "utf-8";
+@import "font.css";
+/* CSS Document */
+
+
+body {
+	width: 1400px;
+	background-image: url(../../Image/picture/new_background.png),
+					  url(../../Image/picture/main_background_right_part.png);
+	background-size: 100% 100%, 100% 100%;
+	background-repeat: no-repeat, repeat-x;
+	margin: auto;
+}
+
+
+* {
+	outline: none;
+}
+
+
+#a_bird_gif {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	right: 0;
+}
+#a_boat {
+	position: absolute;
+	width: 200px;
+	right: 0;
+	top: 700px;
+}
+
+/*------------------------------------标题栏--------------------------------------------------*/
+.dangzhang_title_bar {
+	margin-bottom: 0px;
+	width: 100%;
+	padding: 50px 0px 0px 0px;
+}
+#flexmenu {
+	width: 100%;
+	margin: auto;
+	display: flex;
+	align-items: center;
+}
+#home_logo_div {
+	width: 40%;
+	margin: auto;
+}
+#home_logo {
+	width: 100%;
+}
+
+/*-------------------------------------------------------------------------------------------*/
+
+/*----------------------------第一块设置---------------------------------------------------*/
+
+/*------第一块div--1----------------*/
+#dangzhang_button_div {
+	width: 100%;
+	height: 500px;
+}
+
+#dangzhang_button_box {
+	width: 90%;
+	height: 100%;
+	
+	margin: auto;
+	position: relative;
+	
+}
+#cancel_space {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+}
+
+#dangzhang_button_inner_box {
+	width: 78%;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 100;
+	transform: translate(-50%, -50%);
+}
+.dangzhang_button {
+	z-index: 100;
+	width: 50px;
+	height: auto;
+	cursor: pointer;
+	background-color: transparent;
+	border-style: none;
+	position: relative;
+	float: left;
+	border-radius: 10px;
+	visibility: hidden;
+	opacity: 0.7;
+}
+
+
+
+/*---------会议介绍气泡框------------------*/
+.meeting_introduce_content_div {
+	display: none;
+	position: absolute;
+	z-index: 1000;
+	top: 0%;
+	left: 50%;
+	width: auto;
+	height: auto;
+	max-width: 400px;
+	padding: 10px;
+	background-color: #C4C4C4; 
+	/*CBC4C4*/
+	border-radius: 15px;
+	
+}
+
+.meeting_introduce_talk {
+	font-family: "字魂47号";
+	font-size: 20px;
+	text-align: left;
+}
+
+.first_row {
+	width: 60px;
+	vertical-align: text-top;
+}
+
+.dangzhang_href_div {
+	width: auto;
+	text-align: center;
+	font-size: 25px;
+}
+.dangzhang_href {
+	color: black;
+}
+.dangzhang_href:hover {
+	color: #6A6A6A;
+}
+
+/*------------------------------------------------可视化部分--------------------------------------------*/
+#part_themeriver_bubble {
+	width: 100%;
+	height: 800px;
+	margin-top: 100px;
+}
+#part_themeriver_bubble_left_part_div {
+	width: 10%;
+	height: 100%;
+	float: left;
+}
+#part_chart_div {
+	width: 80%;
+	height: 80%;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+
+/*------------------------------------主题河流-------------------------------------*/
+#part_themeriver {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: block;
+} 
+#themeriver {
+	width: 100%;
+    height: 100%;
+}
+
+/*----------------------------------气泡图-----------------------------------------*/
+#part_bubble_chart {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+} 
+
+
+#bubble_chart {
+	width: 100%;
+	height: 100%;
+	
+	position: relative;
+}
+
+.change_button {
+	width: 15%;
+	height: 100%;
+	position: absolute;
+	z-index: 100;
+}
+.choice_button {
+	width: 100%;
+	height: 7%;
+	cursor: pointer;
+	color: black;
+	font-family: "字魂47号";
+	font-size: 25px;
+	background-image: url(../../Image/picture/bubble_chart_button_background.png);
+	background-size: 100% 100%;
+	background-color: transparent;
+	border-style: none;
+	margin: 5px 0px;
+}
+.change_button_part_top_part {
+	width: 100%;
+	height: 10%;
+}
+#change_button_right_part {
+	right: 0;
+}
+/*---------------------------------------词频统计图--------------------------------------------*/
+#part_word_frequency_statistics {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 80%;
+}
+#word_frequency_statistics_linechart {
+	width: 80%;
+	height: 100%;
+	margin: auto;
+}
+#word_frequency_statistics_barchart {
+	width: 80%;
+	height: 100%;
+	margin: auto;
+	display: none;
+}
+
+/*------------------------搜索框-----------------------------------*/
+#document_part_search_bar_part_div {
+	width: 80%;
+	margin: auto;
+	margin-bottom: 50px;
+}
+#search_input_div {
+	position: relative;
+	width: 500px;
+	height: 50px;
+	margin: auto;
+}
+#search_input_text {
+	width: 50%;
+	height: 80%;
+	color: black;
+	background-image: url(../Image/picture/search_box_background.png);
+	background-size: 100% 100%;
+	background-color: transparent;
+	border-style: none;
+	padding: 0 40px;
+	font-family: "字魂49号";
+	font-size: 20px;
+	outline: none;
+	margin-left: 10%;
+}
+#search_input_button {
+	height: 100%;
+	color: black;
+	font-family: "字魂49号";
+	font-size: 30px;
+	cursor: pointer;
+	background-color: transparent;
+	border-style: none;
+}
+
+/*-----------------子图切换按钮----------------------*/
+#word_frequency_statistics_change_button_div {
+	width: 55px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#word_frequency_statistics_change_button_div_top_part {
+	width: 100%;
+	height: 20%;
+}
+.statistics_change_button {
+	background-color: transparent;
+	border-style: none;
+	height: 120px;
+	width: 40px;
+	cursor: pointer;
+	margin: 20px 0px;
+}
+#linechart_change_button {
+	background-image: url(../../Image/picture/linechart_backgorund.png);
+	background-size: 100% 100%;
+	border: 2px solid #A5A3A3;
+	border-radius: 10px;
+}
+
+#barchart_change_button {
+	background-image: url(../../Image/picture/barchart_background.png);
+	background-size: 100% 100%;
+	border-radius: 10px;
+}
+/*-------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+
+/*--------------------------可视化切换按钮--------------------------*/
+#change_display_method_div {
+	width: 80%;
+	height: 10%;
+	position: relative;
+	float: left;
+	margin-bottom: 5%;
+}
+.display_change_button_left_part {
+	width: 10%;
+	height: 100%;
+	float: left;
+}
+.display_change_button_div {
+	width: 22%;
+	height: 100%;
+	position: relative;
+	float: left;
+	margin: 0px 25px;
+}
+#bubblechart_button_ico_change_div {
+	width: 18%;
+}
+.display_change_button {
+	width: 100%;
+	height: 100%;
+	font-family: "字魂47号";
+	font-size: 45px;
+	text-align: right;
+	z-index: 100;
+}
+#themeriver_button, #bubble_chart_button, #wordstatistics_chart_button {
+	background-color: transparent;
+	border-style: none;
+	cursor: pointer;
+	margin: 0 5%;
+}
+#themeriver_button {
+	background-color: #d9dee0;
+	border-radius: 20px;
+	opacity: 0.7;
+}
+
+.display_change_button_ico {
+	width: 60px;
+	position: absolute;
+	vertical-align: middle;
+	top: 10px;
+	left: 10px;
+	z-index: 98;
+}
+/*------------------可视化方案介绍-----------------------*/
+.display_chart_explain_content_div {
+	display: none;
+	position: absolute;
+	left: 115%;
+	z-index: 99;
+	top: 10%;
+	width: 200px;
+	height: auto;
+	padding: 10px;
+	background-color: #b3c9cd;
+	border-radius: 10px;
+}
+
+.display_talk {
+	font-family: "字魂47号";
+	font-size: 18px;
+	text-indent: 2em;
+	text-align: left;
+}
+.display_explain_tail {
+	position: absolute;
+	right: 100%;
+	bottom: 0px;
+	width: 26px;
+	height: 75%;
+	border-width: 0;
+	border-style: solid;
+	border-color: transparent;
+	border-top-width: 12px;
+	border-top-color: currentColor;
+	border-radius: 100px 0 0 0;
+	color: #b3c9cd;
+	z-index: 10;
+}
+/*-----------------------------------------------------*/
+
+
+
+/*-----------------党章对比页面介绍-----------------------*/
+#dangzhang_contrast_div {
+	margin-top: 100px;
+	width: 100%;
+	font-family: "毛笔楷体";
+	font-size: 20px;
+}
+#dangzhang_contrast_title {
+	width: 200px;
+	margin: auto;
+	font-family: "毛笔楷体";
+	font-size: 32px;
+	font-weight: bold;
+}
+.dangzhang_contrast_content {
+	width: 80%;
+	margin: auto;
+	text-indent: 2em;
+	color: #5F80BD;
+}
+
+.dangzhang_contrast_content a {
+	color: #FF0004;
+	font-weight: bold;
+	font-size: 22px;
+}
+.dangzhang_contrast_content a:hover {
+	color: #FC595C;
+}
+
+
+/*----------------------------网页尾部-----------------------------------------*/
+
+#web_tail_part_div {
+	aos: fade-up;
+	width: 100%;
+	height: 150px;
+	position: relative;
+	margin-top: 100px;
+}
+#web_tail_part {
+	width: 80%;
+	height: 100%;
+	margin: auto;
+}
+#web_tail_logo {
+	float: left;
+	width: 30%;
+	margin-right: 20%;
+}
+#web_tail_logo_img {
+	width: 100%;
+	object-fit:cover;
+}
+#web_tail_content_div {
+	float: left;
+	width: 45%;
+	height: 100%;
+}
+
+.web_tail_content,  .web_tail_content a{
+	margin: 10px 0px;
+	font-family: "毛笔楷体";
+	font-size: 20px;
+	color: black;
+}
+.web_tail_content a:hover {
+	color: #6A6A6A;
+}
+/*-------------------------------------------------------------*/
+
+
+
+

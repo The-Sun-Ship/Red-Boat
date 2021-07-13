@@ -1,0 +1,869 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>四大党章</title>
+<link rel="stylesheet" href="CSS/dangzhang_css.css">
+<link rel="stylesheet" href="CSS/aos/aos.css">
+
+<script src="JavaScript/global_variable.js"></script>
+<script src="JavaScript/jquery_min.js"></script>
+
+<script src="JavaScript/echarts_min.js"></script>
+<script type="text/javascript" src="JavaScript/echarts-wordcloud.min.js"></script>
+<script type="text/javascript" src="JavaScript/jquery_highlight.js"></script>
+<script src="JavaScript/dangzhang_first.js"></script>
+<script src="JavaScript/dangzhang_js.js"></script>
+</head>
+
+	
+<body>
+<img id="a_bird" src="../Image/picture/bird.gif" alt="Not Found">
+	
+	
+<div class="dangzhang_title_bar">
+  <nav id="flexmenu">
+    <div id="home_logo_div"> <a href="../main_html.html"><img src="Image/picture/title_logo.png" id="home_logo" alt="logo"></a> </div>
+	<div id="dangzhang_logo_div"> <a href="4.html"><img src="Image/picture/副标题/4.png" id="dangzhang_logo" alt="logo"></a> </div>
+    <div class="nav-inner">
+      <ul class="main-menu">
+        <li class="menu-item big_title_content"><a href="../main_html.html">主页</a> </li>
+        <li class="menu-item big_title_content"><a href="#">党章</a>
+          <ul class="sub-menu">
+			<li class="menu-item small_title_content"><a href="dangzhang_comparison.html">党章对比</a></li>
+            <li class="menu-item small_title_content"><a href="2.html">二大党章</a></li>
+            <li class="menu-item small_title_content"><a href="3.html">三大党章</a></li>
+            <li class="menu-item small_title_content"><a href="4.html">四大党章</a></li>
+            <li class="menu-item small_title_content"><a href="5.html">五大党章</a></li>
+            <li class="menu-item small_title_content"><a href="6.html">六大党章</a></li>
+            <li class="menu-item small_title_content"><a href="7.html">七大党章</a></li>
+            <li class="menu-item small_title_content"><a href="8.html">八大党章</a></li>
+            <li class="menu-item small_title_content"><a href="12.html">十二大党章</a></li>
+            <li class="menu-item small_title_content"><a href="13.html">十三大党章</a></li>
+            <li class="menu-item small_title_content"><a href="14.html">十四大党章</a></li>
+            <li class="menu-item small_title_content"><a href="15.html">十五大党章</a></li>
+            <li class="menu-item small_title_content"><a href="16.html">十六大党章</a></li>
+            <li class="menu-item small_title_content"><a href="17.html">十七大党章</a></li>
+            <li class="menu-item small_title_content"><a href="18.html">十八大党章</a></li>
+            <li class="menu-item small_title_content"><a href="19.html">十九大党章</a></li>
+          </ul>
+        </li>
+        <li class="menu-item big_title_content" id="keshihuazhanshi_button" onClick="show_display_method_chart()"><a href="#">可视化展示</a></li>
+        <li class="menu-item big_title_content" id="xiangguanneirong_button"><a href="#">相关内容</a>
+          <ul class="sub-menu relative_content_background">
+            <li class="menu-item small_title_content" onClick="show_tree_chart()"><a href="#">相关摘要</a></li>
+            <li class="menu-item small_title_content" onClick="show_question_answer_part()"><a href="#">党章问答</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+	
+<div id="conference_introduce_div" aos="fade-up">
+  <div id="conference_introduce_left_part_div"></div>
+  <div id="conference_introduce_content_div"> 
+    <div id="conference_introduce_content">1925年1月11日至22日，中国共产党第四次全国代表大会在上海召开。出席会议的代表共20名，代表全国994名党员。中国共产党第四次全国代表大会，是我党探索革命理论、实践群众化的组织路线和加强自身建设伟大历程中的一座历史丰碑，推动我党实现从宣传马克思主义的革命团体到群众性政党的伟大跨越。
+    </div>
+  </div>
+</div>
+
+	
+<div id="part_visual_display_div" aos="fade-up">
+  <div id="part_visual_display_chart_big_div_left_div"></div>
+  <div id="change_display_method_button_div">
+	<div id="display_change_button_left_part_div"></div>
+    
+    <div class="display_change_button_div">
+	  <input type="button" id="risingsun_button" class="display_change_button" value="旭日图" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="risingsun_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">以层级结构展现党章内容，点击某一扇块，下文显示对应内容，支持数据下钻和上卷。</div>
+	  </div>
+	</div>
+	<div class="display_change_button_div">
+	  <input type="button" id="wordcloud_button" class="display_change_button" value="词云" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="wordcloud_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">主要根据词频呈现党章的关键词，点击词语可在下文中看到对应内容。</div>
+		
+	  </div>
+	</div>
+	<div class="display_change_button_div" >
+	  <input type="button" id="textarc_button" class="display_change_button" value="文本弧" onClick="change_display_method(this)">
+	  <div class="display_chart_explain_content_div" id="textarc_chart_explain_content_div">
+		<div class="display_explain_tail"></div>
+		<div class="display_talk">展现所选词在党章中对应位置，点击词语，下文显示包含该词的段落。</div>
+	  </div>
+	</div>
+  </div>
+  <div id="part_visual_display_chart_big_div">
+	  <div id="wordcloud_display" class="part_visual_display_chart_big_div_partdiv">
+		<div id="wordcloud_display_background_div" class="wordcloud_display_children_div"> 
+			<img src="Image/picture/background.png" id="wordcloud_background_img" class="wordcloud_display_children_div" alt="wrong">
+		</div>
+		<div id="wordcloud_main_part" class="wordcloud_display_children_div"></div>
+	  </div>
+	  <div id="rising_sun_display" class="part_visual_display_chart_big_div_partdiv"></div>
+	  
+	  <div id="big_box" class="part_visual_display_chart_big_div_partdiv">
+		<div id="box_text"></div>
+		<div id="box_wordcloud"></div>
+		<canvas id="box_canvas" width="500" height="500"></canvas >
+	  </div>
+  </div>
+  
+</div>
+	
+	
+<div id="document_part" aos="fade-up">
+  
+  <div id="document_part_search_bar_part_div">
+	  <div id="search_input_div">
+		<input type="button" id="search_input_text_wordstatistics" value="">
+		<input type="text" id="search_input_text" value="" placeholder="搜索党章关键词">
+		<input type="button" id="search_input_button" value="搜索" onClick="start_search_all_content()">
+	  </div>
+  </div>
+	
+  <input type="button" value="显示全部内容" id="show_all_content_button" onClick="show_dangzhang_all_content()" >
+  <input type="button" value="返回主题河流" id="return_to_themeriver" onClick="click_return_to_themeriver()" >
+  <input type="button" value="返回气泡图" id="return_to_bubblechart" onClick="click_return_to_bubblechart()" >
+  <input type="button" value="返回词频统计" id="return_to_wordstatistics" onClick="click_return_to_wordstatistics()">
+   
+    <div id="document_content_div">
+    
+    <table id="zhengwen_table">
+      <tbody class="all_content all_types 章节 自请出党 入党条件及过程 执行委员会 入党资格 第一章-党员 党员 各执行委员会职责 执行委员会选举及任期 支部与执行委员会关系 支部的成立 第二章-组织 组织 临时会议 定期会议 第三章-会议 会议 党员除名 党员迁移 少数绝对服从多数 政治党派的加入 政策的执行 命令的执行 最高机关 第四章-纪律 纪律 第五章-经费 党费 第六章-附则 &组织建设 &纪律 ">
+        <tr>
+          <td class="table_title" colspan="2">章节</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 自请出党 入党条件及过程 执行委员会 入党资格 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第一章 党员</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 章节 第一章-党员 入党资格 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第一条</td>
+          <td class="concrete_content"> 本党党员无国籍性别之分，凡承认本党党纲及章程并愿忠实为本党服务者，均得为本党党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 执行委员会 章节 第一章-党员 入党条件及过程 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二条</td>
+          <td class="concrete_content">党员入党时，须有正式入党半年以上之党员二人之介绍，经支部会议之通过，地方委员会之审查批准，始得为本党候补党员。候补期劳动者三个月，非劳动者六个月，但地方委员会得酌量情形伸缩之。候补党员参加支部会议（遇必要时，得由地方执行委员会决定其参加地方大会，但无表决权）只有发言权无表决权，但其义务与正式党员同。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 执行委员会 章节 第一章-党员 入党条件及过程 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三条</td>
+          <td class="concrete_content"> 凡经中央执行委员会直接承认之党员，当通告该党员所在地之地方委员会，亦须经过候补期；凡已加入第三国际所承认之各国共产党者，经中央审查后，得为本党正式党员。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党员 执行委员会 章节 第一章-党员 自请出党 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第四条</td>
+          <td class="concrete_content">党员自请出党须经过地方之决定，收回其党证及其他重要文件，并须由介绍人担保其严守本党一切秘密，如违反时，由地方执行委员会采用适当手段对待之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 章节 第二章-组织 各执行委员会职责 执行委员会选举及任期 支部与执行委员会关系 支部的成立 执行委员会 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第二章　组织</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 执行委员会 章节 第二章-组织 支部的成立 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第五条</td>
+          <td class="concrete_content"> 各农村各工厂各铁路各矿山各兵营各学校等机关及附近，凡有党员三人以上均得成立一支部，每支部公推书记一人或推三人组织干事会，隶属地方执行委员会，不满三人之处，设一通信员，属于附近之地方或直接属于中央。支部人数过多时，得斟酌情形分为若干小组，每组设组长一人，由支部干事会指定之。如支部所在地尚无地方执行委员会时，则由区执行委员会直辖之，未有区执行委员会之处，则由中央直辖之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 执行委员会 章节 第二章-组织 支部与执行委员会关系 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第六条</td>
+          <td class="concrete_content"> 一地方有三个支部以上，经中央执行委员会之许可，区执行委员会得派员至该地方召集全体党员大会或代表会由该会推举三人组织该地方执行委员会，并推举候补委员二人－－－如委员因事离职时，得以候补委员代理之，未有区执行委员会之地方，则由中央执行委员会直接派员召集组织该地方执行委员会，直接隶属中央。区执行委员会所在地，得以区执行委员会代行该地方执行委员会之职权。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 执行委员会 章节 第二章-组织 支部与执行委员会关系 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第七条</td>
+          <td class="concrete_content"> 各区有二个地方执行委员会以上，中央执行委员会认为有组织区执行委员会必要时，即派员到该区召集区代表会，由该代表会推举五人组织该区执行委员会；并推举候补委员三人，如委员因事离职时，得以候补委员代理之。中央执行委员会认为必要时，得委托一个地方执行委员会暂时代行区执行委员会之职权。区之范围由中央执行委员会规定并得随时变更之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 执行委员会 章节 第二章-组织 执行委员会选举及任期 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第八条</td>
+          <td class="concrete_content">中央执行委员会由全国代表大会选举九人组织之；并选举候补委员五人，如委员离职时，得以候补委员代理之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 执行委员会 章节 第二章-组织 执行委员会选举及任期 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第九条</td>
+          <td class="concrete_content"> 中央执行委员会任期一年，区及地方执行委员会任期均半年，支部干事或书记任期三月，区及地方委员支部干事或书记辞职时，须得上级机关之许可。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 执行委员会 章节 第二章-组织 各执行委员会职责 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十条</td>
+          <td class="concrete_content"> 中央执行委员会执行大会的各种决议，审议及决定本党政策及一切进行方法；区及地方执行委员会执行上级机关的决议，并在其范围及权限以内审议及决定一切进行方法。中央执行委员会须互推总书记一人总理全国党务，各级执行委员会及干事会均须互推书记一人总理各级党务，其余委员协同总书记或各级书记分掌党务。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 组织 执行委员会 章节 第二章-组织 各执行委员会职责 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十一条</td>
+          <td class="concrete_content"> 大会或中央执行委员会议决之各种议案及各地临时发生之特别问题，区及地方执行委员会均得指定若干党员组织各种特别委员会处理之；此项特别委员会开会时，须以各该执行委员会一人为主席。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 会议 章节 第三章-会议 临时会议 定期会议 执行委员会 &组织建设 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第三章　会议</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 会议 执行委员会 章节 第三章-会议 定期会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十二条</td>
+          <td class="concrete_content"> 各支部每星期至少须开会一次由支部书记召集之。但已分成小组之支部，其小组每星期至少须开会一次由小组组长召集之，至支部全体会议，至少须每月举行一次。各地每月至少召集全体党员会议一次（其有特别情形之地方，得改全体会议为支部书记或干事联席会议，但全体会议至少须两月一次）。各区每半年由执行委员会定期召集该区全体党员代表会议一次。全国代表大会，每年由中央执行委员会定期召集一次，各代表表决权以其代表人数计算。中央执行委员会，每四月开全体委员会一次。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 会议 执行委员会 章节 第三章-会议 临时会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十三条</td>
+          <td class="concrete_content"> 中央执行委员会认为必要时，得召集全国代表临时会议或扩大中央执行委员会，有三分之一区代表全党三分一之党员之请求，中央执行委员会亦必须召集临时会议。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 会议 执行委员会 章节 第三章-会议 临时会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十四条</td>
+          <td class="concrete_content"> 全国代表大会或临时会议之代表人数，每地方必须派代表一人，但人数在百人以上者得派二人，二百人以上者得派三人，以上每加百人得加派代表一人。未成地方之处，中央执行委员会认为必要时，得令其派出代表一人出席。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 会议 执行委员会 章节 第三章-会议 临时会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十五条</td>
+          <td class="concrete_content"> 凡一问题发生，上级执行委员会得临时命令下级执行委员会召集各种形式的临时会议。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 会议 执行委员会 章节 第三章-会议 临时会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十六条</td>
+          <td class="concrete_content"> 中央执行委员会得随时派员到各处召集各种形式的临时会议，此项会议应以中央特派员为主席。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 会议 执行委员会 章节 第三章-会议 临时会议 &组织建设 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十七条</td>
+          <td class="concrete_content"> 中央及区与地方执行委员会与支部干事会，由总书记或各级书记随时召集之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第四章-纪律 党员除名 党员迁移 少数绝对服从多数 政治党派的加入 政策的执行 命令的执行 最高机关 执行委员会 &纪律 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第四章　纪律</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 执行委员会 章节 第四章-纪律 最高机关 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十八条</td>
+          <td class="concrete_content"> 全国代表大会为本党最高机关，在全国大会闭会期间，中央执行委员会为最高机关。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 执行委员会 章节 第四章-纪律 命令的执行 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第十九条</td>
+          <td class="concrete_content"> 全国大会及中央执行委员会之议决，本党党员皆须绝对服从之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第四章-纪律 命令的执行 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十条</td>
+          <td class="concrete_content"> 下级机关须完全执行上级机关之命令；不执行时，上级机关得取消或改组之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 执行委员会 章节 第四章-纪律 命令的执行 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十一条</td>
+          <td class="concrete_content"> 各地方党员半数以上对于执行委员会之命令有抗议时，得提出上级执行委员会判决；地方执行委员会对于区执行委员会之命令有抗议时，得提出中央执行委员会判决；对于中央执行委员会有抗议时，得提出全国大会之临时大会判决；但在未判决期间均仍须执行上级机关之命令。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 执行委员会 章节 第四章-纪律 政策的执行 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十二条</td>
+          <td class="concrete_content"> 区或地方执行委员会及各级均须执行及宣传中央执行委员会所定政策，不得自定政策，凡有关系全国之重大政治问题发生，中央执行委员会未发表意见时，区或地方执行委员会，均不得单独发表意见，区或地方执行委员会所发表之一切言论倘与本党宣言章程及中央执行委员会之议决案及所定政策有抵触时，中央执行委员会得令其改组之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 执行委员会 章节 第四章-纪律 政治党派的加入 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十三条</td>
+          <td class="concrete_content"> 凡党员若不经中央执行委员会之特许，不得加入一切政治的党派。其前已隶属一切政治的党派者，加入本党时，若不经特许，应正式宣告脱离。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 执行委员会 章节 第四章-纪律 政治党派的加入 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十四条</td>
+          <td class="concrete_content"> 凡党员若不经中央执行委员会之特许，不得为任何资本阶级的国家之政务官。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第四章-纪律 少数绝对服从多数 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十五条</td>
+          <td class="concrete_content"> 本党一切会议均取决多数，少数绝对服从多数。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 章节 第四章-纪律 党员迁移 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十六条</td>
+          <td class="concrete_content"> 凡党员离开其所在地时必须经该地方党部许可。其所前往之地如有党部时必须向该党部报到。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 纪律 执行委员会 章节 第四章-纪律 党员除名 &纪律 ">
+        <tr>
+          <td class="entry_num" rowspan="8">第二十七条</td>
+          <td class="concrete_content"> 凡党员有犯左列各项之一者，该地方执行委员会必须开除之：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）言论行动有违背本党党纲章程及大会和各执行委员会之议决案；</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）无故联续三次不到会；</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（三）无故欠缴党费三个月；</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（四）联续四个星期不为本党服务；</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（五）不守纪律经各级执行委员会命令其停止出席留党察看期满而不改悟；</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（六）泄漏本党秘密。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content"> 地方执行委员会开除党员后，必须报告其理由于中央及区执行委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党费 章节 第五章-经费 执行委员会 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第五章　经费</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党费 执行委员会 章节 第五章-经费 ">
+        <tr>
+          <td class="entry_num" rowspan="4">第二十八条</td>
+          <td class="concrete_content"> 本党经费的收入如左各项：</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（一）党费 党员每月收入在三十元以内者，月缴党费两角；但无收入及月薪不满二十元者，得由地方斟酌情形核减之；在三十元以上至六十元者缴一元；六十元以上至八十元者缴百分之三；八十元以上至百元者缴百分之五；在一百元以上至二百元者缴百分之十；二百元以外者特别征收之。失业工人及在狱或在S . Y . 的党员均免缴党费。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（二）党内义务捐由地方执行委员会酌量地方经费及党员经济力定之。</td>
+        </tr>
+        <tr>
+          <td class="concrete_content">（三）党外协助。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 党费 执行委员会 章节 第五章-经费 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第二十九条</td>
+          <td class="concrete_content"> 本党一切经费收支，均由中央执行委员会支配之。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 章节 第六章-附则 ">
+        <tr>
+          <td class="zhang_mingcheng" colspan="2">第六章　附则</td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 章节 第六章-附则 ">
+        <tr>
+          <td class="entry_num" rowspan="1">第三十条</td>
+          <td class="concrete_content"> 本章程修改之权属全国代表大会，解释之权属中央执行委员会。 </td>
+        </tr>
+      </tbody>
+      <tbody class="all_content all_types 章节 第六章-附则 ">
+        <tr>
+          <td class="entry_num" rowspan="1"> 第三十一条</td>
+          <td class="concrete_content"> 本章程由本党第四次全国代表大会（一九二五年一月十一日－－二十二日）议决，中央执行委员会公布之日起发生效力。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  
+</div>
+	
+	
+	
+<div id="part4_div_part">
+	<div id="tree_chart_div"></div>
+	<table id="part4_tree_table" >
+	  <tbody class="part4_历史背景">
+		<tr>
+		  <td class="part4_tbody_head">党章制定的历史背景</td>
+		</tr>
+		<tr>
+		  <td class= "part4_content">   1925年1月，中国共产党第四次全国代表大会在上海召开。出席大会的党代表20人，代表党员994人。共产国际代表维经斯基出席了大会。陈独秀代表第三届中央执行委员会向大会作工作报告，维经斯基在会上作了关于世界共产主义运动状况的报告，出席1924年六七月间在莫斯科召开的共产国际第五次代表大会的中共代表，向大会作了关于共产国际五大的情况和决议精神的报告。大会通过了《中国共产党第四次全国代表大会宣言》、11个议决案和《中国共产党第二次修正章程》。我们通常称《中国共产党第二次修正章程》为四大党章。
+			  <br/><br/>   1.党的三大以后，按照建立革命统一战线的方针，党投入了较大的精力帮助国民党进行改组，但党内存在着忽视党的自身建设问题
+			  <br/>   1924年1月，国民党召开第一次全国代表大会，标志着国共两党合作正式形成。共产党在积极帮助国民党发展组织，建立各级党部和创建革命军队的同时，还大力开展工农群众运动。但是，这一时期，在党的工作中，却发生了某些离开三大决议的右的倾向，突出表现在1923年11月下旬召开的三届一中全会和1924年2月底召开的三届二中全会上，提出了所谓一切运动归国民运动，一切工作归国民党的错误方针，同时，在发展党的组织方面过分强调在“介绍新分子加入本党时，须十分慎重选择，凡非对本党主义、策略及党之纪律充分明了并恳切愿意服务本党者，不必轻率加入”。推行上述方针的结果，造成了党的发展上没有多大的进展。个别地区党的委员会甚至把“向外发展”作为工作的全部任务，而对本党内部的组织工作却不太重视，甚至完全忽视，不努力去做党的宣传工作，不注意对党员进行思想教育和组织训练。由于一些地方的党组织通常情况下把一般人都介绍给国民党组织了，同时又对介绍到本党的同志要求极其严格，导致党员的组织发展工作非常迟缓。“从三大到一中全会党员增加不过百人；而到五月扩大会时，由于党员无甚发展甚至减少，解散了水口山和常德两个地方组织，湖北、上海、广东则由区(即省)的组织改为地方组织。”①这同客观上我们党的工作日趋繁重的要求是极不相称的。
+			  <br/><br/>   2.为了总结国共合作的经验教训，纠正在党的工作中出现的右的倾向，加强党的组织建设，1924年5月，党中央在上海召开了第一次扩大的执行委员会会议
+			  <br/>   会议听取了京、沪、湘、鄂、鲁五个区委的工作汇报，对党的组织工作提出了明确的新要求。会议强调党在国民党中工作的重要性和党的独立性以及党要加强对工人、农民、青年等革命运动的领导；提出党应把在产业工人中扩大党组织作为党的组织任务之一；对中央、地方和基层党组织的组织机构、职责和任务都作出了新的规定和要求；决定党和团的工作要分开。1924年9月，党中央作出了在非党团体中设立党团的规定。11月初，中央又通告各地要求党内组织为党的中心工作，一切对内对外发展，都与此有密切关系。为了使中央提出的新要求得到贯彻落实，中央起草了《关于组织问题之议决案》，提交党的四大讨论并通过，其中很多内容直接涉及党章修改的问题，并且该议决案中的许多规定和要求，后来都写进了《中国共产党第二次章程修正案》，并在四大上通过。
+			  <br/><br/>
+			</td>
+		</tr>
+		<tr class="part4_test_href">
+		  <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26481296.htm" target="_blank">中国国情-中国网</a></td>
+		</tr>
+		<tr>
+		  <td class="part4_null_row_space"></td>
+		</tr>
+	  </tbody>
+	
+	  <tbody class="part4_特点">
+		<tr>
+		  <td class="part4_tbody_head">党章的特点</td>
+		</tr>
+		<tr>
+		  <td class= "part4_content">   四大党章，与党的三大通过的《中国共产党第一次修正章程》比较起来，总体上没有根本性的变化和较多的修改，仅从原来的六章三十条变成六章三十一条，增加了一条，并且这六章的体例没有任何变化，仍然是党员、组织、会议、纪律、经费和附则六章。其主要特点如下：
+			  <br/><br/>   1.首次规定了支部成立的条件及其成员产生办法
+			  <br/>   “凡有三人以上均成立支部”。每支部应公推书记一人或者推三人组织干事会，隶属地方执行委员会，不满三人的，设一名通讯员，属于附近的地方直属中央。支部人数过多时，应该根据实际情况划分为若干个党小组，各组设组长一人，由支部干事会指定。可见，这里的党小组已经不是三大以前党章中所说的党小组的概念了，原来的党小组是党的最基层的一级组织，可这里的党小组只是作为党的支部的一部分。
+			  <br/><br/>   2.对候补党员的权利进行了调整
+			  <br/>   取消了三大党章修正案有关候补党员有选举权的规定，新规定候补党员参加支部会议只有发言权无表决权。由于表决权的使用范围要比选举权宽泛得多，这意味着不仅取消了候补党员在选举中的选举权，而且不允许候补党员在党的一切活动中行使表决权。还将原来规定的候补党员只参加小组会，改为参加支部会议，必要时可以经地方执行委员会决定，参加地方大会。
+			  <br/><br/>   3.下放了党员管理权限
+			  <br/>   将接收新党员的审批权限做了调整，由原来规定经地方委员会审查，并报上级组织——区委员会批准，改为只由地方委员会审查批准即可，从而简化了发展党员的审批程序。党员自请出党的审批手续，也由原来规定“经过区之决定”改为“经过地方之决定”，实际上是将此项审批权下放了一级。
+			  <br/><br/>   4.调整了党的全国代表大会的代表基数
+			  <br/>   将原来规定一地方有党员40人以上者派代表2人，改为每地方党员人数在100人以上者派代表2人。这是基于在经过党中央的高度重视和采取组织措施后党员人数有所增加的情况，而作出的适当调整。
+			  <br/><br/>   5.对党的中央最高领导人的称谓做了改变
+			  <br/>   将党的中央执行委员会的“委员长”职务名称改为“总书记”，总理全国党务。不过，在产生办法上，党的总书记跟原来的委员长没有什么区别，都是在中央执行委员会成员互推的基础上产生的。尽管在权限上没有实质性变化，但毕竟是在党的历史上第一次把党的最高领导人称为总书记，并实行总书记制，这是我们现行的党的总书记称谓和领导制度的历史源头。
+			  <br/>   党的四大通过的《中国共产党第二次修正章程》，虽然只对三大党章作了个别的改动，基本上保持了原有的内容和结构，但是，它首次规定的支部的成立条件及其成员产生办法，强调了对党员日常监督管理工作，下放了党员的管理权限，实行党的总书记制度，从这些新增加的内容中，能够反映出全党对党的组织建设的高度重视，它对于后来正确开展党的组织工作，加强党的组织建设，具有十分重要的意义，发挥了重要的指导作用。
+			  <br/><br/>
+			</td>
+		</tr>
+		<tr class="part4_test_href">
+		  <td><a href="http://www.china.com.cn/guoqing/2012-09/10/content_26481306.htm" target="_blank">中国国情-中国网</a></td>
+		</tr>
+		<tr >
+		  <td class="part4_null_row_space"></td>
+		</tr>
+	  </tbody>
+	
+	  <tbody class="part4_历史意义">
+		<tr>
+		  <td class="part4_tbody_head ">党章的历史意义</td>
+		</tr>
+		<tr>
+		  <td class= "part4_content">   1925年1月，中共四大通过了《中国共产党第二次修正章程》。第一次将党的支部规定为党的基层单位。并规定中央委员会“委员长”改称为“总书记”；地方各级党的执行委员会“委员长”改称为“书记”。
+			  <br/><br/>
+			</td>
+		</tr>
+		<tr class="part4_test_href">
+		  <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26481386.htm" target="_blank">中国国情-中国网</a></td>
+		</tr>
+		<br/><br/><br/>
+		<tr>
+		  <td class= "part4_content">   四大党章（1925年）：第一次设总书记，高度重视和加强党的组织建设。
+			  <br/>   1925年1月，党的四大通过《中国共产党第二次修正章程》，增加了“凡党员离开其所在地时必须经该地方党部许可。其所前往之地如有党部时必须向该党部报到”一条，严格了党的纪律；对党支部的组成、党支部的会议作了重要修正。
+			  <br/><br/>
+			</td>
+		</tr>
+		<tr class="part4_test_href">
+		  <td>——<a href="http://www.china.com.cn/guoqing/2012-09/10/content_26481327.htm" target="_blank">中国国情-中国网</a></td>
+		</tr>
+		<tr>
+		  <td class="part4_null_row_space"></td>
+		</tr>
+	  </tbody>
+</table>
+</div>
+	
+	
+<div id="part5_question_answer_div">
+	<div id="question_answer_main_div">
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num1" disabled>
+				<label for="question_num1" class="question_content">1.四大党章中由哪些人负责党务管理？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">中央执行委员会须互推总书记一人总理全国党务，各级执行委员会及干事会均须互推书记一人总理各级党务，其余委员协同总书记或各级书记分掌党务。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num2" disabled>
+				<label for="question_num2" class="question_content">2.四大党章中指明入党资格包括哪些？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">本党党员无国籍性别之分，凡承认本党党纲及章程并愿忠实为本党服务者，均得为本党党员。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num3" disabled>
+				<label for="question_num3" class="question_content">3.四大党章中指明成立党支部的规定是什么？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">凡有党员三人以上均得成立一支部，每支部公推书记一人或推三人组织干事会，隶属地方执行委员会，不满三人之处，设一通信员，属于附近之地方或直接属于中央。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num4" disabled>
+				<label for="question_num4" class="question_content">4.四大党章中指明党的最高机关是哪个？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">全国代表大会为本党最高机关，在全国大会闭会期间，中央执行委员会为最高机关。</div>
+		</div>
+		<div class="question_answer_num_all_div">
+			<div class="question_num_div">
+				<input type="radio" name="question_num" id="question_num5" disabled>
+				<label for="question_num5" class="question_content">5.四大党章中规定党的会议的决议原则是什么？</label>
+			</div>
+			<input type="button" value="查看答案" class="look_answer_button">
+			<div class="answer_content_div">本党一切会议均取决多数，少数绝对服从多数。</div>
+		</div>
+		
+	</div>
+</div>
+	
+<div id="web_tail_part_div">
+	<div id="web_tail_part">
+		<div id="web_tail_logo"> <a href="#flexmenu"><img src="Image/picture/title_logo.png" id="web_tail_logo_img" alt="logo"></a> </div>
+		
+		<div id="web_tail_content_div">
+			<div id="director_name" class="web_tail_content">制作人员：   孙健   赵洒楠   秦语笑</div>
+			<div id="director_contact_method" class="web_tail_content">联系方式：   2281766692@qq.com</div>
+			<div id="friendly_href_div" class="web_tail_content">友情链接:   <a href="http://www.china.com.cn/">中国网</a>   <a href="http://www.12371.cn/">共产党员网</a>   <a href="http://www.people.com.cn/">人民网</a></div>
+		</div>
+		
+	</div>
+</div>
+		
+<input type="image" id="return_to_top_button" src="Image/picture/return_to_top.png" alt="top" onClick="return_to_top()">
+	
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+	var rising_sun_display_element = document.getElementById('rising_sun_display');
+        var myChart = echarts.init(rising_sun_display_element);
+		
+
+	
+var data = [
+	{
+		name:'章节',
+		children:[
+			{
+				name:'第一章 党员',
+				children:[
+					{
+						name:'入党资格',
+						value:44
+					},{
+						name:'入党条件及过程',
+						value:232
+					},{
+						name:'自请出党',
+						value:72
+					}
+				]
+			},{
+				name:'第二章 组织',
+				children:[
+					{
+						name:'支部的成立',
+						value:187
+					},{
+						name:'支部与执行委员会关系',
+						value:339
+					},{
+						name:'执行委员会选举及任期',
+						value:121
+					},{
+						name:'各级执行委员会职责',
+						value:235
+					}
+				]
+			},{
+				name:'第三章 会议',
+				children:[
+					{
+						name:'定期会议',
+						value:223
+					},{
+						name:'临时会议',
+						value:305
+					}
+				]
+			},{
+				name:'第四章 纪律',
+				children:[
+					{
+						name:'最高机关',
+						value:41
+					},{
+						name:'命令的执行',
+						value:197
+					},{
+						name:'政策的执行',
+						value:153
+					},{
+						name:'政治党派的加入',
+						value:107
+					},{
+						name:'少数绝对服从多数',
+						value:26
+					},{
+						name:'党员迁移',
+						value:46
+					},{
+						name:'党员除名',
+						value:179
+					}
+				]
+			},{
+				name:'第五章 经费',
+				value:232
+			},{
+				name:'第六章 附则',
+				value:90
+			}
+		]
+	}
+];	
+	
+
+	
+option = {
+	series: {
+        type: 'sunburst',
+        highlightPolicy: 'ancestor',
+        data: data,
+		width: rising_sun_display_element.style.width,
+		height: rising_sun_display_element.style.height,
+        radius: [0, '95%'],
+        sort: null,
+		label: part2_rising_sun_chart_label,
+        levels: part2_rising_sun_chart_levels
+    },
+	tooltip: {
+		formatter: function(params){
+			return params.name;
+		}
+    }
+};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script> 
+<script >
+	var wordcloud_chart = echarts.init(document.getElementById('wordcloud_main_part'));
+	var wordcloud_chart_width = $("#wordcloud_background_img").width;
+	var wordcloud_chart_height = $("#wordcloud_background_img").height;
+
+	var wordcloud_data = {
+		value: [{
+			"name": "党员",
+			"value": 28
+		}, {
+			"name": "组织",
+			"value": 8
+		}, {
+			"name": "纪律",
+			"value": 15
+		}, {
+			"name": "会议",
+			"value": 17
+		}, {
+			"name": "党费",
+			"value": 4
+		}, {
+			"name": "执行委员会",
+			"value": 31
+		}, ],
+	};
+	for (var i = 0; i < 1000; ++i) {
+		wordcloud_data.value.push({
+			"name": ".",
+			"value": 1
+		});
+	}
+
+	var maskImage = new Image();
+	maskImage.src = img_data;
+	maskImage.onload = function () {
+		wordcloud_chart.setOption({
+			backgroundColor: '',
+			tooltip: {
+				show: false
+			},
+			series: [{
+				type: 'wordCloud',
+				gridSize: 8,
+				sizeRange: part1_wordcloud_sizerange,
+				rotationRange: part1_wordcloud_rotationrange,
+				maskImage: maskImage,
+				width: wordcloud_chart_width,
+				height: wordcloud_chart_height,
+				textStyle: {
+					normal: {
+						color: function (v) {
+							return part1_wordcloud_get_color(v);
+						},
+						fontFamily: "字魂47号"
+					}
+				},
+				left: 'center',
+				top: 'center',
+				right: null,
+				bottom: null,
+				data: wordcloud_data.value
+			}]
+		});
+	};
+
+</script> 
+<script>
+	var txt_data = "第一条 本党党员无国籍性别之分。凡承认本党党纲及章程并愿忠实为本党服务者。均得为本党党员。第二条 党员入党时。须有正式入党半年以上之党员二人之介绍。经支部会议之通过。地方委员会之审查批准。始得为本党候补党员。候补期劳动者三个月。非劳动者六个月。但地方委员会得酌量情形伸缩之。候补党员参加支部会议（遇必要时。得由地方执行委员会决定其参加地方大会。但无表决权）只有发言权无表决权。但其义务与正式党员同。第三条 凡经中央执行委员会直接承认之党员。当通告该党员所在地之地方委员会。亦须经过候补期。凡已加入第三国际所承认之各国共产党者。经中央审查后。得为本党正式党员。第四条 党员自请出党须经过地方之决定。收回其党证及其他重要文件。并须由介绍人担保其严守本党一切秘密。如违反时。由地方执行委员会采用适当手段对待之。第五条 各农村各工厂各铁路各矿山各兵营各学校等机关及附近。凡有党员三人以上均得成立一支部。每支部公推书记一人或推三人组织干事会。隶属地方执行委员会。不满三人之处。设一通信员。属于附近之地方或直接属于中央。支部人数过多时。得斟酌情形分为若干小组。每组设组长一人。由支部干事会指定之。如支部所在地尚无地方执行委员会时。则由区执行委员会直辖之。未有区执行委员会之处。则由中央直辖之。第六条 一地方有三个支部以上。经中央执行委员会之许可。区执行委员会得派员至该地方召集全体党员大会或代表会由该会推举三人组织该地方执行委员会。并推举候补委员二人－－－如委员因事离职时。得以候补委员代理之。未有区执行委员会之地方。则由中央执行委员会直接派员召集组织该地方执行委员会。直接隶属中央。区执行委员会所在地。得以区执行委员会代行该地方执行委员会之职权。第七条 各区有二个地方执行委员会以上。中央执行委员会认为有组织区执行委员会必要时。即派员到该区召集区代表会。由该代表会推举五人组织该区执行委员会。并推举候补委员三人。如委员因事离职时。得以候补委员代理之。中央执行委员会认为必要时。得委托一个地方执行委员会暂时代行区执行委员会之职权。区之范围由中央执行委员会规定并得随时变更之。第八条 中央执行委员会由全国代表大会选举九人组织之。并选举候补委员五人。如委员离职时。得以候补委员代理之。第九条 中央执行委员会任期一年。区及地方执行委员会任期均半年。支部干事或书记任期三月。区及地方委员支部干事或书记辞职时。须得上级机关之许可。第十条 中央执行委员会执行大会的各种决议。审议及决定本党政策及一切进行方法。区及地方执行委员会执行上级机关的决议。并在其范围及权限以内审议及决定一切进行方法。中央执行委员会须互推总书记一人总理全国党务。各级执行委员会及干事会均须互推书记一人总理各级党务。其余委员协同总书记或各级书记分掌党务。第十一条 大会或中央执行委员会议决之各种议案及各地临时发生之特别问题。区及地方执行委员会均得指定若干党员组织各种特别委员会处理之。此项特别委员会开会时。须以各该执行委员会一人为主席。第十二条 各支部每星期至少须开会一次由支部书记召集之。但已分成小组之支部。其小组每星期至少须开会一次由小组组长召集之。至支部全体会议。至少须每月举行一次。各地每月至少召集全体党员会议一次（其有特别情形之地方。得改全体会议为支部书记或干事联席会议。但全体会议至少须两月一次）。各区每半年由执行委员会定期召集该区全体党员代表会议一次。全国代表大会。每年由中央执行委员会定期召集一次。各代表表决权以其代表人数计算。中央执行委员会。每四月开全体委员会一次。第十三条 中央执行委员会认为必要时。得召集全国代表临时会议或扩大中央执行委员会。有三分之一区代表全党三分一之党员之请求。中央执行委员会亦必须召集临时会议。第十四条 全国代表大会或临时会议之代表人数。每地方必须派代表一人。但人数在百人以上者得派二人。二百人以上者得派三人。以上每加百人得加派代表一人。未成地方之处。中央执行委员会认为必要时。得令其派出代表一人出席。第十五条 凡一问题发生。上级执行委员会得临时命令下级执行委员会召集各种形式的临时会议。第十六条 中央执行委员会得随时派员到各处召集各种形式的临时会议。此项会议应以中央特派员为主席。第十七条 中央及区与地方执行委员会与支部干事会。由总书记或各级书记随时召集之。第十八条 全国代表大会为本党最高机关。在全国大会闭会期间。中央执行委员会为最高机关。第十九条 全国大会及中央执行委员会之议决。本党党员皆须绝对服从之。第二十条 下级机关须完全执行上级机关之命令。不执行时。上级机关得取消或改组之。第二十一条 各地方党员半数以上对于执行委员会之命令有抗议时。得提出上级执行委员会判决。地方执行委员会对于区执行委员会之命令有抗议时。得提出中央执行委员会判决。对于中央执行委员会有抗议时。得提出全国大会之临时大会判决。但在未判决期间均仍须执行上级机关之命令。第二十二条 区或地方执行委员会及各级均须执行及宣传中央执行委员会所定政策。不得自定政策。凡有关系全国之重大政治问题发生。中央执行委员会未发表意见时。区或地方执行委员会。均不得单独发表意见。区或地方执行委员会所发表之一切言论倘与本党宣言章程及中央执行委员会之议决案及所定政策有抵触时。中央执行委员会得令其改组之。第二十三条 凡党员若不经中央执行委员会之特许。不得加入一切政治的党派。其前已隶属一切政治的党派者。加入本党时。若不经特许。应正式宣告脱离。第二十四条 凡党员若不经中央执行委员会之特许。不得为任何资本阶级的国家之政务官。第二十五条 本党一切会议均取决多数。少数绝对服从多数。第二十六条 凡党员离开其所在地时必须经该地方党部许可。其所前往之地如有党部时必须向该党部报到。第二十七条 凡党员有犯左列各项之一者。该地方执行委员会必须开除之。（一）言论行动有违背本党党纲章程及大会和各执行委员会之议决案。（二）无故联续三次不到会。（三）无故欠缴党费三个月。（四）联续四个星期不为本党服务。（五）不守纪律经各级执行委员会命令其停止出席留党察看期满而不改悟。（六）泄漏本党秘密。地方执行委员会开除党员后。必须报告其理由于中央及区执行委员会。第二十八条 本党经费的收入如左各项。（一）党费 党员每月收入在三十元以内者。月缴党费两角。但无收入及月薪不满二十元者。得由地方斟酌情形核减之。在三十元以上至六十元者缴一元。六十元以上至八十元者缴百分之三。八十元以上至百元者缴百分之五。在一百元以上至二百元者缴百分之十。二百元以外者特别征收之。失业工人及在狱或在S . Y . 的党员均免缴党费。（二）党内义务捐由地方执行委员会酌量地方经费及党员经济力定之。（三）党外协助。第二十九条 本党一切经费收支。均由中央执行委员会支配之。第三十条 本章程修改之权属全国代表大会。解释之权属中央执行委员会。第三十一条 本章程由本党第四次全国代表大会（一九二五年一月十一日－－二十二日）议决。中央执行委员会公布之日起发生效力";
+	var sentences = txt_data.split("。");
+	delete txt_data;
+	var sentences_length = sentences.length;
+
+	var x_center = document.getElementById("box_text").offsetWidth / 2;
+	var y_center = document.getElementById("box_text").offsetHeight / 2;
+	var radius = document.getElementById("box_text").offsetHeight * 0.4;
+	var angle = 360 / sentences_length;
+	var text_box_height = 4 * radius / sentences_length;
+	var present_angle = -90;
+
+	var txt_box_element = document.getElementById("box_text");
+	for (var i = 0; i < sentences_length; ++i) {
+		var pre_sentence = sentences[i];
+		var pre_sentence_element = document.createElement("div");
+		txt_box_element.appendChild(pre_sentence_element);
+		set_element_basic_style(pre_sentence_element);
+		set_element_location_style(pre_sentence_element);
+	}
+	
+	delete sentences;
+
+
+	/*--------------------------------------------------词云-------------------------------*/
+
+	var part3_wordcloud_data_name = ['支部', '命令', '候补委员', '全国代表大会', '干事会', '党务', '干事', '抗议', '义务', '党部', '审查', '改组', '党纲', '阶级', '政务官', '纪律', '特派员', '服务', '宣传', '发言权', '宣言', '党员大会', '第三国际'];
+	var part3_wordcloud_data_value = [13, 6, 6, 6, 4, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+
+	var part3_wordcloud_data = [];
+	for (var i = 0; i < part3_wordcloud_data_value.length; ++i) {
+		part3_wordcloud_data.push({
+			name: part3_wordcloud_data_name[i],
+			value: part3_wordcloud_data_value[i]
+		});
+	}
+
+	var part3_wordcloud_width = $("#box_wordcloud").width;
+	var part3_wordcloud_height = $("#box_wordcloud").height;
+	var textarc_chart = echarts.init(document.getElementById('box_wordcloud'));
+	var option = {
+		backgroundColor: 'rgba(255, 255, 255, 0)',
+		series: [{
+			type: 'wordCloud',
+			gridSize: part3_wordcloud_gridsize,
+			sizeRange: part3_wordcloud_sizerange,
+			rotationRange: part3_wordcloud_rotationrange,
+			shape: 'circle',
+			width: part3_wordcloud_width,
+			height: part3_wordcloud_height,
+			textStyle: {
+				normal: {
+					color: function (v) {
+						return part3_wordcloud_get_color(v);
+					},
+					fontFamily: "字魂47号"
+				},
+				emphasis: {
+					shadowBlur: 10,
+					shadowColor: 'red'
+				}
+			},
+			data: part3_wordcloud_data
+		}]
+	};
+	textarc_chart.setOption(option);
+
+	</script>
+<script>
+	var tree_chart_element = document.getElementById('tree_chart_div');
+	var tree_chart = echarts.init(tree_chart_element);
+	var data = [{
+		name: '四大党章',
+		children: [{
+			name: '历史背景',
+		}, {
+			name: '特点',
+		}, {
+			name: '历史意义',
+		}]
+	}];
+
+	tree_chart.hideLoading();
+	var tree_chart_option = {
+		tooltip: {
+			trigger: 'item',
+			triggerOn: 'mousemove'
+		},
+		series: [{
+			type: 'tree',
+
+			data: data,
+			width: tree_chart_element.style.width,
+			height: tree_chart_element.style.height,
+			top: '10%',
+			left: '20%',
+			bottom: '10%',
+			right: '40%',
+
+			symbolSize: 20,
+
+			label: {
+				position: 'left',
+				verticalAlign: 'middle',
+				align: 'right',
+				fontSize: 20,
+				fontFamily: "字魂47号",
+				fontWeight: "bold"
+			},
+
+			leaves: {
+				label: {
+					position: 'right',
+					verticalAlign: 'middle',
+					align: 'left',
+					fontFamily: "字魂47号",
+					fontWeight: "bold"
+				}
+			},
+
+			emphasis: {
+				focus: 'descendant'
+			},
+
+			expandAndCollapse: true,
+			animationDuration: 550,
+			animationDurationUpdate: 750
+		}]
+	}
+	tree_chart.setOption(tree_chart_option);
+	document.getElementById("part4_div_part").style.display = "none";
+	
+		
+
+</script>
+<script src="JavaScript/dangzhang_js.js"></script>
+<script src="JavaScript/aos/aos.js"></script>
+<script>
+	AOS.init({
+		easing: 'ease-out-back',
+		duration: 1000
+	});
+</script>
+	
+</body>
+</html>
